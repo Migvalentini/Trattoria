@@ -6,6 +6,6 @@ class Client {
         this.CPF = CPF,
         this.age = age,
         this.totalToPay = totalToPay,
-        this.c = dietaryRestriction
+        this.dietaryRestriction = dietaryRestriction
     }
 }
