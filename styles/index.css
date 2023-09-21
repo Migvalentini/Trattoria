@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200;0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;0,6..12,800;0,6..12,900;0,6..12,1000;1,6..12,200;1,6..12,300;1,6..12,400;1,6..12,500;1,6..12,600;1,6..12,700;1,6..12,800;1,6..12,900;1,6..12,1000&display=swap');
+@font-face {
+   font-family: myFont;
+   src: url('./fonts/Amsterdam.ttf');
+}
+
+* {
+   padding: 0;
+   margin: 0;
+}
+
+.container {
+   background-color: #6F6D3D;
+   height: 100vh;
+   width: 100vw;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+}
+
+.center {
+   height: 300px;
+   width: 300px;
+   background-color: #fff;
+   border-radius: 50%;
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+}
+
+.logo {
+   width: 300px;
+   max-width: 100%; 
+   max-height: 100%;
+   transform: translate(-5%, 35%);
+}
+
+.plant-top-right {
+   position: absolute;
+   top: 20px; 
+   right: 20px; 
+   max-width: 200px;
+}
+
+.plant-bottom-left {
+   position: absolute;
+   bottom: 20px;
+   left: 20px;
+   max-width: 200px;
+   transform: rotate(180deg);
+}
+
+.start {
+   margin-top: 400px;
+   padding: 20px 40px;
+   background-color: #eaaf56;
+   color: black; 
+   border: none; 
+   border-radius: 5px; 
+   cursor: pointer;
+   z-index: 1;
+   font-size: 20px;
+   font-family: 'Nunito Sons', sans-serif;
+ }
