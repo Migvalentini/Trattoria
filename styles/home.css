@@ -1,4 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200;0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;0,6..12,800;0,6..12,900;0,6..12,1000;1,6..12,200;1,6..12,300;1,6..12,400;1,6..12,500;1,6..12,600;1,6..12,700;1,6..12,800;1,6..12,900;1,6..12,1000&display=swap');
+@font-face {
+   font-family: myFont;
+   src: url('../fonts/Amsterdam.ttf');
+}
+
 .container {
     height: 100vh;
+    width: 100vw;
+}
+
+h1 {
+    font-family: myFont;
+    font-weight: 100;
+    text-align: center;
+}
+
+p {
+    font-family: 'Nunito Sans', sans-serif;
+    text-align: center;
+    font-weight: 600;
+}
+
+section {
+    height: calc((100vh - 100px) / 3);
     width: 100vw;
 }
