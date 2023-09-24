@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200;0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;0,6..12,800;0,6..12,900;0,6..12,1000;1,6..12,200;1,6..12,300;1,6..12,400;1,6..12,500;1,6..12,600;1,6..12,700;1,6..12,800;1,6..12,900;1,6..12,1000&display=swap');
+@font-face {
+   font-family: myFont;
+   src: url('../fonts/Amsterdam.ttf');
+}
+
+.container {
+    height: 100vh;
+    width: 100vw;
+}
+
+h1 {
+    font-family: myFont;
+    font-weight: 100;
+    text-align: center;
+}
+
+p {
+    font-family: 'Nunito Sans', sans-serif;
+    text-align: center;
+    font-weight: 600;
+    font-size: 12px;
+    margin: 10px;
+}
+
+.welcome {
+    height: calc((100vh - 100px) / 5 * 2 -30px);
+}
+
+.welcome-p {
+    width: 80%;
+    margin: 20px auto;
+}
+
+.how-started {
+    height: calc((100vh - 100px) / 5 * 2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.participation {
+    height: calc((100vh - 100px) / 5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+}
+
+section {
+    width: 100vw;
+}
+
+.plant1 {
+    position: absolute;
+    left: 2%;
+    height: 70px;
+    width: 90px;
+}
+
+.plant2 {
+    position: absolute;
+    transform: rotateY(180deg);
+    right: 2%;
+    height: 70px;
+    width: 90px;
+}
+
+.texts {
+    width: 60%;
+}
+
+.making-pasta {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.background {
+    background-color: #BF4E30;
+    height: 80%;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.making-pasta-img {
+    height: 60%;
+    width: 90%;
+}
+
+li {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 12px;
+    margin-left: 30px;
+}
+
+.view-menu-btn {
+    border: none;
+    padding: 0px 20px;
+    font-family: myFont;
+    font-size: 15px;
+    background-color: #eaaf56;
+    border-radius: 5px;
+    margin-top: 70px;
+    cursor: pointer;
+}
+
+.view-menu {
+    position: relative;
+    text-align: center;
+}
+
+.plant-img {
+    position: absolute;
+    top: -300%;
+    left: 50%;
+    transform: translateX(-50%);
+}
