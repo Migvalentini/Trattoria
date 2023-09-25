@@ -5,7 +5,6 @@
 }
 
 .container {
-    height: 100vh;
     width: 100vw;
 }
 
@@ -24,7 +23,7 @@ p {
 }
 
 .welcome {
-    height: calc((100vh - 100px) / 5 * 2 -30px);
+    height: 200px;
 }
 
 .welcome-p {
@@ -33,14 +32,14 @@ p {
 }
 
 .how-started {
-    height: calc((100vh - 100px) / 5 * 2);
+    height: 300px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .participation {
-    height: calc((100vh - 100px) / 5);
+    height: 150px;
     display: flex;
     align-items: center;
     justify-content: center;
