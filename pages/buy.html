@@ -3,16 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comprar Ingressos Trattoria 2023</title>
+    <title>Registrar Comprador Trattoria 2023</title>
     <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../styles/buy.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <div class="container">
        <div class="background"></div>
        <div class="inputs">
-            <label for="iname">Nome: </label>
-            <input type="text" name="iname" id="iname">
+            <div class="input">
+                <label for="iname">Nome: </label>
+                <input type="text" name="iname" id="iname" required>
+            </div>
+            <div class="input">
+                <label for="iphone">Telefone: </label>
+                <input type="tel" name="iphone" id="iphone" required>
+            </div>
+            <div class="input">
+                <label for="icpf">CPF: </label>
+                <input type="number" name="icpf" id="icpf" required>
+            </div>
+            <div class="input">
+                <label for="iemail">Email: </label>
+                <input type="number" name="iemail" id="iemail" required>
+            </div>
+       </div>
+       <div class="buttons">
+            <a href="./menu.html"><i class="fas fa-chevron-left fa-2x"></i></a>
+            <a href="./tickets.html"><i class="fas fa-check fa-2x"></i></a>
        </div>
     </div>
 </body>

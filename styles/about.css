@@ -88,6 +88,10 @@ section {
 }
 
 .making-pasta-img {
+    background-image: url('../images/making-pasta.jpg');
+    background-position: center center;
+    background-size: 100px;
+    background
     height: 60%;
     width: 90%;
 }
