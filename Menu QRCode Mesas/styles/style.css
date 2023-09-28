@@ -4,7 +4,16 @@
    src: url("../../fonts/Amsterdam.ttf");
 }
 
-h1 {
+
+.backg{
+    background-image: url("../menuimages/restauranteback.jpeg");
+    
+}
+
+
+.menu{
+    padding-top: 20px;
+    padding-bottom: 10px;
     font-family: myFont;
     font-weight: 100;
     text-align: center;
@@ -12,12 +21,15 @@ h1 {
 
 h2 {
     font-family: myFont;
-    font-weight: 100;
+    font-size: 20px;
     text-align: center;
 }
 .desc {
+    text-align: left;
     background-color: #BF4E30;
     border-radius: 5px;
+    color: white;
+    font-size: 10pt;
 }
 
 .prato1img {
@@ -34,6 +46,7 @@ h2 {
     align-items: center;
     justify-content: center;
     height: min-content;
+    
 }
 
 .list{
