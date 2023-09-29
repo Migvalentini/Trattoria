@@ -1,10 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200;0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;0,6..12,800;0,6..12,900;0,6..12,1000;1,6..12,200;1,6..12,300;1,6..12,400;1,6..12,500;1,6..12,600;1,6..12,700;1,6..12,800;1,6..12,900;1,6..12,1000&display=swap');
 @font-face {
    font-family: myFont;
-   src: url('../fonts/Amsterdam.ttf');
+   src: url("../../fonts/Amsterdam.ttf");
 }
 
-h1 {
+
+.backg{
+    background-image: url("../menuimages/restauranteback.jpeg");
+    
+}
+
+
+.menu{
+    padding-top: 20px;
+    padding-bottom: 10px;
     font-family: myFont;
     font-weight: 100;
     text-align: center;
@@ -12,12 +21,15 @@ h1 {
 
 h2 {
     font-family: myFont;
-    font-weight: 100;
+    font-size: 20px;
     text-align: center;
 }
 .desc {
+    text-align: left;
     background-color: #BF4E30;
     border-radius: 5px;
+    color: white;
+    font-size: 10pt;
 }
 
 .prato1img {
@@ -34,5 +46,11 @@ h2 {
     align-items: center;
     justify-content: center;
     height: min-content;
+    
 }
 
+.list{
+    list-style: none;
+    font-weight: 100;
+    padding-left: 30px;
+}
