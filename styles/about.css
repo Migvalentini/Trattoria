@@ -6,6 +6,7 @@
 
 .container {
     width: 100vw;
+    height: 100vh;
 }
 
 h1 {
@@ -29,7 +30,7 @@ p {
 
 .welcome-p {
     width: 80%;
-    margin: 20px auto;
+    margin: 40px auto;
 }
 
 .how-started {
@@ -45,6 +46,7 @@ p {
     align-items: center;
     justify-content: center;
     gap: 40px;
+    padding-bottom: 40px;
 }
 
 section {
@@ -91,9 +93,13 @@ section {
     background-image: url('../images/making-pasta.jpg');
     background-position: center center;
     background-size: 100px;
-    background
+    background-repeat: no-repeat;
     height: 60%;
     width: 90%;
+}
+
+ul {
+    list-style: square;
 }
 
 li {

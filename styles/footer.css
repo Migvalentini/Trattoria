@@ -1,8 +1,9 @@
 footer {
     width: 100%;
     background-color: #BF4E30;
-    position: relative;
-    bottom: 0%;
+    position: fixed;
+    bottom: 0;
+    
 }
 
 i {

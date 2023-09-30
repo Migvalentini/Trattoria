@@ -18,31 +18,53 @@
 .inputs {
    display: flex;
    align-items: center;
+   justify-content: center;
+   flex-direction: column;
+   text-align: center;
+   margin-top: 30px;
 }
 
 label {
    font-family: 'Nunito Sans', sans-serif;
+   width: 30%;
+   margin-right: 10px;
+   text-align: left;
+   font-weight: 600;
 }
 
-.input {
-   width: 250px;
+.input-div {
+   width: 80%;
+   max-width: 300px;
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   margin: 20px 10px;
 }
 
 input {
    border: 2px solid green;
-   margin: 30px 0px;
+   width: 70%;
+   padding: 5px;
 }
 
 .fa-chevron-left {
-   color: black;
-}
-
-.fa-check {
-   color: black;
+   color: #BF4C33;
 }
 
 .buttons {
    display: flex;
    justify-content: space-between;
-   margin: 0px 20px;
+   align-items: center;
+   position: fixed;
+   bottom: 0;
+   width: 100vw;
+}
+
+.buttons a {
+   margin: 20px;
+}
+
+button {
+   border: none;
+   background-color: transparent;
 }
