@@ -4,27 +4,15 @@
     src: url('..//fonts/Amsterdam.ttf');
 }
 
-.title {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 h1 {
     font-family: myFont;
     margin-left: 15px;
 }
 
-h2 {
-    font-family: "Nunito Sans", sans-serif;
-    font-weight: 700;
-    margin-left: 15%;
-}
-
-h3 {
-    font-family: "Nunito Sans", sans-serif;
-    font-style: italic;
-    font-size: 12px;
+.title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .black-line {
@@ -41,19 +29,49 @@ h3 {
     z-index: 2;
 }
 
-p {
+h2 {
+    font-family: myFont;
+    font-size: 18px;
+    text-align: center;
+}
+
+h3 {
+    color: #BF4E30;
+}
+
+h4 {
+    font-style: italic;
+    font-size: 12px;
+}
+
+h3, h4, p {
     font-family: "Nunito Sans", sans-serif;
-    text-align: justify;
+    text-align: center;
 }
 
 .dish {
-    padding: 20px;
     display: flex;
     align-items: center;
-    gap: 20px;
+    justify-content: center;
+    margin: 20px 0px;
 }
 
-.image {
-    height: 80px;
-    width: 120px;
+.dolce {
+    margin-bottom: 40px;
+}
+
+.texts {
+    width: 50%;
+    padding: 10px;
+}
+
+.images {
+    width: 50%;
+    height: 150px;
+}
+
+.img {
+    height: 100%;
+    object-fit: cover;
+    border-radius: 6px;
 }
