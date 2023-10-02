@@ -4,9 +4,10 @@
    src: url('../fonts/Amsterdam.ttf');
 }
 
-.container {[
+.container {
    max-width: 100vw;
-]}
+   font-family: 'Nunito Sans', sans-serif;
+}
 
 .buttons {
    margin: 5px;
@@ -40,6 +41,101 @@
    background-color: #c99c58;
 }
 
+.ticket {
+   border: 2px solid #eaaf56;
+   width: 90%;
+   margin: 10px auto;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   font-size: 12px;
+   font-family: 'Nunito Sans', sans-serif;
+}
+
+.ticket:last-of-type {
+   margin-bottom: 220px;
+}
+
+.ticket-texts {
+   width: 60%;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   margin: 10px;
+}
+
+.ticket-content {
+   display: flex;
+   align-items: center;
+   margin: 10px 0px;
+}
+
+label {
+   margin-right: 5px;
+}
+
+input[type="text"], input[type="number"], input[type="date"] {
+   height: 10px;
+   font-family: 'Nunito Sans', sans-serif;
+   border: 1px solid #eaaf56; 
+   outline: none;
+   padding: 5px;
+}
+
+input[type="text"] {
+   width: 120px;
+} 
+
+input[type="number"] {
+   width: 130px;
+} 
+
+input[type="date"] {
+   width: 90px;
+} 
+
+select#itype {
+   width: 80px;
+   height: 30px;
+   font-family: 'Nunito Sans', sans-serif;
+   border: 1px solid #eaaf56; 
+   outline: none;
+   padding: 5px;
+}
+
+.rest-know {
+   width: 40%;
+   height: 100%;
+   text-align: center;
+   display: flex;
+   flex-direction: column;
+   gap: 20px;
+}
+
+textarea {
+   margin-top: 10px;
+   border: 1px solid #eaaf56;
+   outline: none;
+}
+
+.to-know {
+   margin-top: 10px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+input[type=radio] {
+   appearance: none;
+   padding: 8px;
+   background-color: #eaaf56;
+   border-radius:50%;
+}
+input[type=radio]:checked {
+   background-color: #6F6D3D;
+}
+
 .result {
    display: flex;
    position: fixed;
@@ -54,22 +150,27 @@
 }
 
 .total {
-   width: 29%;
+   width: 30%;
    display: flex;
    align-items: center;
    flex-direction: column;
 }
 
 .black-line {
-   background-color: black;
+   background-color: #BF4E30;
    width: 3px;
    height: 90px;
-   margin: auto;
+   margin: auto 0px;
 }
 
 .user-icon {
    padding: 0;
    margin-top: 5px;
+}
+
+.tickets-list {
+   width: 70%;
+   overflow: auto;
 }
 
 .total-name {
@@ -90,7 +191,7 @@
    font-weight: 200;
    color: white;
    padding: 5px 15px;
-   background-color: #5B493D;
+   background-color: #BF4E30;
    margin: 5px 0px;
    border: none;
    border-radius: 2px;
@@ -109,6 +210,18 @@
    padding: 5px 15px;
    border-radius: 15px;
    border: none;
-   background-color: #5B493D;
+   background-color: #BF4E30;
    color: white;
+}
+
+.result-preview {
+   background-color: #d89c42;
+   width: 80%;
+   display: flex;
+   align-items: center;
+   justify-content: space-around;
+   gap: 10px;
+   font-size: 10px;
+   margin: 10px auto;
+   padding: 0px;
 }
