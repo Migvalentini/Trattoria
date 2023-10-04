@@ -4,9 +4,12 @@
    src: url('../fonts/Amsterdam.ttf');
 }
 
+* {
+   font-family: 'Nunito Sans', sans-serif;
+}
+
 .container {
    max-width: 100vw;
-   font-family: 'Nunito Sans', sans-serif;
 }
 
 .buttons {
@@ -49,7 +52,6 @@
    align-items: center;
    justify-content: center;
    font-size: 12px;
-   font-family: 'Nunito Sans', sans-serif;
 }
 
 .ticket:last-of-type {
@@ -75,10 +77,9 @@ label {
    margin-right: 5px;
 }
 
-input[type="text"], input[type="number"], input[type="date"] {
+input.iname, input.icpf, input.ibirth {
    height: 10px;
-   font-family: 'Nunito Sans', sans-serif;
-   border: 1px solid #eaaf56; 
+   border: 2px solid #9dff00; 
    outline: none;
    padding: 5px;
 }
@@ -95,13 +96,34 @@ input[type="date"] {
    width: 90px;
 } 
 
-select#itype {
+select.itype {
    width: 80px;
    height: 30px;
-   font-family: 'Nunito Sans', sans-serif;
-   border: 1px solid #eaaf56; 
+   border: 2px solid #9dff00;
    outline: none;
    padding: 5px;
+}
+
+#success-completing {
+   border: 2px solid #eaaf56;
+}
+
+#unsuccess-completing {
+   border: 2px solid red;
+}
+
+.delete-btn {
+   background-color: #ca7c66;
+   width: max-content;
+   margin: 10px auto -10px auto;
+   padding: 5px;
+   outline: none;
+   border: none;
+   border-radius: 5px;
+}
+
+.delete-btn:active {
+   background-color: #d1998a;
 }
 
 .rest-know {
@@ -111,12 +133,17 @@ select#itype {
    display: flex;
    flex-direction: column;
    gap: 20px;
+   margin-bottom: 10px;
 }
 
 textarea {
    margin-top: 10px;
    border: 1px solid #eaaf56;
    outline: none;
+}
+
+textarea::placeholder {
+   text-align: center;
 }
 
 .to-know {
@@ -137,7 +164,8 @@ input[type=radio]:checked {
 }
 
 .result {
-   display: flex;
+   display: none;
+   /*display: flex;*/
    position: fixed;
    bottom: 0;
    width: 100%;
@@ -174,7 +202,6 @@ input[type=radio]:checked {
 }
 
 .total-name {
-   font-family: 'Nunito Sans', sans-serif;
    text-align: center;
 }
 
@@ -182,12 +209,7 @@ input[type=radio]:checked {
    font-family: myFont;
 }
 
-.total-result {
-   font-family: 'Nunito Sans', sans-serif;
-}
-
 .pay {
-   font-family: 'Nunito Sans', sans-serif;
    font-weight: 200;
    color: white;
    padding: 5px 15px;
@@ -205,7 +227,6 @@ input[type=radio]:checked {
 }
 
 .day-btn {
-   font-family: 'Nunito Sans', sans-serif;
    font-weight: 200;
    padding: 5px 15px;
    border-radius: 15px;
