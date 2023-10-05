@@ -164,8 +164,7 @@ input[type=radio]:checked {
 }
 
 .result {
-   display: none;
-   /*display: flex;*/
+   display: flex;
    position: fixed;
    bottom: 0;
    width: 100%;
@@ -198,7 +197,8 @@ input[type=radio]:checked {
 
 .tickets-list {
    width: 70%;
-   overflow: auto;
+   max-height: 200px;
+   overflow: scroll;
 }
 
 .total-name {
