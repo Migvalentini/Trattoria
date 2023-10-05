@@ -18,10 +18,9 @@ addTicketButtons.forEach((button, index) => {
         newTicket.classList.add(`ticket${ticketIndex}`);
         ticketIndex += 1
 
-        console.log(totalValue)
-
         const newTicketResult = document.createElement("div");
         newTicketResult.classList.add("result-preview");
+        newTicketResult.classList.add(`result-preview${ticketIndex}`);
 
         if (index === 0) {
             totalValue += 150
@@ -90,7 +89,7 @@ addTicketButtons.forEach((button, index) => {
                 </div>
                 <div class="ticket-content ticket-cpf">
                     <label for="icpf">CPF:</label>
-                    <input class="icpf" type="number" name="icpf" id="" required><br>
+                    <input class="icpf" type="number" name="icpf" id=""><br>
                 </div>
                 <div class="ticket-content ticket-birth">
                     <label for="ibirth">Data de <br> Nascimento:</label>
@@ -133,8 +132,36 @@ addTicketButtons.forEach((button, index) => {
             `;
         }
 
-        // Adicione o ingresso à div "tickets"
         ticketsContainer.appendChild(newTicket);
-        ticketsContainerResult.appendChild(newTicketResult)
+        ticketsContainerResult.appendChild(newTicketResult);
     });
+});
+
+ticketsContainer.addEventListener("click", (event) => {
+    if (event.target.classList.contains("delete-btn")) {
+        const button = event.target;
+        const ticket = button.closest(".ticket");
+
+        if (ticket) {
+            const ticketType = ticket.classList.contains("ticket-adult") ? "adult" : "kid";
+
+            if (ticketType === "adult") {
+                totalValue -= 150;
+            } else {
+                totalValue -= 50;
+            }
+
+            totalValueText.innerHTML = `R$${totalValue}`;
+
+            ticket.remove()
+
+            // Encontre o ingresso correspondente na div de resultados
+            const ticketResult = ticketsContainerResult.querySelector(`.${ticket.classList[1]}`);
+
+            if (ticketResult) {
+                // Remova o ingresso correspondente na div de resultados
+                ticketResult.remove();
+            }
+        }
+    }
 });
