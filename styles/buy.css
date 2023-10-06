@@ -21,7 +21,7 @@
    justify-content: center;
    flex-direction: column;
    text-align: center;
-   margin-top: 30px;
+   margin-top: 20px;
 }
 
 label {
@@ -40,6 +40,22 @@ label {
    align-items: center;
    margin: 20px 10px;
 }
+
+.error {
+   opacity: 0;
+   display: inline-block;
+   background-color: #f8d7da;
+   color: #721c24;
+   padding: 8px;
+   border: 1px solid #f5c6cb;
+   border-radius: 4px;
+   font-family: 'Nunito Sans', sans-serif;
+   font-size: 12px;
+   margin-top: 5px;
+   max-width: 300px;
+   text-align: center;
+}
+ 
 
 input {
    border: 2px solid #9dff00;

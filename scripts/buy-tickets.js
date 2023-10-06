@@ -1,34 +1,37 @@
 const addAdultTicket = document.querySelector('.addAdultTicketBtn')
 const addKidTicket = document.querySelector('.addKidTicketBtn')
 
-const addTicketButtons = document.querySelectorAll(".addTicketBtn");
+const addTicketButtons = document.querySelectorAll(".addTicketBtn")
 
-const ticketsContainer = document.querySelector(".tickets");
-const ticketsContainerResult = document.querySelector(".tickets-list");
+const ticketsContainer = document.querySelector(".tickets")
+const ticketsContainerResult = document.querySelector(".tickets-list")
 
 const totalValueText = document.querySelector('.total-result')
 
 let totalValue = 0
-let ticketIndex = 0
+let ticketIndex = 1
+
+const totalNameText = document.querySelector('.total-name')
 
 addTicketButtons.forEach((button, index) => {
     button.addEventListener("click", () => {
-        const newTicket = document.createElement("div");
-        newTicket.classList.add("ticket");
-        newTicket.classList.add(`ticket${ticketIndex}`);
-        ticketIndex += 1
-
-        const newTicketResult = document.createElement("div");
-        newTicketResult.classList.add("result-preview");
-        newTicketResult.classList.add(`result-preview${ticketIndex}`);
+        const newTicket = document.createElement("div")
+        newTicket.classList.add("ticket")
+        newTicket.classList.add(`ticket${ticketIndex}`)
+        newTicket.setAttribute("data-index", ticketIndex)
+        
+        const newTicketResult = document.createElement("div")
+        newTicketResult.classList.add("result-preview")
+        newTicketResult.classList.add(`result-preview${ticketIndex}`)
+        newTicketResult.setAttribute("data-index", ticketIndex)
 
         if (index === 0) {
             totalValue += 150
             totalValueText.innerHTML = `R$${totalValue}`
-            newTicket.classList.add("ticket-adult");
+            newTicket.classList.add("ticket-adult")
             newTicket.innerHTML = `
             <div class="ticket-texts">
-                <h3 class="ticket-type">Ingresso de Adulto</h3>
+                <h3 class="ticket-type">${ticketIndex}º Ingresso (Adulto)</h3>
                 <div class="ticket-content ticket-name">
                     <label for="iname">Nome:</label>
                     <input class="iname" type="text" name="iname" id="" required><br>
@@ -67,7 +70,7 @@ addTicketButtons.forEach((button, index) => {
             `;
             newTicketResult.innerHTML = `
                 <div class="result-texts">
-                    <span class="result-type">Ingresso Adulto:</span><br>
+                    <span class="result-type">${ticketIndex}º Ingresso (Adulto):</span><br>
                     <span class="result-name">Nome: X</span><br>
                     <span class="result-cpf">CPF: X</span><br>
                     <span class="result-restriction">Restrição: X</span>
@@ -79,10 +82,10 @@ addTicketButtons.forEach((button, index) => {
         } else if (index === 1) {
             totalValue += 50
             totalValueText.innerHTML = `R$${totalValue}`
-            newTicket.classList.add("ticket-kid");
+            newTicket.classList.add("ticket-kid")
             newTicket.innerHTML = `
             <div class="ticket-texts">
-                <h3 class="ticket-type">Ingresso de Criança</h3>
+                <h3 class="ticket-type">${ticketIndex}º Ingresso (Criança)</h3>
                 <div class="ticket-content ticket-name">
                     <label for="iname">Nome:</label>
                     <input class="iname" type="text" name="iname" id="" required><br>
@@ -121,7 +124,7 @@ addTicketButtons.forEach((button, index) => {
 
             newTicketResult.innerHTML = `
                 <div class="result-texts">
-                    <span class="result-type">Ingresso Criança:</span><br>
+                    <span class="result-type">${ticketIndex}º Ingresso (Criança):</span><br>
                     <span class="result-name">Nome: X</span><br>
                     <span class="result-cpf">CPF: X</span><br>
                     <span class="result-restriction">Restrição: X</span>
@@ -132,36 +135,37 @@ addTicketButtons.forEach((button, index) => {
             `;
         }
 
-        ticketsContainer.appendChild(newTicket);
-        ticketsContainerResult.appendChild(newTicketResult);
+        ticketsContainer.appendChild(newTicket)
+        ticketsContainerResult.appendChild(newTicketResult)
+        ticketIndex += 1
     });
 });
 
 ticketsContainer.addEventListener("click", (event) => {
     if (event.target.classList.contains("delete-btn")) {
         const button = event.target;
-        const ticket = button.closest(".ticket");
+        const ticket = button.closest(".ticket")
 
         if (ticket) {
-            const ticketType = ticket.classList.contains("ticket-adult") ? "adult" : "kid";
+            const ticketType = ticket.classList.contains("ticket-adult") ? "adult" : "kid"
+            const ticketIndex = ticket.getAttribute("data-index")
 
             if (ticketType === "adult") {
-                totalValue -= 150;
-            } else {
-                totalValue -= 50;
+                totalValue -= 150
+            } else if (ticketType === "kid") {
+                totalValue -= 50
             }
 
-            totalValueText.innerHTML = `R$${totalValue}`;
+            totalValueText.innerHTML = `R$${totalValue}`
 
             ticket.remove()
 
-            // Encontre o ingresso correspondente na div de resultados
-            const ticketResult = ticketsContainerResult.querySelector(`.${ticket.classList[1]}`);
+            const ticketResult = ticketsContainerResult.querySelector(`[data-index="${ticketIndex}"]`)
 
             if (ticketResult) {
-                // Remova o ingresso correspondente na div de resultados
-                ticketResult.remove();
+                ticketResult.remove()
             }
         }
     }
+    ticketIndex -= 1
 });
