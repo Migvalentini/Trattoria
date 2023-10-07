@@ -61,11 +61,17 @@
 
 .ticket-texts {
    width: 60%;
+   min-height: 170px;
    display: flex;
    flex-direction: column;
    align-items: center;
    justify-content: center;
    margin: 10px;
+}
+
+.itype-container {
+   height: 40px;
+   overflow: hidden;
 }
 
 .ticket-content {
@@ -95,9 +101,14 @@ input[type="number"] {
 
 input[type="date"] {
    width: 90px;
-} 
+}
+
+.itype-label {
+   display: none;
+}
 
 select.itype {
+   display: none;
    width: 80px;
    height: 30px;
    border: 2px solid #9dff00;

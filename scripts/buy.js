@@ -18,6 +18,16 @@ phoneInput.value = 54987654321
 cpfInput.value = 11122233344
 emailInput.value = 'miguel@gmail.com'
 
+if (localStorage.getItem('buyer')) {
+   const buyerData = JSON.parse(localStorage.getItem('buyer'));
+
+   // Preencha os campos de entrada com os valores do comprador
+   nameInput.value = buyerData.name || '';
+   phoneInput.value = buyerData.phone || '';
+   cpfInput.value = buyerData.cpf || '';
+   emailInput.value = buyerData.email || '';
+}
+
 function validarFormulario() {
    if (nameRegex.test(nameInput.value)) {
       nameInput.id = 'success-completing'
@@ -69,5 +79,15 @@ const submitBtn = document.querySelector(".submitBtn")
 submitBtn.addEventListener("click", function (event) {
    if (!validarFormulario()) {
       event.preventDefault()
+   }
+   else {
+      const newBuyer = {
+         name: nameInput.value,
+         phone: phoneInput.value,
+         cpf: cpfInput.value,
+         email: emailInput.value
+      }
+      console.log(newBuyer)
+      window.localStorage.setItem('buyer', JSON.stringify(newBuyer))
    }
 })
