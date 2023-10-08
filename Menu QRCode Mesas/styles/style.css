@@ -4,10 +4,12 @@
    src: url("../../fonts/Amsterdam.ttf");
 }
 
-
-.backg{
-    background-image: url("../menuimages/restauranteback.jpeg");
-    
+.prato1 {
+    background-image: url('./');
+    background-size: cover;
+    background-color: rgba(0, 0, 0, 0.5); /* Opacidade de fundo de 50% */
+    color: #fff; /* Cor do texto */
+    padding: 20px; /* Espaçamento interno para o conteúdo */
 }
 
 .imagem{
@@ -19,7 +21,9 @@
 }
 
 .menu{
-    padding-top: 20px;
+    color: white;
+    background-color: #BF4E30;
+    padding-top: 10px;
     padding-bottom: 10px;
     font-family: myFont;
     font-weight: 100;
