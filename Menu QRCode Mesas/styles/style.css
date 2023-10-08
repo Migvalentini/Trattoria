@@ -10,6 +10,13 @@
     
 }
 
+.imagem{
+    text-align: center;
+    border: 1px solid #6F6E3D;
+    border-radius: 15px;
+    background-color: #6F6E3D;
+
+}
 
 .menu{
     padding-top: 20px;
@@ -21,24 +28,15 @@
 
 h2 {
     font-family: myFont;
-    font-size: 20px;
+    font-size: 25px;
     text-align: center;
 }
 .desc {
-    text-align: left;
+    text-align: center;
     background-color: #BF4E30;
     border-radius: 5px;
     color: white;
-    font-size: 10pt;
-}
-
-.prato1img {
-    width: 40%;
-    height: 40%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
+    font-size: 15pt;
 }
 
 .prato1 {
