@@ -87,7 +87,5 @@ submitBtn.addEventListener("click", function (event) {
          cpf: cpfInput.value,
          email: emailInput.value
       }
-      console.log(newBuyer)
-      window.localStorage.setItem('buyer', JSON.stringify(newBuyer))
    }
 })

@@ -8,12 +8,17 @@ const ticketsContainerResult = document.querySelector(".tickets-list")
 
 const totalValueText = document.querySelector('.total-result')
 
+const payBtn = document.querySelector('.pay')
+
 let totalValue = 0
 const adultPrice = 150
 const kidPrice = 50
 let ticketIndex = 0
 
 const totalNameText = document.querySelector('.total-name')
+
+const nameRegex = /^(([A-Za-z]+[\-\']?)*([A-Za-z]+)?\s)+([A-Za-z]+[\-\']?)*([A-Za-z]+)?$/
+const cpfRegex = /([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})/
 
 addTicketButtons.forEach((button, index) => {
     button.addEventListener("click", () => {
@@ -172,21 +177,66 @@ ticketsContainer.addEventListener("click", (event) => {
 })
 
 ticketsContainer.addEventListener("change", (event) => {
-    const target = event.target;
+    const target = event.target
 
     if (target.classList.contains("itype-input")) {
-        const ticketIndex = target.getAttribute("data-ticket-index");
-        const selectElement = document.querySelector(`.itype${ticketIndex}`);
-        const labelElement = document.querySelector(`.itype-label${ticketIndex}`);
+        const ticketIndex = target.getAttribute("data-ticket-index")
+        const selectElement = document.querySelector(`.itype${ticketIndex}`)
+        const labelElement = document.querySelector(`.itype-label${ticketIndex}`)
 
         if (selectElement && labelElement) {
             if (target.value === "yes") {
-                selectElement.style.display = "block";
-                labelElement.style.display = "block";
+                selectElement.style.display = "block"
+                labelElement.style.display = "block"
             } else if (target.value === "no") {
-                selectElement.style.display = "none";
-                labelElement.style.display = "none";
+                selectElement.style.display = "none"
+                labelElement.style.display = "none"
             }
         }
+    }
+})
+
+payBtn.addEventListener('click', () => {
+    const ticketElements = document.querySelectorAll('.ticket');
+
+    if (ticketElements.length === 0) {
+        alert('Por favor, adicione pelo menos um ingresso antes de pagar.');
+        return;
+    }
+
+    let allTicketsValid = true;
+
+    ticketElements.forEach((ticketElement, index) => {
+        const nameInput = document.querySelector(`.iname${index}`);
+        const cpfInput = document.querySelector(`.icpf${index}`);
+
+        const isNameValid = nameRegex.test(nameInput.value);
+        const isCPFValid = cpfRegex.test(cpfInput.value);
+
+        // Remove todas as classes de estilo anteriores
+        nameInput.classList.remove('valid-input', 'invalid-input');
+        cpfInput.classList.remove('valid-input', 'invalid-input');
+
+        if (!isNameValid || !isCPFValid) {
+            allTicketsValid = false;
+
+            // Adiciona a classe "invalid-input" para destacar que o campo é inválido
+            if (!isNameValid) {
+                nameInput.classList.add('invalid-input');
+            }
+            if (!isCPFValid) {
+                cpfInput.classList.add('invalid-input');
+            }
+        } else {
+            // Adiciona a classe "valid-input" para destacar que o campo é válido
+            nameInput.classList.add('valid-input');
+            cpfInput.classList.add('valid-input');
+        }
+    });
+
+    if (!allTicketsValid) {
+        alert('Por favor, preencha corretamente todos os campos em vermelho.');
+    } else {
+        alert('Pagamento bem-sucedido!');
     }
 });
