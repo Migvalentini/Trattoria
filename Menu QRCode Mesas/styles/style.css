@@ -1,97 +1,96 @@
 @font-face {
-   font-family: myFont;
-   src: url("../../fonts/Amsterdam.ttf");
-}
+    font-family: myFont;
+    src: url("../../fonts/Amsterdam.ttf");
+ }
+ 
+ body {
+     font-family: 'Nunito Sans', sans-serif;
+ }
+ 
+ .prato1 {
+     background-image: url('../menuimages/background/labelavita.png');
+     background-size: cover;
+     color: #fff;
+     padding: 20px;
+ }
 
-body {
-    font-family: 'Nunito Sans', sans-serif;
-}
-
-.prato1 {
-    background-image: url('../menuimages/labelavita.png');
+ .prato2 {
+    background-image: url('../menuimages/background/patir.png');
     background-size: cover;
-    color: #fff; /* Cor do texto */
-    padding: 20px; /* Espaçamento interno para o conteúdo */
-}
-
-.prato2 {
-    background-image: url('../menuimages/labelavita.png');
-    background-size: cover;
-    color: #fff; /* Cor do texto */
-    padding: 20px; /* Espaçamento interno para o conteúdo */
+    color: #fff;
+    padding: 20px;
 }
 
 .prato3 {
-    background-image: url('../menuimages/labelavita.png');
+    background-image: url('../menuimages/background/monalisa.png');
     background-size: cover;
-    color: #fff; /* Cor do texto */
-    padding: 20px; /* Espaçamento interno para o conteúdo */
+    color: #fff;
+    padding: 20px;
 }
 
 .prato4 {
-    background-image: url('../menuimages/labelavita.png');
+    background-image: url('../menuimages/background/torre.png');
     background-size: cover;
-    color: #fff; /* Cor do texto */
-    padding: 20px; /* Espaçamento interno para o conteúdo */
+    color: #fff;
+    padding: 20px;
 }
 
 .prato5 {
-    background-image: url('../menuimages/labelavita.png');
+    background-image: url('../menuimages/background/divina\ commedia.png');
     background-size: cover;
-    color: #fff; /* Cor do texto */
-    padding: 20px; /* Espaçamento interno para o conteúdo */
+    color: #fff;
+    padding: 20px;
 }
-
-
-.imagem{
-    text-align: center;
-    border-radius: 15px;
-    background-color: rgba(111, 110, 61, 0.8);
-}
-
-.menu{
-    color: white;
-    background-color: #BF4E30;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    font-family: myFont;
-    font-weight: 100;
-    text-align: center;
-}
-
-h2 {
-    font-family: myFont;
-    font-size: 25px;
-    text-align: center;
-}
-
-.desc {
-    text-align: center;
-    background-color: rgba(191, 78, 48, 0.8);
-    border-radius: 5px;
-    color: white;
-    font-size: 15pt;
-}
-
-.prato1 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: min-content;
-    
-}
-
-.list{
-    list-style: none;
-    font-weight: 100;
-    padding-left: 30px;
-}
-
-@media screen and (min-width: 768px){
-    .imagem {
-        max-height: 500px;
-        width: 100%;
-        aspect-ratio: 1 / 1;
-        height: auto;
-    }
-}
+ 
+ .imagem{
+     text-align: center;
+     border-radius: 15px;
+     background-color: rgba(111, 110, 61, 0.8);
+ }
+ 
+ .menu{
+     color: white;
+     background-color: #BF4E30;
+     padding-top: 10px;
+     padding-bottom: 10px;
+     font-family: myFont;
+     font-weight: 100;
+     text-align: center;
+ }
+ 
+ h2 {
+     font-family: myFont;
+     font-size: 35px;
+     text-align: center;
+ }
+ 
+ .desc {
+     text-align: center;
+     background-color: rgba(191, 78, 48, 0.8);
+     border-radius: 5px;
+     color: white;
+     font-size: 15pt;
+ }
+ 
+ .prato1 {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     height: min-content;
+     
+ }
+ 
+ .list{
+     list-style: none;
+     font-weight: 100;
+     padding-left: 30px;
+ }
+ 
+ @media screen and (min-width: 768px){
+     .imagem {
+         max-height: 500px;
+         width: 100%;
+         aspect-ratio: 1 / 1;
+         height: auto;
+     }
+ }
