@@ -33,6 +33,7 @@
 }
 
 .plus-icon {
+   margin-left: -5px;
    margin-right: 10px; 
    font-size: 20px;
 }
@@ -88,9 +89,7 @@ input.invalid-input {
    border: 2px solid red;
 }
 
-label {
-   margin-right: 5px;
-}
+label { margin-right: 5px; }
 
 input.iname, input.icpf, input.ibirth {
    height: 10px;
@@ -160,7 +159,7 @@ select.itype {
 
 textarea {
    margin-top: 10px;
-   border: 1px solid #eaaf56;
+   border: 1px solid #9dff00;
    outline: none;
 }
 
