@@ -51,13 +51,17 @@ addTicketButtons.forEach((button) => {
                     <label for="ibirth">Data de <br> Nascimento:</label>
                     <input class="ibirth ibirth${ticketIndex}" type="date" name="ibirth" id=""><br>
                 </div>
-                <div class="ticket-content ticket-student-teacher">
-                    <label class="itype-label itype-label${ticketIndex}" for="itype">Aluno/Professor</label>
-                    <select class="itype itype${ticketIndex}" id="" data-ticket-index="${ticketIndex}">
+                <div class="ticket-content ticket-students">
+                    <label for="ilist-student">Alunos:</label>
+                    <select class="list-students list-students${ticketIndex}" id="">
                         <option value="">Selecione uma opção</option>
-                        <option value="student">Aluno</option>
-                        <option value="teacher">Professor</option>
+                        <option value="Diego da Silva">Diego da Silva</option>
+                        <option value="Daniel Zamboni">Mitinho GG</option>
                     </select>
+                </div>
+                <div class="ticket-content ticket-teacher">
+                    <label for="iteacher-name">Professores:</label>
+                    <input class="iteacher-name iteacher-name${ticketIndex}" type="text" name="iteacher-name" id="" placeholder="Nome do professor(a)">
                 </div>
             </div>
             <div class="rest-know">
@@ -67,10 +71,19 @@ addTicketButtons.forEach((button) => {
                     <textarea class="irestriction irestriction${ticketIndex}" name="irestriction" id="irestriction" cols="10" rows="3" placeholder="Se sim, digite aqui..."></textarea>
                 </div>
                 <div class="know-div">
-                    <label for="know">Conhece alguém do Cetec?</label>
+                    <p>Conhece alguém do Cetec?</p>
                     <div class="to-know">
-                        <label class="radio-label" for="radio1"><input class="itype-input itype-input${ticketIndex}" type="radio" id="radio1" name="know-somebody" data-ticket-index="${ticketIndex}" value="yes"> Sim</label>
-                        <label class="radio-label" for="radio2"><input class="itype-input itype-input${ticketIndex}" type="radio" id="radio2" name="know-somebody" data-ticket-index="${ticketIndex}" value="no"> Não</label>
+                    <div class="radio">
+                        <input class="itype-input itype-input${ticketIndex}" type="radio" id="radio1" name="know-somebody" data-ticket-index="${ticketIndex}" value="yes-student">
+                        <label class="radio-label" for="radio1">Pai de Aluno</label>
+                    </div>
+                    <div class="radio">
+                        <input class="itype-input itype-input${ticketIndex}" type="radio" id="radio2" name="know-somebody" data-ticket-index="${ticketIndex}" value="yes-teacher"> 
+                        <label class="radio-label" for="radio2">Sou Professor</label>
+                    </div>
+                    <div class="radio">
+                        <input class="itype-input itype-input${ticketIndex}" type="radio" id="radio3" name="know-somebody" data-ticket-index="${ticketIndex}" value="no"> 
+                        <label class="radio-label" for="radio3">Não</label>
                     </div>
                 </div>
             </div>
@@ -105,13 +118,17 @@ addTicketButtons.forEach((button) => {
                     <label for="ibirth">Data de <br> Nascimento:</label>
                     <input class="ibirth ibirth${ticketIndex}" type="date" name="ibirth" id=""><br>
                 </div>
-                <div class="ticket-content ticket-student-teacher">
-                    <label class="itype-label itype-label${ticketIndex}" for="itype">Aluno/Professor</label>
-                    <select class="itype itype${ticketIndex}" id="" data-ticket-index="${ticketIndex}">
+                <div class="ticket-content ticket-students">
+                    <label for="ilist-student">Alunos:</label>
+                    <select class="list-students" id="">
                         <option value="">Selecione uma opção</option>
-                        <option value="student">Aluno</option>
-                        <option value="teacher">Professor</option>
+                        <option value="Diego da Silva">Diego da Silva</option>
+                        <option value="Daniel Zamboni">Mitinho GG</option>
                     </select>
+                </div>
+                <div class="ticket-content ticket-teacher">
+                    <label for="iteacher-name">Professores:</label>
+                    <input class="iteacher-name" type="text" name="iteacher-name" id="" placeholder="Nome do professor(a)">
                 </div>
             </div>
             <div class="rest-know">
@@ -121,10 +138,19 @@ addTicketButtons.forEach((button) => {
                     <textarea class="irestriction irestriction${ticketIndex}" name="irestriction" id="irestriction" cols="10" rows="3" placeholder="Se sim, digite aqui..."></textarea>
                 </div>
                 <div class="know-div">
-                    <label for="know">Conhece alguém do Cetec?</label>
+                    <p>Conhece alguém do Cetec?</p>
                     <div class="to-know">
-                        <label class="radio-label" for="radio1"><input class="itype-input itype-input${ticketIndex}" type="radio" id="radio1" name="know-somebody" data-ticket-index="${ticketIndex}" value="yes"> Sim</label>
-                        <label class="radio-label" for="radio2"><input class="itype-input itype-input${ticketIndex}" type="radio" id="radio2" name="know-somebody" data-ticket-index="${ticketIndex}" value="no"> Não</label>
+                    <div class="radio">
+                        <input class="itype-input itype-input${ticketIndex}" type="radio" id="radio1" name="know-somebody" data-ticket-index="${ticketIndex}" value="yes-student">
+                        <label class="radio-label" for="radio1">Pai de Aluno</label>
+                    </div>
+                    <div class="radio">
+                        <input class="itype-input itype-input${ticketIndex}" type="radio" id="radio2" name="know-somebody" data-ticket-index="${ticketIndex}" value="yes-teacher"> 
+                        <label class="radio-label" for="radio2">Sou Professor</label>
+                    </div>
+                    <div class="radio">
+                        <input class="itype-input itype-input${ticketIndex}" type="radio" id="radio3" name="know-somebody" data-ticket-index="${ticketIndex}" value="no"> 
+                        <label class="radio-label" for="radio3">Não</label>
                     </div>
                 </div>
             </div>
@@ -193,20 +219,33 @@ ticketsContainer.addEventListener("change", (event) => {
 
     if (target.classList.contains("itype-input")) {
         const ticketIndex = target.getAttribute("data-ticket-index");
-        const selectElement = document.querySelector(`.itype${ticketIndex}`);
+        const selectElement = document.querySelector(`.itype-select${ticketIndex}`);
         const labelElement = document.querySelector(`.itype-label${ticketIndex}`);
+        const studentSection = document.querySelector(`.ticket-students${ticketIndex}`);
+        const teacherSection = document.querySelector(`.ticket-teacher${ticketIndex}`);
+        console.log(selectElement, labelElement, studentSection, teacherSection)
 
-        if (selectElement && labelElement) {
-            if (target.value === "yes") {
+        if (selectElement && labelElement && studentSection && teacherSection) {
+            if (target.value === "yes-student") {
                 selectElement.style.display = "block";
                 labelElement.style.display = "block";
+                studentSection.style.display = "block";
+                teacherSection.style.display = "none";
+            } else if (target.value === "yes-teacher") {
+                selectElement.style.display = "block";
+                labelElement.style.display = "block";
+                studentSection.style.display = "none";
+                teacherSection.style.display = "block";
             } else if (target.value === "no") {
                 selectElement.style.display = "none";
                 labelElement.style.display = "none";
+                studentSection.style.display = "none";
+                teacherSection.style.display = "none";
             }
         }
     }
 });
+
 
 payBtn.addEventListener('click', () => {
     const ticketElements = document.querySelectorAll('.ticket');
@@ -220,12 +259,10 @@ payBtn.addEventListener('click', () => {
     let allTicketsValid = true;
 
     ticketElements.forEach((ticketElement, index) => {
-        console.log(index)
         const nameInput = document.querySelector(`.iname${index}`);
         const cpfInput = document.querySelector(`.icpf${index}`);
         const birthInput = document.querySelector(`.ibirth${index}`);
         const restrictionTextarea = document.querySelector(`.irestriction${index}`);
-        const knowInput = document.querySelector(`input[type="radio"][data-ticket-index="${index}"]:checked`);
 
         const isNameValid = nameRegex.test(nameInput.value);
         const isCPFValid = cpfRegex.test(cpfInput.value);
@@ -238,7 +275,9 @@ payBtn.addEventListener('click', () => {
         nameInput.removeAttribute('id');
         cpfInput.removeAttribute('id');
         birthInput.removeAttribute('id');
-        
+
+        restrictionTextarea.setAttribute('id', 'success-completing')
+
         if (isNameValid) {
             nameInput.setAttribute('id', 'success-completing');
         }
@@ -265,8 +304,6 @@ payBtn.addEventListener('click', () => {
 
         const ticketType = ticketElement.classList.contains('ticket-adult') ? 'adult' : 'kid'; 
 
-        const selectedKnowValue = knowInput ? knowInput.value : 'não conhece ninguém'; 
-
         const birthDate = new Date(birthInput.value);
         const today = new Date();
         const age = today.getFullYear() - birthDate.getFullYear();
@@ -277,7 +314,6 @@ payBtn.addEventListener('click', () => {
             birth: birthInput.value,
             type: ticketType,
             restriction: restrictionTextarea.value,
-            knowsSomebody: selectedKnowValue,
             age: age
         };
 
