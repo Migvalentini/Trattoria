@@ -112,19 +112,17 @@ input[type="date"] {
    border: 2px solid #9dff00; 
 }
 
-label[for=ilist-student], label[for=iteacher-name] {
+.ticket-students, .ticket-teacher {
    display: none;
 }
 
 .list-students {
-   display: none;
-   width: 130px;
+   width: 122px;
    border: 2px solid #9dff00; 
 }
 
 .iteacher-name {
-   display: none;
-   width: 90px;
+   width: 80px;
    border: 2px solid #9dff00; 
 }
 

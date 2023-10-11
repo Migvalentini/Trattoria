@@ -51,7 +51,7 @@ addTicketButtons.forEach((button) => {
                     <label for="ibirth">Data de <br> Nascimento:</label>
                     <input class="ibirth ibirth${ticketIndex}" type="date" name="ibirth" id=""><br>
                 </div>
-                <div class="ticket-content ticket-students">
+                <div class="ticket-content ticket-students ticket-students${ticketIndex}">
                     <label for="ilist-student">Alunos:</label>
                     <select class="list-students list-students${ticketIndex}" id="">
                         <option value="">Selecione uma opção</option>
@@ -59,7 +59,7 @@ addTicketButtons.forEach((button) => {
                         <option value="Daniel Zamboni">Mitinho GG</option>
                     </select>
                 </div>
-                <div class="ticket-content ticket-teacher">
+                <div class="ticket-content ticket-teacher ticket-teacher${ticketIndex}">
                     <label for="iteacher-name">Professores:</label>
                     <input class="iteacher-name iteacher-name${ticketIndex}" type="text" name="iteacher-name" id="" placeholder="Nome do professor(a)">
                 </div>
@@ -118,17 +118,17 @@ addTicketButtons.forEach((button) => {
                     <label for="ibirth">Data de <br> Nascimento:</label>
                     <input class="ibirth ibirth${ticketIndex}" type="date" name="ibirth" id=""><br>
                 </div>
-                <div class="ticket-content ticket-students">
+                <div class="ticket-content ticket-students ticket-students${ticketIndex}">
                     <label for="ilist-student">Alunos:</label>
-                    <select class="list-students" id="">
+                    <select class="list-students list-students${ticketIndex}" id="">
                         <option value="">Selecione uma opção</option>
                         <option value="Diego da Silva">Diego da Silva</option>
                         <option value="Daniel Zamboni">Mitinho GG</option>
                     </select>
                 </div>
-                <div class="ticket-content ticket-teacher">
+                <div class="ticket-content ticket-teacher ticket-teacher${ticketIndex}">
                     <label for="iteacher-name">Professores:</label>
-                    <input class="iteacher-name" type="text" name="iteacher-name" id="" placeholder="Nome do professor(a)">
+                    <input class="iteacher-name iteacher-name${ticketIndex}" type="text" name="iteacher-name" id="" placeholder="Nome do professor(a)">
                 </div>
             </div>
             <div class="rest-know">
@@ -216,36 +216,35 @@ ticketsContainer.addEventListener("click", (event) => {
 
 ticketsContainer.addEventListener("change", (event) => {
     const target = event.target;
-
     if (target.classList.contains("itype-input")) {
         const ticketIndex = target.getAttribute("data-ticket-index");
-        const selectElement = document.querySelector(`.itype-select${ticketIndex}`);
-        const labelElement = document.querySelector(`.itype-label${ticketIndex}`);
-        const studentSection = document.querySelector(`.ticket-students${ticketIndex}`);
-        const teacherSection = document.querySelector(`.ticket-teacher${ticketIndex}`);
-        console.log(selectElement, labelElement, studentSection, teacherSection)
+        const studentsDiv = document.querySelector(`.ticket-students${ticketIndex}`);
+        const teacherDiv = document.querySelector(`.ticket-teacher${ticketIndex}`);
 
-        if (selectElement && labelElement && studentSection && teacherSection) {
-            if (target.value === "yes-student") {
-                selectElement.style.display = "block";
-                labelElement.style.display = "block";
-                studentSection.style.display = "block";
-                teacherSection.style.display = "none";
-            } else if (target.value === "yes-teacher") {
-                selectElement.style.display = "block";
-                labelElement.style.display = "block";
-                studentSection.style.display = "none";
-                teacherSection.style.display = "block";
-            } else if (target.value === "no") {
-                selectElement.style.display = "none";
-                labelElement.style.display = "none";
-                studentSection.style.display = "none";
-                teacherSection.style.display = "none";
+        if (target.value === "yes-student") {
+            if (studentsDiv) {
+                studentsDiv.style.display = "block";
+            }
+            if (teacherDiv) {
+                teacherDiv.style.display = "none";
+            }
+        } else if (target.value === "yes-teacher") {
+            if (teacherDiv) {
+                teacherDiv.style.display = "block";
+            }
+            if (studentsDiv) {
+                studentsDiv.style.display = "none";
+            } 
+        } else if (target.value === "no") {
+            if (studentsDiv) {
+                studentsDiv.style.display = "none";
+            }
+            if (teacherDiv) {
+                teacherDiv.style.display = "none";
             }
         }
     }
 });
-
 
 payBtn.addEventListener('click', () => {
     const ticketElements = document.querySelectorAll('.ticket');
@@ -263,14 +262,11 @@ payBtn.addEventListener('click', () => {
         const cpfInput = document.querySelector(`.icpf${index}`);
         const birthInput = document.querySelector(`.ibirth${index}`);
         const restrictionTextarea = document.querySelector(`.irestriction${index}`);
+        const typeInput = document.querySelector(`.itype-input${index}`);
 
         const isNameValid = nameRegex.test(nameInput.value);
         const isCPFValid = cpfRegex.test(cpfInput.value);
         const isBirthValid = birthInput.value !== '';
-
-        nameInput.value = 'Miguel Valentini'
-        cpfInput.value = '12345678910'
-        birthInput.value = '2000-01-01'
 
         nameInput.removeAttribute('id');
         cpfInput.removeAttribute('id');
@@ -292,13 +288,16 @@ payBtn.addEventListener('click', () => {
             allTicketsValid = false;
 
             if (!isNameValid) {
-                nameInput.setAttribute('id', 'unsuccess-completing');
+                nameInput.setAttribute('id', 'unsuccess-completing')
+                ticketElement.setAttribute('id', 'unsuccess-completing');;
             }
             if (!isCPFValid) {
-                cpfInput.setAttribute('id', 'unsuccess-completing');
+                cpfInput.setAttribute('id', 'unsuccess-completing')
+                ticketElement.setAttribute('id', 'unsuccess-completing');;
             }
             if (!isBirthValid) {
-                birthInput.setAttribute('id', 'unsuccess-completing');
+                birthInput.setAttribute('id', 'unsuccess-completing')
+                ticketElement.setAttribute('id', 'unsuccess-completing');;
             }
         }
 
@@ -316,6 +315,31 @@ payBtn.addEventListener('click', () => {
             restriction: restrictionTextarea.value,
             age: age
         };
+
+        if (typeInput.value === 'yes-student') {
+            console.log('aluno')
+            const studentSelect = document.querySelector(`.list-students${index}`);
+            studentSelect.value = ''
+            if (studentSelect.value) {
+                ticketValues.student = studentSelect.value;
+                studentSelect.setAttribute('id', 'success-completing')
+            } else {
+                studentSelect.setAttribute('id', 'unsuccess-completing')
+                ticketElement.setAttribute('id', 'unsuccess-completing')
+                allTicketsValid = false;
+            }
+        } else if (typeInput.value === 'yes-teacher') {
+            console.log('prof')
+            const teacherInput = document.querySelector(`.iteacher-name${index}`);
+            if (teacherInput.value) {
+                ticketValues.teacherName = teacherInput.value;
+                studentSelect.setAttribute('id', 'success-completing')
+            } else {
+                allTicketsValid = false;
+                teacherInput.setAttribute('id', 'unsuccess-completing')
+                ticketElement.setAttribute('id', 'unsuccess-completing');
+            }
+        }
 
         ticketsValues.push(ticketValues);
 
