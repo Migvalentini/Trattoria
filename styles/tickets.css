@@ -108,17 +108,22 @@ input.icpf {
 } 
 
 input[type="date"] {
-   width: 90px;
+   width: 85px;
    border: 2px solid #9dff00; 
 }
 
-.ticket-students, .ticket-teacher {
+.ticket-students, .ticket-teacher, .ticket-student-n-tech {
    display: none;
 }
 
 .list-students {
    width: 122px;
    border: 2px solid #9dff00; 
+}
+
+.istudent-n-tech {
+   width: 125px;
+   border: 2px solid #9dff00;
 }
 
 .iteacher-name {
@@ -176,6 +181,7 @@ textarea::placeholder {
 
 .radio-label {
    font-size: 10px;
+   text-align: center;
 }
 
 input[type=radio] {
