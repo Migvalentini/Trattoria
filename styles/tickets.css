@@ -91,7 +91,7 @@ input.invalid-input {
 
 label { margin-right: 5px; }
 
-input.iname, input.icpf, input.ibirth, input.iteacher-name {
+input.iname, input.icpf, input.ibirth, input.iteacher-name, input.istudent-n-tech {
    height: 10px;
    outline: none;
    padding: 5px;
@@ -122,7 +122,7 @@ input[type="date"] {
 }
 
 .istudent-n-tech {
-   width: 125px;
+   width: 115px;
    border: 2px solid #9dff00;
 }
 
@@ -280,4 +280,8 @@ input[type=radio]:checked {
    font-size: 10px;
    margin: 8px auto;
    padding: 0px;
+}
+
+.result-texts {
+   margin: 10px 0px;
 }

@@ -109,7 +109,6 @@ addTicketButtons.forEach((button) => {
                             <option value="Inf - Daniel Damin Zamboni">Daniel Damin Zamboni</option>
                             <option value="Inf - Diego Silveira da Silva">Diego Silveira da Silva</option>
                             <option value="Inf - Enzo Matana da Silva">Enzo Matana da Silva</option>
-                            <option value="Inf - Filipe Hrihorowitsch Scheid">Filipe Hrihorowitsch Scheid</option>
                             <option value="Inf - Gabriel Bado da Silva">Gabriel Bado da Silva</option>
                             <option value="Inf - Gabriel Frizzo Ciervo">Gabriel Frizzo Ciervo</option>
                             <option value="Inf - Giovana Melos Borsoi">Giovana Melos Borsoi</option>
@@ -161,7 +160,7 @@ addTicketButtons.forEach((button) => {
                 <button class="delete-btn">Excluir</button>
                 <div class="restriction-div">
                     <label class="rest-label" for="irestriction">Possui Alguma Restrição Alimentar?</label>
-                    <textarea class="irestriction irestriction${ticketIndex}" name="irestriction" id="irestriction" cols="10" rows="3" placeholder="Se sim, digite aqui..."></textarea>
+                    <textarea class="irestriction irestriction${ticketIndex}" name="irestriction" id="irestriction" cols="10" rows="3" maxlength="150" placeholder="Se sim, digite aqui..."></textarea>
                 </div>
                 <div class="know-div">
                     <p>Conhece alguém do Cetec?</p>
@@ -188,9 +187,10 @@ addTicketButtons.forEach((button) => {
             newTicketResult.innerHTML = `
                 <div class="result-texts">
                     <span class="result-type">Ingresso Adulto:</span><br>
+                    <!--
                     <span class="result-name">Nome: X</span><br>
                     <span class="result-cpf">CPF: X</span><br>
-                    <span class="result-restriction">Restrição: X</span>
+                    <span class="result-restriction">Restrição: X</span>-->
                 </div>
                 <div class="result-value">
                     <span>R$${adultPrice},00</span>
@@ -256,9 +256,10 @@ addTicketButtons.forEach((button) => {
             newTicketResult.innerHTML = `
                 <div class="result-texts">
                     <span class="result-type">Ingresso Criança:</span><br>
+                    <!--
                     <span class="result-name">Nome: X</span><br>
                     <span class="result-cpf">CPF: X</span><br>
-                    <span class="result-restriction">Restrição: X</span>
+                    <span class="result-restriction">Restrição: X</span>-->
                 </div>
                 <div class="result-value">
                     <span>R$${kidPrice},00</span>
@@ -318,6 +319,7 @@ ticketsContainer.addEventListener("change", (event) => {
         const studentsDiv = document.querySelector(`.ticket-students${ticketIndex}`);
         const studentsNTechDiv = document.querySelector(`.ticket-student-n-tech${ticketIndex}`)
         const teacherDiv = document.querySelector(`.ticket-teacher${ticketIndex}`);
+        const selectAlunos = document.querySelector(`.list-students${ticketIndex}`);
 
         if (target.value === "yes-student") {
             if (studentsDiv) {
@@ -329,6 +331,9 @@ ticketsContainer.addEventListener("change", (event) => {
             if (teacherDiv) {
                 teacherDiv.style.display = "none";
             }
+            if (selectAlunos) {
+                selectAlunos.required = true;
+            }
         } else if (target.value === "yes-student-n-tech") {
             if (studentsDiv) {
                 studentsDiv.style.display = "none";
@@ -339,8 +344,10 @@ ticketsContainer.addEventListener("change", (event) => {
             if (teacherDiv) {
                 teacherDiv.style.display = "none";
             }
-        } 
-        else if (target.value === "yes-teacher") {
+            if (selectAlunos) {
+                selectAlunos.required = true;
+            }
+        } else if (target.value === "yes-teacher") {
             if (studentsDiv) {
                 studentsDiv.style.display = "none";
             }
@@ -349,6 +356,9 @@ ticketsContainer.addEventListener("change", (event) => {
             }
             if (teacherDiv) {
                 teacherDiv.style.display = "block";
+            }
+            if (selectAlunos) {
+                selectAlunos.required = false;
             }
         } else if (target.value === "no") {
             if (studentsDiv) {
@@ -359,6 +369,9 @@ ticketsContainer.addEventListener("change", (event) => {
             }
             if (teacherDiv) {
                 teacherDiv.style.display = "none";
+            }
+            if (selectAlunos) {
+                selectAlunos.required = false;
             }
         }
     }
@@ -379,8 +392,10 @@ payBtn.addEventListener('click', () => {
         const nameInput = document.querySelector(`.iname${index}`);
         const cpfInput = document.querySelector(`.icpf${index}`);
         const birthInput = document.querySelector(`.ibirth${index}`);
-        const restrictionTextarea = document.querySelector(`.irestriction${index}`);
+        const selectAlunos = document.querySelector(`.list-students${index}`);
+        const teacherInput = document.querySelector(`.iteacher-name${index}`);
         const typeInput = document.querySelector(`.itype-input${index}`);
+        const restrictionTextarea = document.querySelector(`.irestriction${index}`);
 
         const isNameValid = nameRegex.test(nameInput.value);
         const isCPFValid = cpfRegex.test(cpfInput.value);
@@ -434,27 +449,16 @@ payBtn.addEventListener('click', () => {
             age: age
         };
 
-        if (typeInput.value === 'yes-student') {
-            console.log('aluno')
-            const studentSelect = document.querySelector(`.list-students${index}`);
-            studentSelect.value = ''
-            if (studentSelect.value) {
-                ticketValues.student = studentSelect.value;
-                studentSelect.setAttribute('id', 'success-completing')
-            } else {
-                studentSelect.setAttribute('id', 'unsuccess-completing')
-                ticketElement.setAttribute('id', 'unsuccess-completing')
+        if (typeInput.value === "yes-student") {
+            if (selectAlunos.required && !selectAlunos.value) {
                 allTicketsValid = false;
+                selectAlunos.setAttribute('id', 'unsuccess-completing');
+                ticketElement.setAttribute('id', 'unsuccess-completing');
             }
-        } else if (typeInput.value === 'yes-teacher') {
-            console.log('prof')
-            const teacherInput = document.querySelector(`.iteacher-name${index}`);
-            if (teacherInput.value) {
-                ticketValues.teacherName = teacherInput.value;
-                studentSelect.setAttribute('id', 'success-completing')
-            } else {
+        } else if (typeInput.value === "yes-teacher") {
+            if (!teacherInput.value) {
                 allTicketsValid = false;
-                teacherInput.setAttribute('id', 'unsuccess-completing')
+                teacherInput.setAttribute('id', 'unsuccess-completing');
                 ticketElement.setAttribute('id', 'unsuccess-completing');
             }
         }
