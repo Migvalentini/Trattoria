@@ -175,33 +175,16 @@ textarea::placeholder {
 
 .to-know {
    margin-top: 10px;
-   display: flex;
-   flex-direction: column;
 }
 
-.radio-label {
-   font-size: 10px;
-   text-align: center;
-}
-
-input[type=radio] {
-   height: 18px;
-   width: 18px;
-   appearance: none;
-   padding: 8px;
+.know-btn {
    background-color: #eaaf56;
-   border-radius:50%;
-   margin-right: 5px;
-}
-
-input[type=radio]:checked {
-   background-color: #6F6D3D;
-}
-
-.radio {
-   display: flex;
-   align-items: center;
-   margin-bottom: 3px;
+   border: none;
+   border-radius: 3px;
+   margin: 2px;
+   padding: 2px;
+   font-size: 12px;
+   width: 90px;
 }
 
 .result {
