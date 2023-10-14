@@ -139,20 +139,6 @@ input[type="date"] {
    border: 2px solid red;
 }
 
-.delete-btn {
-   background-color: #ca7c66;
-   width: max-content;
-   margin: 10px auto -10px auto;
-   padding: 5px;
-   outline: none;
-   border: none;
-   border-radius: 5px;
-}
-
-.delete-btn:active {
-   background-color: #d1998a;
-}
-
 .rest-know {
    width: 40%;
    height: 100%;
@@ -238,6 +224,7 @@ textarea::placeholder {
 }
 
 .pay {
+   display: none;
    font-weight: 200;
    color: white;
    padding: 5px 15px;

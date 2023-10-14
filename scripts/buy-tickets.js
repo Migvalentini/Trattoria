@@ -10,6 +10,8 @@ const payBtn = document.querySelector('.pay')
 let totalValue = 0
 const adultPrice = 150
 const kidPrice = 50
+const maxKidAge = 10
+const minKidAge = 5
 let ticketIndex = 0
 
 const nameRegex = /^(([A-Za-z]+[\-\']?)*([A-Za-z]+)?\s)+([A-Za-z]+[\-\']?)*([A-Za-z]+)?$/
@@ -17,6 +19,7 @@ const cpfRegex = /([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|
 
 addTicketButtons.forEach((button) => {
     button.addEventListener("click", () => {
+        payBtn.style.display = 'block'
         const newTicket = document.createElement("div")
         newTicket.classList.add("ticket")
         newTicket.classList.add(`ticket${ticketIndex}`)
@@ -280,11 +283,6 @@ payBtn.addEventListener('click', () => {
     const ticketElements = document.querySelectorAll('.ticket');
     const ticketsValues = [];
 
-    if (ticketElements.length === 0) {
-        console.log('Por favor, adicione pelo menos um ingresso antes de pagar.');
-        return;
-    }
-
     let allTicketsValid = true;
 
     ticketElements.forEach((ticketElement, index) => {
@@ -382,7 +380,7 @@ payBtn.addEventListener('click', () => {
         }
 
         if (ticketType === 'kid') {
-            if (age >= 5 && age <= 10) {
+            if (age >= minKidAge && age <= maxKidAge) {
                 console.log(`Ingresso ${index + 1} é de Criança com idade válida.`);
             } else {
                 console.log(`Ingresso ${index + 1} é de Criança com idade inválida.`);
@@ -398,6 +396,6 @@ payBtn.addEventListener('click', () => {
     if (!allTicketsValid) {
         console.log('Dados inválidos');
     } else {
-        console.log('PAGAMENTO SUCEDIDO',ticketsValues);
+        window.location.href = './payment.html'
     }
 });
