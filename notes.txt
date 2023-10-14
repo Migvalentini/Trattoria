@@ -9,3 +9,84 @@ cpfRegex = ([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{
 /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
 ^([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22))*\x40([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d))*$
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200;0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;0,6..12,800;0,6..12,900;0,6..12,1000;1,6..12,200;1,6..12,300;1,6..12,400;1,6..12,500;1,6..12,600;1,6..12,700;1,6..12,800;1,6..12,900;1,6..12,1000&display=swap');
+
+
+// if (whoKnows !== '') {
+        //     if (!isStudentTechNameValid) {
+        //         console.log('aluno tecnico invalido')
+        //         allTicketsValid = false
+        //         studentTechName.setAttribute('id', 'unsuccess-completing');
+        //         ticketElement.setAttribute('id', 'unsuccess-completing');
+        //     } else if (isStudentTechNameValid) {
+        //         studentTechName.setAttribute('id', 'success-completing');
+        //         ticketElement.setAttribute('id', 'success-completing');
+        //         ticketValues.studentTechName = studentTechName.value;
+        //     }
+    
+        //     if (!isStudentNTechNameValid) {
+        //         console.log('aluno nao tecnico invalido')
+        //         allTicketsValid = false
+        //         studentNTechName.setAttribute('id', 'unsuccess-completing');
+        //         ticketElement.setAttribute('id', 'unsuccess-completing');
+        //     } else if (isStudentNTechNameValid) {
+        //         studentNTechName.setAttribute('id', 'success-completing');
+        //         ticketElement.setAttribute('id', 'success-completing');
+        //         ticketValues.studentNTechName = studentNTechName.value;
+        //     }
+    
+        //     if (!isTeacherNameValid) {
+        //         console.log('professor invalido')
+        //         allTicketsValid = false
+        //         teacherName.setAttribute('id', 'unsuccess-completing');
+        //         ticketElement.setAttribute('id', 'unsuccess-completing');
+        //     } else if (isTeacherNameValid) {
+        //         teacherName.setAttribute('id', 'success-completing');
+        //         ticketElement.setAttribute('id', 'success-completing');
+        //         ticketValues.teacherName = teacherName.value;
+        //     }
+        // }
+       
+        // allTicketsValid = false
+        // console.log('nome de aluno tech invalido')
+        // allTicketsValid = false;
+        // studentTechName.setAttribute('id', 'unsuccess-completing');
+        // ticketElement.setAttribute('id', 'unsuccess-completing');
+    
+        // console.log('nome de aluno tech valido')
+        // studentTechName.setAttribute('id', 'success-completing');
+        // ticketElement.setAttribute('id', 'success-completing');
+        // ticketValues.studentName = selectStudent.value;
+            
+        
+        // else if (whoKnows === 'student-n-tech') {
+        //     if (!isStudentNTechNameValid) {
+
+        //     }
+        // }
+
+        // if (selectStudent === '') {
+        // } else {
+        //     selectStudent.setAttribute('id', 'success-completing');
+        //     ticketElement.setAttribute('id', 'success-completing');
+        //     ticketValues.studentName = selectStudent.value;
+        // }
+        
+        // if (studentNTechName.value === '') {
+        //     allTicketsValid = false;
+        //     studentNTechName.setAttribute('id', 'unsuccess-completing');
+        //     ticketElement.setAttribute('id', 'unsuccess-completing');
+        // } else {
+        //     studentNTechName.setAttribute('id', 'success-completing');
+        //     ticketElement.setAttribute('id', 'success-completing');
+        //     ticketValues.studentNTechName = studentNTechName.value;
+        // }
+
+        // if (teacherInput.value === '') {
+        //     allTicketsValid = false;
+        //     teacherInput.setAttribute('id', 'unsuccess-completing');
+        //     ticketElement.setAttribute('id', 'unsuccess-completing');
+        // } else {
+        //     teacherInput.setAttribute('id', 'success-completing');
+        //     ticketElement.setAttribute('id', 'success-completing');
+        //     ticketValues.teacherName = teacherInput.value;
+        // }

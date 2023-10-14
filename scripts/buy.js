@@ -19,16 +19,11 @@ phoneInput.addEventListener('input', function () {
    this.value = formattedValue;
  });
 
- cpfInput.addEventListener('input', function () {
+cpfInput.addEventListener('input', function () {
    const unformattedValue = this.value.replace(/[^\d]/g, '');
    const formattedValue = unformattedValue.replace(/^(\d{0,3}|\d{3})?(\d{0,3}|\d{3})?(\d{0,3}|\d{3})?(\d{0,2}|\d{2})?$/, '$1.$2.$3-$4');
    this.value = formattedValue;
  });
-
-nameInput.value = 'Miguel Valentini'
-phoneInput.value = '(51) 99999-9999'
-cpfInput.value = '999.999.999-99'
-emailInput.value = 'miguel@gmail.com'
 
 function validarFormulario() {
    if (nameRegex.test(nameInput.value)) {
@@ -84,12 +79,12 @@ submitBtn.addEventListener("click", function (event) {
    }
    else {
       const newBuyer = {
-         name: nameInput.value.length,
-         phone: phoneInput.value.length,
-         cpf: cpfInput.value.length,
-         email: emailInput.value.length
+         name: nameInput.value,
+         phone: phoneInput.value.replace(/[^0-9]/g, ''),
+         cpf: cpfInput.value.replace(/[^0-9]/g, ''),
+         email: emailInput.value
       }
 
-      console.log(newBuyer);
+      console.log(newBuyer)
    }
 });

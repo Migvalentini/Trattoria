@@ -47,7 +47,7 @@
 }
 
 .ticket {
-   border: 2px solid #eaaf56;
+   border: 2px solid #9dff00;
    width: 90%;
    margin: 10px auto;
    display: flex;
@@ -161,6 +161,10 @@ input[type="date"] {
    flex-direction: column;
    gap: 10px;
    margin-bottom: 10px;
+}
+
+.know-btn:active {
+   background-color: #d1998a;
 }
 
 textarea {
