@@ -14,6 +14,8 @@ const maxKidAge = 10
 const minKidAge = 5
 let ticketIndex = 0
 
+let ticketsIndexes = []
+
 const nameRegex = /^(([A-Za-z]+[\-\']?)*([A-Za-z]+)?\s)+([A-Za-z]+[\-\']?)*([A-Za-z]+)?$/
 const cpfRegex = /([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})/
 
@@ -30,6 +32,9 @@ addTicketButtons.forEach((button) => {
         newTicketResult.classList.add("result-preview")
         newTicketResult.classList.add(`result-preview${ticketIndex}`)
         newTicketResult.setAttribute("data-index", ticketIndex)
+
+        ticketsIndexes.push(ticketIndex)
+        console.log(ticketsIndexes)
 
         newTicket.innerHTML = `
         <div class="ticket-texts ticket-texts${ticketIndex}">
@@ -152,6 +157,7 @@ addTicketButtons.forEach((button) => {
             </div>
         </div>
         <div class="rest-know">
+            <button class="delete-btn">Excluir</button>
             <div class="restriction-div">
                 <label class="rest-label" for="irestriction">Possui Alguma Restrição Alimentar?</label>
                 <textarea class="irestriction irestriction${ticketIndex}" name="irestriction" id="irestriction" cols="10" rows="3" maxlength="150" placeholder="Se sim, digite aqui..."></textarea>
@@ -279,6 +285,51 @@ ticketsContainer.addEventListener("click", (event) => {
     }
 });
 
+ticketsContainer.addEventListener("click", (event) => {
+    if (event.target.classList.contains("delete-btn")) {
+        const button = event.target;
+        const ticket = button.closest(".ticket");
+
+        if (ticket) {
+            const ticketType = ticket.classList.contains("ticket-adult") ? "adult" : "kid";
+            const ticketIndexToDelete = parseInt(ticket.getAttribute("data-index"));
+
+            const indexToRemove = ticketsIndexes.indexOf(ticketIndexToDelete);
+
+            if (indexToRemove !== -1) {
+                ticketsIndexes.splice(indexToRemove, 1); // Remover o índice da lista
+                console.log(ticketsIndexes);
+            }
+
+            if (ticketType === "adult") {
+                totalValue -= adultPrice;
+            } else if (ticketType === "kid") {
+                totalValue -= kidPrice;
+            }
+
+            totalValueText.innerHTML = `R$${totalValue}`;
+
+            const ticketResult = ticketsContainerResult.querySelector(`.result-preview${ticketIndexToDelete}`);
+            if (ticketResult) {
+                ticketResult.remove();
+            }
+
+            ticket.remove();
+
+            const ticketResults = ticketsContainerResult.querySelectorAll(".result-preview");
+
+            ticketResults.forEach((ticketResult, index) => {
+                let currentIndex = parseInt(ticketResult.getAttribute("data-index"));
+
+                if (currentIndex > ticketIndexToDelete) {
+                    currentIndex -= 1;
+                    ticketResult.setAttribute("data-index", currentIndex);
+                }
+            });
+        }
+    }
+});
+
 payBtn.addEventListener('click', () => {
     const ticketElements = document.querySelectorAll('.ticket');
     const ticketsValues = [];
@@ -286,10 +337,10 @@ payBtn.addEventListener('click', () => {
     let allTicketsValid = true;
 
     ticketElements.forEach((ticketElement, index) => {
-        const nameInput = document.querySelector(`.iname${index}`);
-        const cpfInput = document.querySelector(`.icpf${index}`);
-        const birthInput = document.querySelector(`.ibirth${index}`);
-        const restrictionTextarea = document.querySelector(`.irestriction${index}`);
+        const nameInput = document.querySelector(`.iname${ticketsIndexes[index]}`);
+        const cpfInput = document.querySelector(`.icpf${ticketsIndexes[index]}`);
+        const birthInput = document.querySelector(`.ibirth${ticketsIndexes[index]}`);
+        const restrictionTextarea = document.querySelector(`.irestriction${ticketsIndexes[index]}`);
         const dataKnowValue = ticketElement.getAttribute('data-know');
 
         const isNameValid = nameRegex.test(nameInput.value);
@@ -340,7 +391,7 @@ payBtn.addEventListener('click', () => {
         };
 
         if (dataKnowValue === 'yes-student') {
-            const studentTechName = document.querySelector(`.list-students${index}`)
+            const studentTechName = document.querySelector(`.list-students${ticketsIndexes[index]}`)
             const isStudentTechNameValid = studentTechName.value !== ''
             if (!isStudentTechNameValid) {
                 allTicketsValid = false;
@@ -352,7 +403,7 @@ payBtn.addEventListener('click', () => {
                 ticketValues.whoKnows = `Técnico: ${studentTechName.value}`
             }
         } else if (dataKnowValue === 'yes-student-n-tech') {
-            const studentNTechName = document.querySelector(`.istudent-n-tech${index}`)
+            const studentNTechName = document.querySelector(`.istudent-n-tech${ticketsIndexes[index]}`)
             const isStudentNTechNameValid = nameRegex.test(studentNTechName.value)
             if (!isStudentNTechNameValid) {
                 allTicketsValid = false;
@@ -364,7 +415,7 @@ payBtn.addEventListener('click', () => {
                 ticketValues.whoKnows = `Não Técnico: ${studentNTechName.value}`
             }
         } else if (dataKnowValue === 'yes-teacher') {
-            const teacherName = document.querySelector(`.iteacher-name${index}`)
+            const teacherName = document.querySelector(`.iteacher-name${ticketsIndexes[index]}`)
             const isTeacherNameValid = nameRegex.test(teacherName.value)
             if (!isTeacherNameValid) {
                 allTicketsValid = false;
@@ -380,10 +431,11 @@ payBtn.addEventListener('click', () => {
         }
 
         if (ticketType === 'kid') {
+            console.log(age)
             if (age >= minKidAge && age <= maxKidAge) {
-                console.log(`Ingresso ${index + 1} é de Criança com idade válida.`);
+                console.log(`Ingresso ${ticketsIndexes[index] + 1} é de Criança com idade válida.`);
             } else {
-                console.log(`Ingresso ${index + 1} é de Criança com idade inválida.`);
+                console.log(`Ingresso ${ticketsIndexes[index] + 1} é de Criança com idade inválida.`);
                 allTicketsValid = false;
                 ticketElement.setAttribute('id', 'unsuccess-completing');
                 birthInput.setAttribute('id', 'unsuccess-completing');
@@ -396,7 +448,7 @@ payBtn.addEventListener('click', () => {
     if (!allTicketsValid) {
         console.log('Dados inválidos');
     } else {
-        localStorage.setItem('totalValue', totalValue.toFixed(2))
-        window.location.href = 'payment.html'
+        console.log('Dados válidos');
+        console.log(ticketsValues);
     }
 });

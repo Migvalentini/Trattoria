@@ -12,6 +12,15 @@
    max-width: 100vw;
 }
 
+.error-completing {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50% , -50%);
+   background-color: red;
+   color: white;
+}
+
 .buttons {
    margin: 5px;
    display: flex;
@@ -67,7 +76,7 @@
    flex-direction: column;
    align-items: center;
    justify-content: center;
-   margin: 10px;
+   margin: 5px;
 }
 
 .itype-container {
@@ -139,6 +148,16 @@ input[type="date"] {
    border: 2px solid red;
 }
 
+.delete-btn {
+   background-color: #ca7c66;
+   width: max-content;
+   margin: 10px auto 0px auto;
+   padding: 5px;
+   outline: none;
+   border: none;
+   border-radius: 5px;
+}
+
 .rest-know {
    width: 40%;
    height: 100%;
@@ -147,6 +166,14 @@ input[type="date"] {
    flex-direction: column;
    gap: 10px;
    margin-bottom: 10px;
+}
+
+.restriction-div {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   gap: 5px;
 }
 
 .know-btn:active {
