@@ -227,7 +227,7 @@ addTicketButtons.forEach((button) => {
         const b = document.querySelector(`.icpf${ticketIndex}`)
         b.value = '12345678910'
         const c = document.querySelector(`.ibirth${ticketIndex}`)
-        c.value = '2017-03-26'
+        //c.value = '2017-03-26'
 
         ticketIndex += 1
     });
@@ -243,7 +243,7 @@ ticketsContainer.addEventListener("click", (event) => {
         const studentsNTechDiv = document.querySelector(`.ticket-student-n-tech${ticketIndex}`);
         const teacherDiv = document.querySelector(`.ticket-teacher${ticketIndex}`);
         const selectAlunos = document.querySelector(`.list-students${ticketIndex}`);
-        const activeColor = "#d89c42";
+        const activeColor = "#c08e43";
         const inactiveColor = "#eaaf56";
         
         const allButtons = document.querySelectorAll(`.know-btn${ticketIndex}`);
@@ -367,7 +367,8 @@ payBtn.addEventListener('click', () => {
         const birthInput = document.querySelector(`.ibirth${ticketsIndexes[index]}`);
         const restrictionTextarea = document.querySelector(`.irestriction${ticketsIndexes[index]}`);
         const dataKnowValue = ticketElement.getAttribute('data-know');
-        const ticketType = ticketElement.classList.contains('ticket-adult') ? 'adult' : 'kid'; 
+        const ticketType = ticketElement.classList.contains('ticket-adult') ? 'adult' : 'kid';
+        let age = 'Não preenchido' 
 
         const isNameValid = nameRegex.test(nameInput.value);
         const isCPFValid = cpfRegex.test(cpfInput.value);
@@ -393,24 +394,22 @@ payBtn.addEventListener('click', () => {
             ticketElement.setAttribute('id', 'unsuccess-completing');
             showHideError('show')
         }
-        if (isBirthValid || ticketType === 'kid') {
+        if (isBirthValid && ticketType === 'kid') {
             birthInput.setAttribute('id', 'success-completing');
             ticketElement.setAttribute('id', 'success-completing');
-        } else {
+            const birthDate = new Date(birthInput.value);
+            const today = new Date();
+            age = today.getFullYear() - birthDate.getFullYear();
+        } else if (!isBirthValid && ticketType === 'kid') {
             allTicketsValid = false
             birthInput.setAttribute('id', 'unsuccess-completing');
             ticketElement.setAttribute('id', 'unsuccess-completing');
             showHideError('show')
         }
 
-        const birthDate = new Date(birthInput.value);
-        const today = new Date();
-        const age = today.getFullYear() - birthDate.getFullYear();
-
         const ticketValues = {
             name: nameInput.value,
             cpf: cpfInput.value,
-            birth: birthInput.value,
             type: ticketType,
             restriction: restrictionTextarea.value,
             age: age,
@@ -469,11 +468,28 @@ payBtn.addEventListener('click', () => {
         }
 
         if (ticketType === 'kid' && !(age >= minKidAge && age <= maxKidAge)) {
+            const confirm = window.confirm(`Data inválida! A data digitada não corresponde com a data para criança. Deseja transformar esse ingresso em adulto?`)
             allTicketsValid = false;
             ticketElement.setAttribute('id', 'unsuccess-completing');
             birthInput.setAttribute('id', 'unsuccess-completing');
-            showHideError('show-kid', age)
+            
+            if (confirm) {
+                ticketElement.removeAttribute('class', 'ticket-kid')
+                totalValue -= kidPrice;
+                totalValue += adultPrice;
+                totalValueText.innerHTML = `R$${totalValue}`;
+    
+                const ticketType = document.querySelector(`.ticket-type${ticketsIndexes[index]}`);
+                const resultType = document.querySelector(`.result-type${ticketsIndexes[index]}`);
+                const resultValue = document.querySelector(`.result-value${ticketsIndexes[index]}`);
+                console.log(ticketType)
+                ticketType.textContent = 'Ingresso Adulto';
+                resultType.textContent = 'Ingresso Adulto';
+                resultValue.textContent = `R$${adultPrice},00`;
+            }
+
         }
+
 
         ticketsValues.push(ticketValues);
     });
@@ -485,7 +501,6 @@ payBtn.addEventListener('click', () => {
             alertMessage += `Tipo: ${ticket.type === 'adult' ? 'Ingresso Adulto' : 'Ingresso Criança'}\n`;
             alertMessage += `Nome: ${ticket.name}\n`;
             alertMessage += `CPF: ${ticket.cpf}\n`;
-            alertMessage += `Data de Nascimento: ${ticket.birth}\n`;
             alertMessage += `Restrição Alimentar: ${ticket.restriction}\n`;
             alertMessage += `Conhece Alguém: ${ticket.whoKnows}\n\n`;
         });

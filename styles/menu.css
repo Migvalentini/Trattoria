@@ -68,6 +68,8 @@ h3, h4, p {
 .images {
     width: 50%;
     height: 150px;
+    display: flex;
+    justify-content: center;
 }
 
 .img {

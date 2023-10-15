@@ -86,5 +86,10 @@ submitBtn.addEventListener("click", function (event) {
       }
 
       console.log(newBuyer)
+      alert(`Informações do comprador que depois irão pro banco:
+      Nome: ${newBuyer.name}
+      Telefone: ${newBuyer.phone}
+      CPF: ${newBuyer.cpf}
+      E-mail: ${newBuyer.email}`)
    }
 });
