@@ -19,6 +19,19 @@ let ticketsIndexes = []
 const nameRegex = /^(([A-Za-z]+[\-\']?)*([A-Za-z]+)?\s)+([A-Za-z]+[\-\']?)*([A-Za-z]+)?$/
 const cpfRegex = /([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})/
 
+function showHideError(type, age = 0) {
+    const errorCompleting = document.querySelector('.error-completing')
+    if (type === 'hide') {
+        errorCompleting.style.display = 'none'
+    } else if (type === 'show') {
+        errorCompleting.style.display = 'block'
+    } else if (type === 'show-kid') {
+        const errorCompletingKid = document.querySelector('.kid-error')
+        errorCompletingKid.textContent = `A idade da criança (${age}) não é compatível com a faixa etária permitida (de ${minKidAge} a ${maxKidAge} anos)`
+        errorCompleting.style.display = 'block'
+    }
+}
+
 addTicketButtons.forEach((button) => {
     button.addEventListener("click", () => {
         payBtn.style.display = 'block'
@@ -26,7 +39,7 @@ addTicketButtons.forEach((button) => {
         newTicket.classList.add("ticket")
         newTicket.classList.add(`ticket${ticketIndex}`)
         newTicket.setAttribute("data-index", ticketIndex)
-        newTicket.setAttribute("data-know", "no")
+        newTicket.setAttribute("data-know", "not-selected")
         
         const newTicketResult = document.createElement("div")
         newTicketResult.classList.add("result-preview")
@@ -34,7 +47,6 @@ addTicketButtons.forEach((button) => {
         newTicketResult.setAttribute("data-index", ticketIndex)
 
         ticketsIndexes.push(ticketIndex)
-        console.log(ticketsIndexes)
 
         newTicket.innerHTML = `
         <div class="ticket-texts ticket-texts${ticketIndex}">
@@ -47,9 +59,13 @@ addTicketButtons.forEach((button) => {
                 <label for="icpf">CPF:</label>
                 <input class="icpf icpf${ticketIndex}" type="number" name="icpf" id="" placeholder="XXX.XXX.XXX.XX"><br>
             </div>
-            <div class="ticket-content ticket-birth">
+            <div class="ticket-content ticket-birth ticket-birth${ticketIndex}">
                 <label for="ibirth">Data de <br> Nascimento:</label>
                 <input class="ibirth ibirth${ticketIndex}" type="date" name="ibirth" id=""><br>
+            </div>
+            <div class="restriction-div">
+                <label class="rest-label" for="irestriction">Possui alguma restrição alimentar?</label>
+                <textarea class="irestriction irestriction${ticketIndex}" name="irestriction" id="irestriction" cols="25" rows="3" maxlength="150" placeholder="Se sim, digite aqui... Caso queira, pode escrever alguma observação"></textarea>
             </div>
             <div class="ticket-content ticket-students ticket-students${ticketIndex}">
                 <label for="ilist-student">Alunos:</label>
@@ -158,11 +174,7 @@ addTicketButtons.forEach((button) => {
         </div>
         <div class="rest-know">
             <button class="delete-btn">Excluir</button>
-            <div class="restriction-div">
-                <label class="rest-label" for="irestriction">Possui Alguma Restrição Alimentar?</label>
-                <textarea class="irestriction irestriction${ticketIndex}" name="irestriction" id="irestriction" cols="10" rows="3" maxlength="150" placeholder="Se sim, digite aqui..."></textarea>
-            </div>
-            <div class="know-div">
+            <div class="know-div know-div${ticketIndex}">
                 <p>Conhece alguém do Cetec?</p>
                 <div class="to-know">
                     <button class="know-btn know-btn${ticketIndex} student-tech-btn${ticketIndex}" data-value="yes-student">Aluno Que<br>Faz Técnico</button>
@@ -184,6 +196,8 @@ addTicketButtons.forEach((button) => {
         ticketsContainer.appendChild(newTicket)
         ticketsContainerResult.appendChild(newTicketResult)
         if (button.classList.contains("addAdultTicketBtn")) {
+            const birthContent = newTicket.querySelector(`.ticket-birth${ticketIndex}`);
+            birthContent.style.display = 'none'
             totalValue += adultPrice
             totalValueText.innerHTML = `R$${totalValue}`
             newTicket.classList.add("ticket-adult")
@@ -208,6 +222,13 @@ addTicketButtons.forEach((button) => {
             });
         });
 
+        const a = document.querySelector(`.iname${ticketIndex}`)
+        a.value = 'Miguel Valentini'
+        const b = document.querySelector(`.icpf${ticketIndex}`)
+        b.value = '12345678910'
+        const c = document.querySelector(`.ibirth${ticketIndex}`)
+        c.value = '2017-03-26'
+
         ticketIndex += 1
     });
 });
@@ -222,13 +243,17 @@ ticketsContainer.addEventListener("click", (event) => {
         const studentsNTechDiv = document.querySelector(`.ticket-student-n-tech${ticketIndex}`);
         const teacherDiv = document.querySelector(`.ticket-teacher${ticketIndex}`);
         const selectAlunos = document.querySelector(`.list-students${ticketIndex}`);
+        const activeColor = "#d89c42";
+        const inactiveColor = "#eaaf56";
         
         const allButtons = document.querySelectorAll(`.know-btn${ticketIndex}`);
         allButtons.forEach((button) => {
             button.classList.remove("active");
+            button.style.backgroundColor = inactiveColor;
         });
         target.classList.add("active");
-        
+
+        target.style.backgroundColor = activeColor;
         if (typeValue === "yes-student") {
             if (studentsDiv) {
                 studentsDiv.style.display = "block";
@@ -285,6 +310,7 @@ ticketsContainer.addEventListener("click", (event) => {
     }
 });
 
+// EXCLUIR INGRESSOS
 ticketsContainer.addEventListener("click", (event) => {
     if (event.target.classList.contains("delete-btn")) {
         const button = event.target;
@@ -298,7 +324,6 @@ ticketsContainer.addEventListener("click", (event) => {
 
             if (indexToRemove !== -1) {
                 ticketsIndexes.splice(indexToRemove, 1); // Remover o índice da lista
-                console.log(ticketsIndexes);
             }
 
             if (ticketType === "adult") {
@@ -342,39 +367,41 @@ payBtn.addEventListener('click', () => {
         const birthInput = document.querySelector(`.ibirth${ticketsIndexes[index]}`);
         const restrictionTextarea = document.querySelector(`.irestriction${ticketsIndexes[index]}`);
         const dataKnowValue = ticketElement.getAttribute('data-know');
+        const ticketType = ticketElement.classList.contains('ticket-adult') ? 'adult' : 'kid'; 
 
         const isNameValid = nameRegex.test(nameInput.value);
         const isCPFValid = cpfRegex.test(cpfInput.value);
         const isBirthValid = birthInput.value !== '';
 
         restrictionTextarea.setAttribute('id', 'success-completing')
-
-        if (isNameValid && isCPFValid && isBirthValid) {
-            ticketElement.setAttribute('id', 'success-completing');
-        }
+        
         if (isNameValid) {
             nameInput.setAttribute('id', 'success-completing');
+            ticketElement.setAttribute('id', 'success-completing');
         } else {
             allTicketsValid = false
             nameInput.setAttribute('id', 'unsuccess-completing');
             ticketElement.setAttribute('id', 'unsuccess-completing');
+            showHideError('show')
         }
         if (isCPFValid) {
             cpfInput.setAttribute('id', 'success-completing');
+            ticketElement.setAttribute('id', 'success-completing');
         } else {
             allTicketsValid = false
             cpfInput.setAttribute('id', 'unsuccess-completing');
             ticketElement.setAttribute('id', 'unsuccess-completing');
+            showHideError('show')
         }
-        if (isBirthValid) {
+        if (isBirthValid || ticketType === 'kid') {
             birthInput.setAttribute('id', 'success-completing');
+            ticketElement.setAttribute('id', 'success-completing');
         } else {
             allTicketsValid = false
             birthInput.setAttribute('id', 'unsuccess-completing');
             ticketElement.setAttribute('id', 'unsuccess-completing');
+            showHideError('show')
         }
-
-        const ticketType = ticketElement.classList.contains('ticket-adult') ? 'adult' : 'kid'; 
 
         const birthDate = new Date(birthInput.value);
         const today = new Date();
@@ -389,7 +416,6 @@ payBtn.addEventListener('click', () => {
             age: age,
             whoKnows: 'ninguém'
         };
-
         if (dataKnowValue === 'yes-student') {
             const studentTechName = document.querySelector(`.list-students${ticketsIndexes[index]}`)
             const isStudentTechNameValid = studentTechName.value !== ''
@@ -397,6 +423,7 @@ payBtn.addEventListener('click', () => {
                 allTicketsValid = false;
                 studentTechName.setAttribute('id', 'unsuccess-completing')
                 ticketElement.setAttribute('id', 'unsuccess-completing')
+                showHideError('show')
             } else {
                 studentTechName.setAttribute('id', 'success-completing')
                 ticketElement.setAttribute('id', 'success-completing')
@@ -409,6 +436,7 @@ payBtn.addEventListener('click', () => {
                 allTicketsValid = false;
                 studentNTechName.setAttribute('id', 'unsuccess-completing')
                 ticketElement.setAttribute('id', 'unsuccess-completing')
+                showHideError('show')
             } else {
                 studentNTechName.setAttribute('id', 'success-completing')
                 ticketElement.setAttribute('id', 'success-completing')
@@ -421,34 +449,46 @@ payBtn.addEventListener('click', () => {
                 allTicketsValid = false;
                 teacherName.setAttribute('id', 'unsuccess-completing')
                 ticketElement.setAttribute('id', 'unsuccess-completing')
+                showHideError('show')
             } else {
                 teacherName.setAttribute('id', 'success-completing')
                 ticketElement.setAttribute('id', 'success-completing')
                 ticketValues.whoKnows = `Professor: ${teacherName.value}`
             }
-        } else if (dataKnowValue === 'no') {
+        } else if (dataKnowValue === 'not-selected') {
+            const knowDiv = document.querySelector(`.know-div${ticketsIndexes[index]}`)
+            knowDiv.setAttribute('id', 'unsuccess-completing')
+            ticketElement.setAttribute('id', 'unsuccess-completing')
+            allTicketsValid = false
+            showHideError('show')
             ticketValues.whoKnows = 'ninguém'
+        } else {
+            const knowDiv = document.querySelector(`.know-div${ticketsIndexes[index]}`)
+            knowDiv.setAttribute('id', 'success-completing')
+            ticketElement.setAttribute('id', 'success-completing')
         }
 
-        if (ticketType === 'kid') {
-            console.log(age)
-            if (age >= minKidAge && age <= maxKidAge) {
-                console.log(`Ingresso ${ticketsIndexes[index] + 1} é de Criança com idade válida.`);
-            } else {
-                console.log(`Ingresso ${ticketsIndexes[index] + 1} é de Criança com idade inválida.`);
-                allTicketsValid = false;
-                ticketElement.setAttribute('id', 'unsuccess-completing');
-                birthInput.setAttribute('id', 'unsuccess-completing');
-            }
+        if (ticketType === 'kid' && !(age >= minKidAge && age <= maxKidAge)) {
+            allTicketsValid = false;
+            ticketElement.setAttribute('id', 'unsuccess-completing');
+            birthInput.setAttribute('id', 'unsuccess-completing');
+            showHideError('show-kid', age)
         }
 
         ticketsValues.push(ticketValues);
     });
 
-    if (!allTicketsValid) {
-        console.log('Dados inválidos');
-    } else {
-        console.log('Dados válidos');
-        console.log(ticketsValues);
+    if (allTicketsValid) {
+        let alertMessage = `Valor a ser pago: R$${totalValue},00\n\n`;
+        ticketsValues.forEach((ticket, index) => {
+            alertMessage += `Ingresso #${index + 1}:\n`;
+            alertMessage += `Tipo: ${ticket.type === 'adult' ? 'Ingresso Adulto' : 'Ingresso Criança'}\n`;
+            alertMessage += `Nome: ${ticket.name}\n`;
+            alertMessage += `CPF: ${ticket.cpf}\n`;
+            alertMessage += `Data de Nascimento: ${ticket.birth}\n`;
+            alertMessage += `Restrição Alimentar: ${ticket.restriction}\n`;
+            alertMessage += `Conhece Alguém: ${ticket.whoKnows}\n\n`;
+        });
+        alert(alertMessage);
     }
 });

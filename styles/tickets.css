@@ -13,12 +13,32 @@
 }
 
 .error-completing {
-   position: absolute;
+   display: none;
+   background-color: #ff0000;
+   color: #ffffff;
+   padding: 10px;
+   border: 1px solid #ff0000;
+   text-align: center;
+   position: fixed;
    top: 50%;
    left: 50%;
-   transform: translate(-50% , -50%);
-   background-color: red;
-   color: white;
+   transform: translate(-50%, -50%);
+   z-index: 10;
+}
+
+.error-completing h4 {
+   font-weight: 800;
+}
+
+.error-completing button {
+   padding: 2px 20px;
+   background-color: white;
+   border: none;
+   border-radius: 3px;
+}
+
+.error-completing button:active {
+   background-color: rgb(255, 180, 180);
 }
 
 .buttons {
@@ -76,7 +96,7 @@
    flex-direction: column;
    align-items: center;
    justify-content: center;
-   margin: 5px;
+   margin: 0px 5px;
 }
 
 .itype-container {
@@ -165,7 +185,7 @@ input[type="date"] {
    display: flex;
    flex-direction: column;
    gap: 10px;
-   margin-bottom: 10px;
+   margin: 0px 5px 10px 0px;
 }
 
 .restriction-div {
@@ -176,14 +196,12 @@ input[type="date"] {
    gap: 5px;
 }
 
-.know-btn:active {
-   background-color: #d1998a;
-}
-
 textarea {
    margin-top: 10px;
+   margin-bottom: -4px;
    border: 1px solid #9dff00;
    outline: none;
+   text-align: justify;
 }
 
 textarea::placeholder {
@@ -202,6 +220,10 @@ textarea::placeholder {
    padding: 2px;
    font-size: 12px;
    width: 90px;
+}
+
+.know-btn:active {
+   background-color: #fda78f;
 }
 
 .result {
