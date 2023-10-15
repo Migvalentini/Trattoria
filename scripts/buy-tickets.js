@@ -396,6 +396,7 @@ payBtn.addEventListener('click', () => {
     if (!allTicketsValid) {
         console.log('Dados inválidos');
     } else {
-        window.location.href = './payment.html'
+        localStorage.setItem('totalValue', totalValue.toFixed(2))
+        window.location.href = 'payment.html'
     }
 });
