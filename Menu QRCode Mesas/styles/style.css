@@ -10,12 +10,12 @@
  .prato1 {
      background-image: url('../menuimages/background/labelavita.png');
      background-size: cover;
-     color: #fff;
-     padding: 20px;
+         color: #fff;
+    padding: 20px;
  }
 
- .prato2 {
-    background-image: url('../menuimages/background/patir.png');
+ .prato2 { 
+    background-image: url('../menuimages/background/partiro.png');
     background-size: cover;
     color: #fff;
     padding: 20px;
@@ -31,12 +31,14 @@
 .prato4 {
     background-image: url('../menuimages/background/torre.png');
     background-size: cover;
+    background-position: center;
     color: #fff;
     padding: 20px;
 }
 
 .prato5 {
-    background-image: url('../menuimages/background/divina\ commedia.png');
+    background-image: url('../menuimages/background/commedia.png');
+    background-position: center;
     background-size: cover;
     color: #fff;
     padding: 20px;
@@ -51,10 +53,7 @@
  .menu{
      color: white;
      background-color: #BF4E30;
-     padding-top: 10px;
-     padding-bottom: 10px;
      font-family: myFont;
-     font-weight: 100;
      text-align: center;
  }
  
@@ -70,14 +69,6 @@
      border-radius: 5px;
      color: white;
      font-size: 15pt;
- }
- 
- .prato1 {
-     display: flex;
-     align-items: center;
-     justify-content: center;
-     height: min-content;
-     
  }
  
  .list{
