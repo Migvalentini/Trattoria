@@ -227,7 +227,7 @@ addTicketButtons.forEach((button) => {
         const b = document.querySelector(`.icpf${ticketIndex}`)
         b.value = '12345678910'
         const c = document.querySelector(`.ibirth${ticketIndex}`)
-        //c.value = '2017-03-26'
+        c.value = '2023-03-26'
 
         ticketIndex += 1
     });
@@ -474,7 +474,8 @@ payBtn.addEventListener('click', () => {
             birthInput.setAttribute('id', 'unsuccess-completing');
             
             if (confirm) {
-                ticketElement.removeAttribute('class', 'ticket-kid')
+                ticketElement.classList.remove('ticket-kid')
+                ticketElement.classList.add('ticket-adult')
                 totalValue -= kidPrice;
                 totalValue += adultPrice;
                 totalValueText.innerHTML = `R$${totalValue}`;
@@ -482,14 +483,13 @@ payBtn.addEventListener('click', () => {
                 const ticketType = document.querySelector(`.ticket-type${ticketsIndexes[index]}`);
                 const resultType = document.querySelector(`.result-type${ticketsIndexes[index]}`);
                 const resultValue = document.querySelector(`.result-value${ticketsIndexes[index]}`);
-                console.log(ticketType)
+
                 ticketType.textContent = 'Ingresso Adulto';
                 resultType.textContent = 'Ingresso Adulto';
                 resultValue.textContent = `R$${adultPrice},00`;
             }
 
         }
-
 
         ticketsValues.push(ticketValues);
     });
