@@ -11,15 +11,25 @@
 </head>
 <body>
     <div class="container">
+        <table id="ticketInfoTable">
+            <thead>
+                <tr>
+                    <th>Ingresso</th>
+                    <th>Nome</th>
+                    <th>CPF</th>
+                    <th>Tipo</th>
+                    <th>Restrição Alimentar</th>
+                    <th>Conhece Alguém</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Os detalhes dos ingressos serão preenchidos aqui -->
+            </tbody>
+        </table>
         <div class="error-completing">
             <h4>Dados inválidos!</h1><br>
             <p class="kid-error">Por favor, complete corretamente os campos com borda vermelha</p><br>
             <button onclick="showHideError('hide')">OK</button>
-        </div>
-        <div class="error-completing data-invalid">
-            <h4>Data inválida!</h1><br>
-            <p class="kid-error">A data digitada não corresponde com a data para criança. Deseja transformar esse ingresso em adulto?</p><br>
-            <button onclick="transformTicket()">OK</button>
         </div>
         <header>
             <img src="../images/logo-branco.png" alt="Logo">

@@ -32,11 +32,6 @@ function showHideError(type, age = 0) {
     }
 }
 
-function transformTicket() {
-    const datanvalidDiv = document.querySelector('.data-invalid')
-    
-}
-
 addTicketButtons.forEach((button) => {
     button.addEventListener("click", () => {
         payBtn.style.display = 'block'
@@ -68,9 +63,9 @@ addTicketButtons.forEach((button) => {
                 <label for="ibirth">Data de <br> Nascimento:</label>
                 <input class="ibirth ibirth${ticketIndex}" type="date" name="ibirth" id=""><br>
             </div>
-            <div class="restriction-div">
+            <div class="ticket-content restriction-div">
                 <label class="rest-label" for="irestriction">Possui alguma restrição alimentar?</label>
-                <textarea class="irestriction irestriction${ticketIndex}" name="irestriction" id="irestriction" cols="25" rows="3" maxlength="150" placeholder="Se sim, digite aqui... Caso queira, pode escrever alguma observação"></textarea>
+                <textarea class="irestriction irestriction${ticketIndex}" name="irestriction" id="irestriction" cols="22" rows="3" maxlength="150" placeholder="Se sim, digite aqui... Caso queira, pode escrever alguma observação"></textarea>
             </div>
             <div class="ticket-content ticket-students ticket-students${ticketIndex}">
                 <label for="ilist-student">Alunos:</label>
@@ -474,8 +469,7 @@ payBtn.addEventListener('click', () => {
         }
 
         if (ticketType === 'kid' && !(age >= minKidAge && age <= maxKidAge)) {
-            const confirm = transformTicket()
-            //const confirm = window.confirm(`Data inválida! A data digitada não corresponde com a data para criança. Deseja transformar esse ingresso em adulto?`)
+            const confirm = window.confirm(`Data inválida! A data digitada não corresponde com a data para criança. Deseja transformar esse ingresso em adulto?`)
             allTicketsValid = false;
             ticketElement.setAttribute('id', 'unsuccess-completing');
             birthInput.setAttribute('id', 'unsuccess-completing');
@@ -497,7 +491,6 @@ payBtn.addEventListener('click', () => {
                 resultValue.textContent = `R$${adultPrice},00`;
                 birthContent.style.display = 'none';
             }
-
         }
 
         ticketsValues.push(ticketValues);
