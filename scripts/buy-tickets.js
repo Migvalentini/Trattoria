@@ -32,6 +32,11 @@ function showHideError(type, age = 0) {
     }
 }
 
+function transformTicket() {
+    const datanvalidDiv = document.querySelector('.data-invalid')
+    
+}
+
 addTicketButtons.forEach((button) => {
     button.addEventListener("click", () => {
         payBtn.style.display = 'block'
@@ -415,6 +420,7 @@ payBtn.addEventListener('click', () => {
             age: age,
             whoKnows: 'ninguém'
         };
+
         if (dataKnowValue === 'yes-student') {
             const studentTechName = document.querySelector(`.list-students${ticketsIndexes[index]}`)
             const isStudentTechNameValid = studentTechName.value !== ''
@@ -468,7 +474,8 @@ payBtn.addEventListener('click', () => {
         }
 
         if (ticketType === 'kid' && !(age >= minKidAge && age <= maxKidAge)) {
-            const confirm = window.confirm(`Data inválida! A data digitada não corresponde com a data para criança. Deseja transformar esse ingresso em adulto?`)
+            const confirm = transformTicket()
+            //const confirm = window.confirm(`Data inválida! A data digitada não corresponde com a data para criança. Deseja transformar esse ingresso em adulto?`)
             allTicketsValid = false;
             ticketElement.setAttribute('id', 'unsuccess-completing');
             birthInput.setAttribute('id', 'unsuccess-completing');
@@ -483,10 +490,12 @@ payBtn.addEventListener('click', () => {
                 const ticketType = document.querySelector(`.ticket-type${ticketsIndexes[index]}`);
                 const resultType = document.querySelector(`.result-type${ticketsIndexes[index]}`);
                 const resultValue = document.querySelector(`.result-value${ticketsIndexes[index]}`);
+                const birthContent = document.querySelector(`.ticket-birth${ticketsIndexes[index]}`);
 
                 ticketType.textContent = 'Ingresso Adulto';
                 resultType.textContent = 'Ingresso Adulto';
                 resultValue.textContent = `R$${adultPrice},00`;
+                birthContent.style.display = 'none';
             }
 
         }

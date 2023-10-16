@@ -17,13 +17,13 @@ phoneInput.addEventListener('input', function () {
    const unformattedValue = this.value.replace(/[^\d]/g, '');
    const formattedValue = unformattedValue.replace(/^(\d{0,2}|\d{2})?(\d{0,5}|\d{5})?(\d{0,4}|\d{4})?$/, '($1) $2-$3');
    this.value = formattedValue;
- });
+});
 
 cpfInput.addEventListener('input', function () {
    const unformattedValue = this.value.replace(/[^\d]/g, '');
    const formattedValue = unformattedValue.replace(/^(\d{0,3}|\d{3})?(\d{0,3}|\d{3})?(\d{0,3}|\d{3})?(\d{0,2}|\d{2})?$/, '$1.$2.$3-$4');
    this.value = formattedValue;
- });
+});
 
 function validarFormulario() {
    if (nameRegex.test(nameInput.value)) {

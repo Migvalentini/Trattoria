@@ -58,7 +58,7 @@ label {
  
 
 input {
-   border: 2px solid #9dff00;
+   border: 2px solid yellow;
    width: 70%;
    padding: 5px;
    outline: none;
@@ -69,7 +69,7 @@ input::placeholder {
 }
 
 #success-completing {
-   border: 2px solid #eaaf56;
+   border: 2px solid green;
 }
 
 #unsuccess-completing {

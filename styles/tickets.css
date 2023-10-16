@@ -76,7 +76,7 @@
 }
 
 .ticket {
-   border: 2px solid #9dff00;
+   border: 2px solid yellow;
    width: 90%;
    margin: 10px auto;
    display: flex;
@@ -128,17 +128,17 @@ input.iname, input.icpf, input.ibirth, input.iteacher-name, input.istudent-n-tec
 
 input.iname {
    width: 120px;
-   border: 2px solid #9dff00; 
+   border: 2px solid yellow; 
 } 
 
 input.icpf {
    width: 130px;
-   border: 2px solid #9dff00; 
+   border: 2px solid yellow; 
 } 
 
 input[type="date"] {
    width: 85px;
-   border: 2px solid #9dff00; 
+   border: 2px solid yellow; 
 }
 
 .ticket-students, .ticket-teacher, .ticket-student-n-tech {
@@ -147,21 +147,21 @@ input[type="date"] {
 
 .list-students {
    width: 122px;
-   border: 2px solid #9dff00; 
+   border: 2px solid yellow; 
 }
 
 .istudent-n-tech {
    width: 115px;
-   border: 2px solid #9dff00;
+   border: 2px solid yellow;
 }
 
 .iteacher-name {
    width: 80px;
-   border: 2px solid #9dff00; 
+   border: 2px solid yellow; 
 }
 
 #success-completing {
-   border: 2px solid #eaaf56;
+   border: 2px solid green;
 }
 
 #unsuccess-completing {
@@ -199,7 +199,7 @@ input[type="date"] {
 textarea {
    margin-top: 10px;
    margin-bottom: 4px;
-   border: 2px solid #9dff00;
+   border: 2px solid yellow;
    outline: none;
    text-align: justify;
 }
