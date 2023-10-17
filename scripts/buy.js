@@ -3,6 +3,11 @@ const phoneInput = document.getElementById("iphone");
 const cpfInput = document.getElementById("icpf");
 const emailInput = document.getElementById("iemail");
 
+nameInput.value = 'Miguel Silva'
+phoneInput.value = '(51) 98765-4321'
+cpfInput.value = '999.999.999-99'
+emailInput.value = 'miguel@gmail.com'
+
 const nameRegex = /^(([A-Za-z]+[\-\']?)*([A-Za-z]+)?\s)+([A-Za-z]+[\-\']?)*([A-Za-z]+)?$/
 const phoneRegex = /^\(?\d{2}\)?\s\d{5}\-\d{4}$/;
 const cpfRegex = /^(\d{3}\.\d{3}\.\d{3}-\d{2})$/;
@@ -85,11 +90,12 @@ submitBtn.addEventListener("click", function (event) {
          email: emailInput.value
       }
 
-      console.log(newBuyer)
-      alert(`Informações do comprador que depois irão pro banco:
-      Nome: ${newBuyer.name}
-      Telefone: ${newBuyer.phone}
-      CPF: ${newBuyer.cpf}
-      E-mail: ${newBuyer.email}`)
+      const confirm = window.confirm(`Deseja confirmar as informações desse comprador?\n\nNome: ${newBuyer.name}\nTelefone: ${newBuyer.phone}\nCPF: ${newBuyer.cpf}\nEmail: ${newBuyer.email}`)
+      if (confirm) {
+         console.log(newBuyer)
+         window.location.href = "./tickets.html"
+      } else {
+         event.preventDefault()
+      }
    }
 });

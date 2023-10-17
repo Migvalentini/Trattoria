@@ -34,7 +34,6 @@ label {
 
 .input-div {
    width: 80%;
-   max-width: 300px;
    display: flex;
    flex-direction: row;
    align-items: center;
@@ -96,4 +95,8 @@ input::placeholder {
 button {
    border: none;
    background-color: transparent;
+}
+
+.confirmImg {
+   margin: 20px;
 }
