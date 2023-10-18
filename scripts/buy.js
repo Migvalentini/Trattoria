@@ -18,6 +18,9 @@ const errorPhone = document.querySelector('.error-phone');
 const errorCpf = document.querySelector('.error-cpf');
 const errorEmail = document.querySelector('.error-email');
 
+const confirmBtn = document.querySelector('.confirmBtn')
+const backAndEditBtn = document.querySelector('.backAndEditBtn')
+
 phoneInput.addEventListener('input', function () {
    const unformattedValue = this.value.replace(/[^\d]/g, '');
    const formattedValue = unformattedValue.replace(/^(\d{0,2}|\d{2})?(\d{0,5}|\d{5})?(\d{0,4}|\d{4})?$/, '($1) $2-$3');
@@ -29,6 +32,30 @@ cpfInput.addEventListener('input', function () {
    const formattedValue = unformattedValue.replace(/^(\d{0,3}|\d{3})?(\d{0,3}|\d{3})?(\d{0,3}|\d{3})?(\d{0,2}|\d{2})?$/, '$1.$2.$3-$4');
    this.value = formattedValue;
 });
+
+function confirmSubmit(name, phone, cpf, email) {
+   const confirmDiv = document.querySelector('.confirm')
+   const nameDiv = document.querySelector('.name')
+   const phoneDiv = document.querySelector('.phone')
+   const cpfDiv = document.querySelector('.cpf')
+   const emailDiv = document.querySelector('.email')
+   nameDiv.textContent = name
+   phoneDiv.textContent = phone
+   cpfDiv.textContent = cpf
+   emailDiv.textContent = email
+   confirmDiv.style.display = 'block'
+}
+
+confirmBtn.addEventListener('click', () => {
+   const confirmDiv = document.querySelector('.confirm')
+   confirmDiv.style.display = 'none'
+   window.location.href = './tickets.html'
+})
+
+backAndEditBtn.addEventListener('click', () => {
+   const confirmDiv = document.querySelector('.confirm')
+   confirmDiv.style.display = 'none'
+})
 
 function validarFormulario() {
    if (nameRegex.test(nameInput.value)) {
@@ -83,19 +110,14 @@ submitBtn.addEventListener("click", function (event) {
       event.preventDefault();
    }
    else {
-      const newBuyer = {
-         name: nameInput.value,
-         phone: phoneInput.value.replace(/[^0-9]/g, ''),
-         cpf: cpfInput.value.replace(/[^0-9]/g, ''),
-         email: emailInput.value
-      }
-
-      const confirm = window.confirm(`Deseja confirmar as informações desse comprador?\n\nNome: ${newBuyer.name}\nTelefone: ${newBuyer.phone}\nCPF: ${newBuyer.cpf}\nEmail: ${newBuyer.email}`)
+      const confirm = confirmSubmit(nameInput.value, phoneInput.value, cpfInput.value, emailInput.value)
       if (confirm) {
-         console.log(newBuyer)
-         window.location.href = "./tickets.html"
-      } else {
-         event.preventDefault()
+         const newBuyer = {
+            name: nameInput.value,
+            phone: phoneInput.value.replace(/[^0-9]/g, ''),
+            cpf: cpfInput.value.replace(/[^0-9]/g, ''),
+            email: emailInput.value
+         }
       }
    }
 });

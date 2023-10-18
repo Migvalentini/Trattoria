@@ -53,7 +53,9 @@
 }
 
 .start {
-   margin-top: 400px;
+   position: absolute;
+   top: 80%;
+   left: 50%;
    padding: 20px 40px;
    background-color: #eaaf56;
    color: black; 
@@ -63,4 +65,5 @@
    z-index: 1;
    font-size: 20px;
    font-family: 'Nunito Sons', sans-serif;
+   transform: translate(-50%, -50%);
  }
