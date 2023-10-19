@@ -88,7 +88,7 @@ input::placeholder {
 }
 
 #success-completing {
-   border: 2px solid green;
+   border: 2px solid lightgreen;
 }
 
 #unsuccess-completing {

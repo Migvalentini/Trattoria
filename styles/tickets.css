@@ -23,6 +23,8 @@
    padding: 5px;
    border: 1px solid #ff0000;
    text-align: center;
+   max-height: 400px;
+   overflow-y: scroll;
    position: fixed;
    top: 50%;
    left: 50%;
@@ -202,7 +204,7 @@ input[type="date"] {
 }
 
 #success-completing {
-   border: 2px solid green;
+   border: 2px solid lightgreen;
 }
 
 #unsuccess-completing {

@@ -18,7 +18,7 @@ let ticketIndex = 0
 
 let ticketsIndexes = []
 
-const nameRegex = /^(?![ ])(?!.*[ ]{2})((?:e|da|do|das|dos|de|d'|D'|la|las|el|los)\s*?|(?:[A-Z][^\s]*\s*?)(?!.*[ ]$))+$/
+const nameRegex = /^(([A-Za-zÀ-ÖØ-öø-ÿ]+[\-\']?)*([A-Za-zÀ-ÖØ-öø-ÿ]+)?\s)+([A-Za-zÀ-ÖØ-öø-ÿ]+[\-\']?)*([A-Za-zÀ-ÖØ-öø-ÿ]+)?$/i
 const cpfRegex = /([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})/
 
 function showHideError(type, age = 0) {
@@ -37,10 +37,10 @@ function showHideError(type, age = 0) {
 function confirmSubmitTicket(ticketsValues) {
     const confirmSubmitTicketDiv = document.querySelector('.confirm-submit-ticket')
     const tbody = document.querySelector('tbody')
+    payBtn.style.display = 'none'
     tbody.textContent = ''
     confirmSubmitTicketDiv.style.display = 'block'
     ticketsValues.forEach((ticket, index) => {
-        console.log(ticket)
         const tr = document.createElement('tr')
         const tdIndex = document.createElement('td')
         tdIndex.textContent = index + 1
@@ -57,7 +57,6 @@ function confirmSubmitTicket(ticketsValues) {
         tr.append(tdIndex, tdName, tdType, tdRestriction, tdKnow)
         tbody.append(tr)
     })
-    console.log(ticketsValues)
 }
 
 confirmSubmitBtn.addEventListener('click', () => {
@@ -471,7 +470,6 @@ payBtn.addEventListener('click', () => {
         } else if (dataKnowValue === 'yes-student-n-tech') {
             const studentNTechName = document.querySelector(`.istudent-n-tech${ticketsIndexes[index]}`)
             const isStudentNTechNameValid = nameRegex.test(studentNTechName.value)
-            console.log(isStudentNTechNameValid)
             if (!isStudentNTechNameValid) {
                 allTicketsValid = false;
                 studentNTechName.setAttribute('id', 'unsuccess-completing')
@@ -540,6 +538,8 @@ payBtn.addEventListener('click', () => {
         const confirm = confirmSubmitTicket(ticketsValues)
         if (confirm) {
             window.location.href = "./payment.html"
+        } else {
+            payBtn.style.display = 'block'
         }
     }
 });
