@@ -18,10 +18,10 @@
    justify-content: center;
    width: 95vw;
    font-size: small;
-   background-color: #ff0000;
+   background-color: #6F6D3D;
    color: #ffffff;
    padding: 5px;
-   border: 1px solid #ff0000;
+   border-radius: 5px;
    text-align: center;
    max-height: 400px;
    overflow-y: scroll;

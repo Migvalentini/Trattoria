@@ -116,7 +116,9 @@ submitBtn.addEventListener("click", function (event) {
             name: nameInput.value,
             phone: phoneInput.value.replace(/[^0-9]/g, ''),
             cpf: cpfInput.value.replace(/[^0-9]/g, ''),
-            email: emailInput.value
+            email: emailInput.value,
+            payment: 'not-paid',
+            value: 0
          }
       }
    }
