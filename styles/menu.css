@@ -61,19 +61,20 @@ h3, h4, p {
 }
 
 .texts {
-    width: 50%;
+    width: 40%;
     padding: 10px;
 }
 
 .images {
-    width: 50%;
-    height: 150px;
+    width: 60%;
+    height: 200px;
     display: flex;
     justify-content: center;
 }
 
 .image {
     height: 100%;
+    width: 50%;
     object-fit: cover;
     border-radius: 5px;
 }

@@ -9,6 +9,8 @@ const payBtn = document.querySelector('.pay')
 const confirmSubmitBtn = document.querySelector('.confirmSubmitBtn')
 const backAndEditBtn = document.querySelector('.backAndEditBtn')
 
+const startBtn = document.querySelector('.startBtn')
+
 let totalValue = 0
 const adultPrice = 110
 const kidPrice = 55
@@ -70,6 +72,11 @@ backAndEditBtn.addEventListener('click', () => {
     confirmSubmitTicketDiv.style.display = 'none'
 })
 
+startBtn.addEventListener('click', () => {
+    const infoDiv = document.querySelector('.info')
+    infoDiv.style.display = 'none'
+})
+
 addTicketButtons.forEach((button) => {
     button.addEventListener("click", () => {
         payBtn.style.display = 'block'
@@ -103,7 +110,7 @@ addTicketButtons.forEach((button) => {
             </div>
             <div class="ticket-content restriction-div">
                 <label class="rest-label" for="irestriction">Possui alguma restrição alimentar?</label>
-                <textarea class="irestriction irestriction${ticketIndex}" name="irestriction" id="irestriction" maxlength="150" placeholder="Se sim, digite aqui... Caso queira, pode escrever alguma observação"></textarea>
+                <textarea class="irestriction irestriction${ticketIndex}" name="irestriction" id="irestriction" maxlength="150" placeholder="Se sim, digite aqui..."></textarea>
             </div>
             <div class="ticket-content ticket-students ticket-students${ticketIndex}">
                 <label for="ilist-student">Alunos:</label>
