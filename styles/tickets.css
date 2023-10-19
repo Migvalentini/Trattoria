@@ -12,6 +12,31 @@
    max-width: 100vw;
 }
 
+.info {
+   display: none;
+   width: 90%;
+   max-height: 90%;
+   padding: 10px;
+   background-color: #eaaf56;
+   border: 1px solid black;
+   border-radius: 10px;
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   z-index: 20;
+   overflow: scroll;
+   text-align: justify;
+   transform: translate(-50%, -50%);
+}
+
+.info h3 {
+   margin-bottom: 10px;
+}
+
+.info p {
+   margin-bottom: 5px;
+}
+
 .confirm-submit-ticket {
    display: none;
    flex-direction: column;
