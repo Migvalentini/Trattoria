@@ -11,15 +11,29 @@
 </head>
 <body>
     <div class="container">
+        <div class="confirm-submit-ticket">
+            <h3>Você confirma a compra desses ingressos?</h3><br>
+            <table class="ticket-table">
+                <thead>
+                    <tr>
+                        <th>Ingresso</th>
+                        <th>Nome</th>
+                        <th>Tipo</th>
+                        <th>Restrição Alimentar</th>
+                        <th>Conhece Alguém</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                </tbody>
+            </table><br>
+            <button class="confirmSubmitBtn">Confirmar</button>
+            <button class="backAndEditBtn">Voltar e Editar</button>
+        </div>
         <div class="error-completing">
             <h4>Dados inválidos!</h1><br>
             <p class="kid-error">Por favor, complete corretamente os campos com borda vermelha</p><br>
             <button onclick="showHideError('hide')">OK</button>
-        </div>
-        <div class="error-completing data-invalid">
-            <h4>Data inválida!</h1><br>
-            <p class="kid-error">A data digitada não corresponde com a data para criança. Deseja transformar esse ingresso em adulto?</p><br>
-            <button onclick="transformTicket()">OK</button>
         </div>
         <header>
             <img src="../images/logo-branco.png" alt="Logo">
@@ -34,13 +48,15 @@
                 <span class="plus-icon">+</span>
                 <div class="text">
                     <p>Ingresso Adulto</p>
+                    <p>R$110,00</p>
                 </div>
             </button>
             <button class="addKidTicketBtn addTicketBtn">
                 <span class="plus-icon">+</span>
                 <div class="text">
                     <p>Ingresso Criança</p>
-                    <p>(De 5 a 10 anos)</p>
+                    <p>(4 a 12 anos)</p>
+                    <p>R$55,00</p>
                 </div>
             </button>
         </div>
@@ -65,7 +81,7 @@
         </div>
     </div>
 
-    <script src="../scripts/buy-tickets.js"></script>
+    <script src="../scripts/tickets.js"></script>
 
 </body>
 </html>

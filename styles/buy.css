@@ -7,6 +7,28 @@
 * {
    margin: 0;
    padding: 0;
+   font-family: 'Nunito Sans', sans-serif;
+}
+
+.confirm {
+   display: none;
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   background-color: #D6A07E;
+   padding: 20px;
+   width: 200px;
+   transform: translate(-50%, -50%);
+   z-index: 100;
+}
+
+.confirm h3 {
+   text-align: center;
+}
+
+.confirm button {
+   padding: 10px;
+   background-color: #6F6D3D;
 }
 
 .background {
@@ -25,7 +47,6 @@
 }
 
 label {
-   font-family: 'Nunito Sans', sans-serif;
    width: 30%;
    margin-right: 10px;
    text-align: left;
@@ -34,7 +55,6 @@ label {
 
 .input-div {
    width: 80%;
-   max-width: 300px;
    display: flex;
    flex-direction: row;
    align-items: center;
@@ -49,7 +69,6 @@ label {
    padding: 8px;
    border: 1px solid #f5c6cb;
    border-radius: 4px;
-   font-family: 'Nunito Sans', sans-serif;
    font-size: 12px;
    margin-top: 5px;
    max-width: 300px;
@@ -69,7 +88,7 @@ input::placeholder {
 }
 
 #success-completing {
-   border: 2px solid green;
+   border: 2px solid lightgreen;
 }
 
 #unsuccess-completing {
@@ -96,4 +115,8 @@ input::placeholder {
 button {
    border: none;
    background-color: transparent;
+}
+
+.confirmImg {
+   margin: 20px;
 }

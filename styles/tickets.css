@@ -12,6 +12,49 @@
    max-width: 100vw;
 }
 
+.confirm-submit-ticket {
+   display: none;
+   flex-direction: column;
+   justify-content: center;
+   width: 95vw;
+   font-size: small;
+   background-color: #ff0000;
+   color: #ffffff;
+   padding: 5px;
+   border: 1px solid #ff0000;
+   text-align: center;
+   max-height: 400px;
+   overflow-y: scroll;
+   position: fixed;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   z-index: 20;
+}
+
+.ticket-table {
+   border-collapse: collapse;
+   margin: auto;
+}
+
+.confirm-submit-ticket button {
+   padding: 3px 10px;
+   background-color: white;
+   border: none;
+   border-radius: 5px;
+}
+
+th, td {
+   border: 1px solid white;
+   padding: 2px;
+}
+
+.td-restriction {
+   max-width: 75px;
+   overflow: hidden;
+   text-overflow: ellipsis;
+}
+
 .error-completing {
    display: none;
    background-color: #ff0000;
@@ -38,7 +81,7 @@
 }
 
 .error-completing button:active {
-   background-color: rgb(255, 180, 180);
+   background-color: #ffb4b4;
 }
 
 .buttons {
@@ -51,7 +94,7 @@
 
 .addTicketBtn {
    width: 50%;
-   height: 50px;
+   height: 70px;
    display: flex;
    align-items: center;
    background-color: #eaaf56;  
@@ -161,7 +204,7 @@ input[type="date"] {
 }
 
 #success-completing {
-   border: 2px solid green;
+   border: 2px solid lightgreen;
 }
 
 #unsuccess-completing {
@@ -188,20 +231,17 @@ input[type="date"] {
    margin: 0px 5px 10px 0px;
 }
 
-.restriction-div {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   justify-content: center;
-   gap: 5px;
+.rest-label {
+   width: 60px;
+   margin-right: 5px;
 }
 
 textarea {
-   margin-top: 10px;
-   margin-bottom: 4px;
    border: 2px solid yellow;
    outline: none;
    text-align: justify;
+   height: 60px;
+   width: 105px;
 }
 
 textarea::placeholder {
