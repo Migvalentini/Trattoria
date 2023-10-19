@@ -9,6 +9,8 @@ const payBtn = document.querySelector('.pay')
 const confirmSubmitBtn = document.querySelector('.confirmSubmitBtn')
 const backAndEditBtn = document.querySelector('.backAndEditBtn')
 
+const startBtn = document.querySelector('.startBtn')
+
 let totalValue = 0
 const adultPrice = 110
 const kidPrice = 55
@@ -68,6 +70,11 @@ confirmSubmitBtn.addEventListener('click', () => {
 backAndEditBtn.addEventListener('click', () => {
     const confirmSubmitTicketDiv = document.querySelector('.confirm-submit-ticket')
     confirmSubmitTicketDiv.style.display = 'none'
+})
+
+startBtn.addEventListener('click', () => {
+    const infoDiv = document.querySelector('.info')
+    infoDiv.style.display = 'none'
 })
 
 addTicketButtons.forEach((button) => {
