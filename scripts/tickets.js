@@ -103,7 +103,7 @@ addTicketButtons.forEach((button) => {
             </div>
             <div class="ticket-content restriction-div">
                 <label class="rest-label" for="irestriction">Possui alguma restrição alimentar?</label>
-                <textarea class="irestriction irestriction${ticketIndex}" name="irestriction" id="irestriction" cols="22" rows="3" maxlength="150" placeholder="Se sim, digite aqui... Caso queira, pode escrever alguma observação"></textarea>
+                <textarea class="irestriction irestriction${ticketIndex}" name="irestriction" id="irestriction" maxlength="150" placeholder="Se sim, digite aqui... Caso queira, pode escrever alguma observação"></textarea>
             </div>
             <div class="ticket-content ticket-students ticket-students${ticketIndex}">
                 <label for="ilist-student">Alunos:</label>
@@ -260,12 +260,12 @@ addTicketButtons.forEach((button) => {
             });
         });
 
-        const a = document.querySelector(`.iname${ticketIndex}`)
-        a.value = 'Miguel Valentini'
-        const b = document.querySelector(`.icpf${ticketIndex}`)
-        b.value = '12345678910'
-        const c = document.querySelector(`.ibirth${ticketIndex}`)
-        c.value = '2023-03-26'
+        // const a = document.querySelector(`.iname${ticketIndex}`)
+        // a.value = 'Miguel Valentini'
+        // const b = document.querySelector(`.icpf${ticketIndex}`)
+        // b.value = '12345678910'
+        // const c = document.querySelector(`.ibirth${ticketIndex}`)
+        // c.value = '2023-03-26'
 
         ticketIndex += 1
     });
