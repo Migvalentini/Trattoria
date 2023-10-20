@@ -8,8 +8,8 @@ const totalValueText = document.querySelector('.total-result')
 const payBtn = document.querySelector('.pay')
 const confirmSubmitBtn = document.querySelector('.confirmSubmitBtn')
 const backAndEditBtn = document.querySelector('.backAndEditBtn')
-
 const startBtn = document.querySelector('.startBtn')
+const infoBtn = document.querySelector('.fa-circle-info')
 
 let totalValue = 0
 const adultPrice = 110
@@ -75,6 +75,11 @@ backAndEditBtn.addEventListener('click', () => {
 startBtn.addEventListener('click', () => {
     const infoDiv = document.querySelector('.info')
     infoDiv.style.display = 'none'
+})
+
+infoBtn.addEventListener('click', () => {
+    const infoDiv = document.querySelector('.info')
+    infoDiv.style.display = 'block'
 })
 
 addTicketButtons.forEach((button) => {

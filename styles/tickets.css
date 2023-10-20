@@ -12,6 +12,15 @@
    max-width: 100vw;
 }
 
+.fa-circle-info {
+   color: #eaaf56;
+   font-size: 20px;
+   cursor: pointer;
+   position: fixed;
+   left: 80px;
+   top: 20px;
+}
+
 .info {
    /* display: none; */
    width: 90%;
@@ -31,14 +40,11 @@
 
 .info h3 {
    margin-bottom: 10px;
-}
-
-.info p {
-   margin-bottom: 5px;
+   margin-top: 30px;
 }
 
 .info button {
-   margin: 0 auto;
+   margin: 10px auto 5px auto;
    display: block;
    width: 100%;
    padding: 5px 20px;
