@@ -4,6 +4,7 @@ btncopiar.addEventListener('click', (e) => {
     navigator.clipboard.writeText(pixkey);
     alert("Chave Pix copiada com sucesso! Acesse seu aplicativo bancario para efetuar o pagamento.")
 })
+// PEGAR O VALOR TOTAL DOS INGRESSOS NO BD E ATRIBUIR NA VARIÁVEL 'VALOR'
 let valorzin=220
 document.getElementById("precofinal").textContent = valorzin;
 

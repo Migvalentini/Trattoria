@@ -53,6 +53,28 @@
    background-color: #6F6D3D;
 }
 
+.max-tickets {
+   display: none;
+   background-color: red;
+   color: rgb(255, 222, 222);
+   width: 90vw;
+   padding: 10px;
+   border-radius: 10px;
+   text-align: center;
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+}
+
+.max-tickets-text {
+   text-align: justify;
+}
+
+.max-tickets button {
+   padding: 1px 15px;
+}
+
 .confirm-submit-ticket {
    display: none;
    flex-direction: column;

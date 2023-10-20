@@ -1,3 +1,11 @@
+// PUXAR O VALOR DO COMPRADOR DO BD
+
+// PUXAR O TOTAL DE NÚMERO DE INGRESSOS E TESTAR SE JÁ TEM 85 INGRESSOS COMPRADOS
+
+const ticketsSold = 0
+
+const totalName = document.querySelector('.total-name')
+
 const addTicketButtons = document.querySelectorAll(".addTicketBtn")
 
 const ticketsContainer = document.querySelector(".tickets")
@@ -10,6 +18,7 @@ const confirmSubmitBtn = document.querySelector('.confirmSubmitBtn')
 const backAndEditBtn = document.querySelector('.backAndEditBtn')
 const startBtn = document.querySelector('.startBtn')
 const infoBtn = document.querySelector('.fa-circle-info')
+const maxTicketsBtn = document.querySelector('.max-tickets-btn')
 
 let totalValue = 0
 const adultPrice = 110
@@ -81,6 +90,15 @@ infoBtn.addEventListener('click', () => {
     const infoDiv = document.querySelector('.info')
     infoDiv.style.display = 'block'
 })
+
+if (ticketsSold >= 85) {
+    const maxTicketsDiv = document.querySelector('.max-tickets')
+    maxTicketsDiv.style.display='block'
+    maxTicketsBtn.addEventListener('click', () => {
+        maxTicketsDiv.style.display = 'none'
+        payBtn.remove()
+    })
+}
 
 addTicketButtons.forEach((button) => {
     button.addEventListener("click", () => {
@@ -549,6 +567,7 @@ payBtn.addEventListener('click', () => {
     if (allTicketsValid) {
         const confirm = confirmSubmitTicket(ticketsValues)
         if (confirm) {
+            // ENVIAR OS VALORES DO INGRESSO PARA O BD E O VALOR TOTAL PARA O RESPECTIVO COMPRADOR
             window.location.href = "./payment.html"
         } else {
             payBtn.style.display = 'block'

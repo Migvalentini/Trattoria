@@ -120,6 +120,8 @@ submitBtn.addEventListener("click", function (event) {
             payment: 'not-paid',
             value: 0
          }
+         console.log(newBuyer)
+         // ENVIAR AS INFORMAÇÕES DO NOVO COMPRADOR PARA O BD E DEFINIR O VALOR DE 'PAYMENT' COMO 'NOT-PAID' E O VALOR COMO 0
       }
    }
 });
