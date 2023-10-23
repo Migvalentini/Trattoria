@@ -14,18 +14,58 @@
 }
 
 #copier {
-    width: 60px;
-    height: 20px;
     border-radius: 15px;
     border: none;
-    margin-left: 135px;
+    padding: 10px 20px;
+    background-color: #BF4E30;
+    color: white;
+
+}
+
+#Submitbtn {
+    border-radius: 15px;
+    border: none;
+    padding: 10px 20px;
     background-color: #BF4E30;
     color: white;
 }
+
 #pixkey{
     display: none;
+}
+#observacaop{
+    width: 250px;
+    text-align: center;
+}
+
+#comprovante {
+    display: block;
+    margin: 0 auto;
+}
+
+.pix {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 14px;
 }
 
 * {
     font-family: 'Nunito Sans', sans-serif;
+ }
+
+ .popup{
+    position: fixed;
+    top: 0;bottom: 0;
+    left: 0; right: 0;
+    margin: auto;
+    width: 200px;
+    height: 100px;
+    padding: 15px;
+    border: solid 1px black;
+    color: white;
+    border-radius: 10px;
+    background: #BF4E30;
+    display: none;
+    
  }

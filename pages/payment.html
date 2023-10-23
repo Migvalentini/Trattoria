@@ -18,14 +18,25 @@
                <a class="line" href="buy.html">Comprar</a>
             </nav>
         </header>
+        <br>
+        <div id="popup" class="popup">
+            <p>Sua escolha de nos visitar nos enche de alegria. Estamos ansiosos para servi-lo em nossa Trattoria!</p>
+        </div>
+        <div class="pix">
+            <p id="precofinal"></p> 
+            <div class="qrcod">
+                <img src="../images/qrcodefinal.jpg" alt="qr" id="qr">
+            </div>
+           
+           
+            <button type="button" class="copiar" id="copier">Copiar Chave</button>
+            <br>
+            <p>Anexe o comprovante do Pagamento abaixo:</p><br>
+            <input type="file" id="comprovante" name="comprovante" accept=".png, .pdf, .jpeg" /><br>
+            <p id="observacaop">OBS: Verifique se o Pagamento foi efetuado com o devido valor.</p><br>
+            <button type="submit" id="Submitbtn" onclick="abrir()">Confirmar Pagamento</button>
+        </div>
     </div>
-    <p id="precofinal"></p>
-    <div class="qrcod">
-        <img src="../images/pixqrcode.jpg" alt="qr" id="qr">
-    </div>
-    <textarea name="chavepix" id="key" cols="130" rows="1" class="chavepix" id="pixkey" >00020126330014br.gov.bcb.pix0111057200450825204000053039865802BR5923Diego Silveira Da Silva6009Sao Paulo62070503***6304E1E5</textarea>
-    <br><br>
-    <button type="button" class="copiar" id="copier">Copiar</button>
 
     
     <script src="../scripts/payment.js"></script>

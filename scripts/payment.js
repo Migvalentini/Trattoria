@@ -6,6 +6,10 @@ btncopiar.addEventListener('click', (e) => {
 })
 // PEGAR O VALOR TOTAL DOS INGRESSOS NO BD E ATRIBUIR NA VARIÁVEL 'VALOR'
 let valorzin=220
-document.getElementById("precofinal").textContent = valorzin;
+document.getElementById("precofinal").textContent = 'Valor a ser pago: R$' +   valorzin;
 
-pixkey="00020126330014br.gov.bcb.pix0111057200450825204000053039865802BR5923Diego Silveira Da Silva6009Sao Paulo62070503***6304E1E5"
+pixkey="a2e156c0-651e-453b-b5ce-c3a8178bd6e7"
+
+function abrir(){
+    document.getElementById('popup').style.display='block';
+}
