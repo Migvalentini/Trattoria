@@ -1,56 +1,87 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200;0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;0,6..12,800;0,6..12,900;0,6..12,1000;1,6..12,200;1,6..12,300;1,6..12,400;1,6..12,500;1,6..12,600;1,6..12,700;1,6..12,800;1,6..12,900;1,6..12,1000&display=swap');
 @font-face {
-   font-family: myFont;
-   src: url("../../fonts/Amsterdam.ttf");
-}
-
-
-.backg{
-    background-image: url("../menuimages/restauranteback.jpeg");
-    
-}
-
-
-.menu{
-    padding-top: 20px;
-    padding-bottom: 10px;
     font-family: myFont;
-    font-weight: 100;
-    text-align: center;
+    src: url("../../fonts/Amsterdam.ttf");
+ }
+ 
+ body {
+     font-family: 'Nunito Sans', sans-serif;
+ }
+ 
+ .prato1 {
+     background-image: url('../menuimages/background/labelavita.png');
+     background-size: cover;
+         color: #fff;
+    padding: 20px;
+ }
+
+ .prato2 { 
+    background-image: url('../menuimages/background/partiro.png');
+    background-size: cover;
+    color: #fff;
+    padding: 20px;
 }
 
-h2 {
-    font-family: myFont;
-    font-size: 20px;
-    text-align: center;
-}
-.desc {
-    text-align: left;
-    background-color: #BF4E30;
-    border-radius: 5px;
-    color: white;
-    font-size: 10pt;
+.prato3 {
+    background-image: url('../menuimages/background/monalisa.png');
+    background-size: cover;
+    color: #fff;
+    padding: 20px;
 }
 
-.prato1img {
-    width: 40%;
-    height: 40%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
+.prato4 {
+    background-image: url('../menuimages/background/torre.png');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    padding: 20px;
 }
 
-.prato1 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: min-content;
-    
+.prato5 {
+    background-image: url('../menuimages/background/commedia.png');
+    background-position: center;
+    background-size: cover;
+    color: #fff;
+    padding: 20px;
 }
-
-.list{
-    list-style: none;
-    font-weight: 100;
-    padding-left: 30px;
-}
+ 
+ .imagem{
+     text-align: center;
+     border-radius: 15px;
+     background-color: rgba(111, 110, 61, 0.8);
+ }
+ 
+ .menu{
+     color: white;
+     background-color: #BF4E30;
+     font-family: myFont;
+     text-align: center;
+ }
+ 
+ h2 {
+     font-family: myFont;
+     font-size: 35px;
+     text-align: center;
+ }
+ 
+ .desc {
+     text-align: center;
+     background-color: rgba(191, 78, 48, 0.8);
+     border-radius: 5px;
+     color: white;
+     font-size: 15pt;
+ }
+ 
+ .list{
+     list-style: none;
+     font-weight: 100;
+     padding-left: 30px;
+ }
+ 
+ @media screen and (min-width: 768px){
+     .imagem {
+         max-height: 500px;
+         width: 100%;
+         aspect-ratio: 1 / 1;
+         height: auto;
+     }
+ }
