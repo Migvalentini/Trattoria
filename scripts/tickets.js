@@ -481,7 +481,8 @@ payBtn.addEventListener('click', () => {
             type: ticketType,
             restriction: restrictionTextarea.value,
             age: age,
-            whoKnows: 'Ninguém'
+            whoKnows: 'Ninguém',
+            knowType: 'Ninguém'
         };
 
         if (dataKnowValue === 'yes-student') {
@@ -496,6 +497,7 @@ payBtn.addEventListener('click', () => {
                 studentTechName.setAttribute('id', 'success-completing')
                 ticketElement.setAttribute('id', 'success-completing')
                 ticketValues.whoKnows = `Técnico: ${studentTechName.value}`
+
             }
         } else if (dataKnowValue === 'yes-student-n-tech') {
             const studentNTechName = document.querySelector(`.istudent-n-tech${ticketsIndexes[index]}`)
@@ -568,6 +570,7 @@ payBtn.addEventListener('click', () => {
         const confirm = confirmSubmitTicket(ticketsValues)
         if (confirm) {
             // ENVIAR OS VALORES DO INGRESSO PARA O BD E O VALOR TOTAL PARA O RESPECTIVO COMPRADOR
+            
             window.location.href = "./payment.html"
         } else {
             payBtn.style.display = 'block'

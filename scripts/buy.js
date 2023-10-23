@@ -1,12 +1,60 @@
+async function InsertSQL(command) {
+   const apiUrl = 'https://trattoria-ochre.vercel.app/post';
+
+   const formData = {
+      sql: command
+   };
+
+   const options = {
+      method: 'POST',
+      headers: {
+         'Content-Type': 'application/json'
+      },
+   body: JSON.stringify(formData)
+   };
+
+   await fetch(apiUrl, options).then(data => data.json()).then(response => console.log(response.json));
+
+};
+
+function getting() {
+
+   var matrizItens = [];
+
+   var table = localStorage.getItem('table');
+   if (table != null) {
+      
+      var linhas = table.split(';');
+      
+      for (var i = 0; i < linhas.length; i++) {
+         
+         var itens = linhas[i].split(',');
+         
+         matrizItens.push(itens);
+      };
+   }
+
+   return matrizItens;
+   
+};
+
+// puxa as informações do select
+function getTable() {
+   getting();
+   return getting();
+};
+
 const nameInput = document.getElementById("iname");
 const phoneInput = document.getElementById("iphone");
 const cpfInput = document.getElementById("icpf");
 const emailInput = document.getElementById("iemail");
 
-// nameInput.value = 'Miguel Silva'
-// phoneInput.value = '(51) 98765-4321'
-// cpfInput.value = '999.999.999-99'
-// emailInput.value = 'miguel@gmail.com'
+const value = 0
+
+nameInput.value = 'Miguel Silva'
+phoneInput.value = '(51) 98765-4321'
+cpfInput.value = '999.999.999-99'
+emailInput.value = 'miguel@gmail.com'
 
 const nameRegex = /^(([A-Za-zÀ-ÖØ-öø-ÿ]+[\-\']?)*([A-Za-zÀ-ÖØ-öø-ÿ]+)?\s)+([A-Za-zÀ-ÖØ-öø-ÿ]+[\-\']?)*([A-Za-zÀ-ÖØ-öø-ÿ]+)?$/i
 const phoneRegex = /^\(?\d{2}\)?\s\d{5}\-\d{4}$/;
@@ -44,12 +92,13 @@ function confirmSubmit(name, phone, cpf, email) {
    cpfDiv.textContent = cpf
    emailDiv.textContent = email
    confirmDiv.style.display = 'block'
+   return true
 }
 
 confirmBtn.addEventListener('click', () => {
    const confirmDiv = document.querySelector('.confirm')
    confirmDiv.style.display = 'none'
-   window.location.href = './tickets.html'
+   //window.location.href = './tickets.html'
 })
 
 backAndEditBtn.addEventListener('click', () => {
@@ -120,8 +169,12 @@ submitBtn.addEventListener("click", function (event) {
             payment: 'not-paid',
             value: 0
          }
-         console.log(newBuyer)
+         
+         //console.log(newBuyer)
          // ENVIAR AS INFORMAÇÕES DO NOVO COMPRADOR PARA O BD E DEFINIR O VALOR DE 'PAYMENT' COMO 'NOT-PAID' E O VALOR COMO 0
+         InsertSQL("insert into Compradores (id, nome, telefone, cpf, email, pago, compra) values (1, 'newBuyer.name', 'newBuyer.phone', 'newBuyer.cpf', 'newBuyer.email', 'nao-pago', 'value')")
+         console.log(getTable())
+         event.preventDefault()
       }
    }
 });
