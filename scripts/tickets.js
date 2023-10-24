@@ -29,6 +29,8 @@ let ticketIndex = 0
 
 let ticketsIndexes = []
 
+const ticketsValues = [];
+
 const nameRegex = /^(([A-Za-zÀ-ÖØ-öø-ÿ]+[\-\']?)*([A-Za-zÀ-ÖØ-öø-ÿ]+)?\s)+([A-Za-zÀ-ÖØ-öø-ÿ]+[\-\']?)*([A-Za-zÀ-ÖØ-öø-ÿ]+)?$/i
 const cpfRegex = /([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})/
 
@@ -69,12 +71,6 @@ function confirmSubmitTicket(ticketsValues) {
         tbody.append(tr)
     })
 }
-
-confirmSubmitBtn.addEventListener('click', () => {
-    const confirmSubmitTicketDiv = document.querySelector('.confirm-submit-ticket')
-    confirmSubmitTicketDiv.style.display = 'none'
-    window.location.href = './payment.html'
-})
 
 backAndEditBtn.addEventListener('click', () => {
     const confirmSubmitTicketDiv = document.querySelector('.confirm-submit-ticket')
@@ -290,12 +286,12 @@ addTicketButtons.forEach((button) => {
             });
         });
 
-        // const a = document.querySelector(`.iname${ticketIndex}`)
-        // a.value = 'Miguel Valentini'
-        // const b = document.querySelector(`.icpf${ticketIndex}`)
-        // b.value = '12345678910'
-        // const c = document.querySelector(`.ibirth${ticketIndex}`)
-        // c.value = '2023-03-26'
+        const a = document.querySelector(`.iname${ticketIndex}`)
+        a.value = 'Miguel Valentini'
+        const b = document.querySelector(`.icpf${ticketIndex}`)
+        b.value = '12345678910'
+        const c = document.querySelector(`.ibirth${ticketIndex}`)
+        c.value = '2017-03-26'
 
         ticketIndex += 1
     });
@@ -425,7 +421,8 @@ ticketsContainer.addEventListener("click", (event) => {
 
 payBtn.addEventListener('click', () => {
     const ticketElements = document.querySelectorAll('.ticket');
-    const ticketsValues = [];
+
+    ticketsValues.length = 0
 
     let allTicketsValid = true;
 
@@ -480,7 +477,6 @@ payBtn.addEventListener('click', () => {
             cpf: cpfInput.value,
             type: ticketType,
             restriction: restrictionTextarea.value,
-            age: age,
             whoKnows: 'Ninguém',
             knowType: 'Ninguém'
         };
@@ -567,13 +563,15 @@ payBtn.addEventListener('click', () => {
     });
 
     if (allTicketsValid) {
-        const confirm = confirmSubmitTicket(ticketsValues)
-        if (confirm) {
-            // ENVIAR OS VALORES DO INGRESSO PARA O BD E O VALOR TOTAL PARA O RESPECTIVO COMPRADOR
-            
-            window.location.href = "./payment.html"
-        } else {
-            payBtn.style.display = 'block'
-        }
+        confirmSubmitTicket(ticketsValues)
     }
 });
+
+confirmSubmitBtn.addEventListener('click', () => {
+    const confirmSubmitTicketDiv = document.querySelector('.confirm-submit-ticket')
+    confirmSubmitTicketDiv.style.display = 'none'
+    ticketsValues.forEach((ticket) => {
+        console.log(ticket)
+    })
+    window.location.href = './payment.html'
+})

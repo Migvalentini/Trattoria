@@ -1,13 +1,13 @@
 //criar tabelas no bd
 function CreateTables() {
-   const apiUrl = 'https://trattoria-ochre.vercel.app/create';
+   const apiUrl = 'https://trattoria-eight.vercel.app/create';
 
    fetch(apiUrl).then(data => data.json()).then(response => console.log(response.json));
 };
 
 //pegar as informações no bd
 async function SelectTables(command) {
-   const apiUrl = 'https://trattoria-ochre.vercel.app/get';
+   const apiUrl = 'https://trattoria-eight.vercel.app/get';
 
    const formData = {
       sql: command
@@ -39,7 +39,7 @@ async function SelectTables(command) {
 
 // insere as informações no bd
 async function InsertSQL(command) {
-   const apiUrl = 'https://trattoria-ochre.vercel.app/post';
+   const apiUrl = 'https://trattoria-eight.vercel.app/post';
 
    const formData = {
       sql: command

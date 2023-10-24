@@ -1,0 +1,33 @@
+BUY.JS
+
+INSERIR DADOS DOS COMPRADORES NA TABELA DOS COMPRADORES:
+
+`INSERT INTO Compradores (nome, telefone, cpf, email, pago, compra, comprovante) VALUES 
+   (${newBuyer.name}, ${newBuyer.phone}, ${newBuyer.cpf} ${newBuyer.email}, ${'nao-pago'}, ${value}, ${E\\x01F2E3D4C5B6A7}), 
+   (${newBuyer.name}, ${newBuyer.phone}, ${newBuyer.cpf}, ${newBuyer.email}, ${'nao-pago'}, ${value}, ${E\\x01F2E3D4C5B6A7});`
+
+
+
+TICKETS.JS
+
+OBTER O NOME DO COMPRADOR DA TABELA DO COMPRADOR PARA EXIBIR NA TELA:
+`SELECT nome FROM Compradores WHERE ID = ${id}`
+
+
+INSERIR DADOS DOS INGRESSOS NA TABELA DOS INGRESSOS:
+`INSERT INTO Ingressos (nome, cpf, restricao, conhecido, id_Comprador) VALUES
+   (Miguel Valentini, 11122233344, lactose, Técnico - Informática: Diego da Silva, 1);`
+
+ATUALIZA O VALOR A SER PAGO NA TABELA DO COMPRADOR:
+`UPDATE Compradores SET compra = ${totalValue} WHERE id = 1;`
+
+
+
+PAYMENT.JS
+
+PEGA O VALOR TOTAL A SER PAGO DA TABELA DO COMPRADOR PARA EXIBIR NA TELA:
+`SELECT compra FROM Compradores WHERE id = 1`
+
+ATUALIZA O COMPROVANTE NA TABELA DO COMPRADOR:
+
+`UPDATE Compradores SET comprovante = ${E'\\x01A2B3C4D5E6F6'} WHERE id = 1`

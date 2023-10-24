@@ -1,5 +1,5 @@
 async function InsertSQL(command) {
-   const apiUrl = 'https://trattoria-ochre.vercel.app/post';
+   const apiUrl = 'https://trattoria-eight.vercel.app/post';
 
    const formData = {
       sql: command
@@ -51,8 +51,8 @@ const emailInput = document.getElementById("iemail");
 
 const value = 0
 
-nameInput.value = 'Miguel Silva'
-phoneInput.value = '(51) 98765-4321'
+nameInput.value = 'Miguel Valentini'
+phoneInput.value = '(54) 98765-4321'
 cpfInput.value = '999.999.999-99'
 emailInput.value = 'miguel@gmail.com'
 
@@ -92,14 +92,7 @@ function confirmSubmit(name, phone, cpf, email) {
    cpfDiv.textContent = cpf
    emailDiv.textContent = email
    confirmDiv.style.display = 'block'
-   return true
 }
-
-confirmBtn.addEventListener('click', () => {
-   const confirmDiv = document.querySelector('.confirm')
-   confirmDiv.style.display = 'none'
-   //window.location.href = './tickets.html'
-})
 
 backAndEditBtn.addEventListener('click', () => {
    const confirmDiv = document.querySelector('.confirm')
@@ -111,40 +104,40 @@ function validarFormulario() {
       nameInput.id = 'success-completing';
       errorName.style.opacity = 0;
    }
-
+   
    if (phoneRegex.test(phoneInput.value)) {
       phoneInput.id = 'success-completing';
       errorPhone.style.opacity = 0;
    }
-
+   
    if (cpfRegex.test(cpfInput.value)) {
       cpfInput.id = 'success-completing';
       errorCpf.style.opacity = 0;
    }
-
+   
    if (emailRegex.test(emailInput.value)) {
       emailInput.id = 'success-completing';
       errorEmail.style.opacity = 0;
    }
-
+   
    if (!nameRegex.test(nameInput.value)) {
       nameInput.id = 'unsuccess-completing';
       errorName.style.opacity = 1;
       return false;
    }
-
+   
    if (!phoneRegex.test(phoneInput.value)) {
       phoneInput.id = 'unsuccess-completing';
       errorPhone.style.opacity = 1;
       return false;
    }
-
+   
    if (!cpfRegex.test(cpfInput.value)) {
       cpfInput.id = 'unsuccess-completing';
       errorCpf.style.opacity = 1;
       return false;
    }
-
+   
    if (!emailRegex.test(emailInput.value)) {
       emailInput.id = 'unsuccess-completing';
       errorEmail.style.opacity = 1;
@@ -159,22 +152,29 @@ submitBtn.addEventListener("click", function (event) {
       event.preventDefault();
    }
    else {
-      const confirm = confirmSubmit(nameInput.value, phoneInput.value, cpfInput.value, emailInput.value)
-      if (confirm) {
-         const newBuyer = {
-            name: nameInput.value,
-            phone: phoneInput.value.replace(/[^0-9]/g, ''),
-            cpf: cpfInput.value.replace(/[^0-9]/g, ''),
-            email: emailInput.value,
-            payment: 'not-paid',
-            value: 0
-         }
-         
-         //console.log(newBuyer)
-         // ENVIAR AS INFORMAÇÕES DO NOVO COMPRADOR PARA O BD E DEFINIR O VALOR DE 'PAYMENT' COMO 'NOT-PAID' E O VALOR COMO 0
-         InsertSQL("insert into Compradores (id, nome, telefone, cpf, email, pago, compra) values (1, 'newBuyer.name', 'newBuyer.phone', 'newBuyer.cpf', 'newBuyer.email', 'nao-pago', 'value')")
-         console.log(getTable())
-         event.preventDefault()
-      }
+      confirmSubmit(nameInput.value, phoneInput.value, cpfInput.value, emailInput.value)
    }
 });
+
+function handleConfirmClick() {
+   const newBuyer = {
+      name: nameInput.value,
+      phone: phoneInput.value.replace(/[^0-9]/g, ''),
+      cpf: cpfInput.value.replace(/[^0-9]/g, ''),
+      email: emailInput.value,
+      payment: 'not-paid',
+      value: 0
+   }
+   
+   console.log(newBuyer);
+   InsertSQL(`insert into Compradores (id, nome, telefone, cpf, email, pago, compra) values (1, ${newBuyer.name}, ${newBuyer.phone}, ${newBuyer.cpf}, ${newBuyer.email}, ${'nao-pago'}, ${value})`);
+   
+   console.log(getTable());
+}
+
+confirmBtn.addEventListener('click', () => {
+   const confirmDiv = document.querySelector('.confirm')
+   confirmDiv.style.display = 'none'
+   handleConfirmClick()
+   window.location.href = './tickets.html'
+})
