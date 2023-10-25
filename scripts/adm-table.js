@@ -1,3 +1,5 @@
+const a = 'oi'
+localStorage.removeItem('buyer')
 const buyersData = [
    {
       id: 1,
@@ -56,8 +58,6 @@ const data = {
    Tickets: ticketsData,
 };
 
-console.log(buyersData);
-console.log(ticketsData);
 
 const table = document.querySelector('.table table tbody');
 
