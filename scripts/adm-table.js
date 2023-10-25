@@ -1,5 +1,6 @@
 const a = 'oi'
 localStorage.setItem('buyer', 123)
+localStorage.setItem('diego','gay')
 const buyersData = [
    {
       id: 1,

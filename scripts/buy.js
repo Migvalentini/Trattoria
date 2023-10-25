@@ -24,7 +24,7 @@ async function SelectTables(command) {
    };
 
    const options = {
-      method: 'POST',
+      method: 'GET',
       headers: {
          'Content-Type': 'application/json'
       },
@@ -201,3 +201,5 @@ confirmBtn.addEventListener('click', () => {
    console.log(b)
    //window.location.href = './tickets.html'
 })
+
+SelectTables()
