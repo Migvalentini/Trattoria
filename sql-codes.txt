@@ -11,15 +11,15 @@ INSERIR DADOS DOS COMPRADORES NA TABELA DOS COMPRADORES:
 TICKETS.JS
 
 OBTER O NOME DO COMPRADOR DA TABELA DO COMPRADOR PARA EXIBIR NA TELA:
-`SELECT nome FROM Compradores WHERE ID = ${id}`
+"SELECT nome FROM Compradores WHERE ID = id"
 
 
 INSERIR DADOS DOS INGRESSOS NA TABELA DOS INGRESSOS:
-`INSERT INTO Ingressos (nome, cpf, restricao, conhecido, id_Comprador) VALUES
-   (Miguel Valentini, 11122233344, lactose, Técnico - Informática: Diego da Silva, 1);`
+"INSERT INTO Ingressos (nome, cpf, restricao, conhecido, id_Comprador) VALUES
+   (Miguel Valentini, 11122233344, lactose, Técnico - Informática: Diego da Silva, 1);"
 
 ATUALIZA O VALOR A SER PAGO NA TABELA DO COMPRADOR:
-`UPDATE Compradores SET compra = ${totalValue} WHERE id = 1;`
+"UPDATE Compradores SET compra = ${totalValue} WHERE id = 1;"
 
 
 

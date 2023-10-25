@@ -1,5 +1,5 @@
 async function InsertSQL(command) {
-   const apiUrl = 'https://trattoria-eight.vercel.app/post';
+   const apiUrl = 'https://trattoria-three.vercel.app/post';
 
    const formData = {
       sql: command
@@ -14,28 +14,48 @@ async function InsertSQL(command) {
    };
 
    await fetch(apiUrl, options).then(data => data.json()).then(response => console.log(response.json));
+};
 
+async function SelectTables(command) {
+   const apiUrl = 'https://trattoria-three.vercel.app/get';
+
+   const formData = {
+      sql: command
+   };
+
+   const options = {
+      method: 'GET',
+      headers: {
+         'Content-Type': 'application/json'
+      },
+   body: JSON.stringify(formData)
+   }
+
+   table = await fetch(apiUrl, options);
+   table = await table.json();
+   table = table.json;
+
+   if (table != null) {
+      var tableString =  table.map(function(row) {
+         return row.join(',');
+   }).join(';');
+
+   localStorage.setItem('table', tableString);
+   }
 };
 
 function getting() {
-
    var matrizItens = [];
-
    var table = localStorage.getItem('table');
    if (table != null) {
-      
       var linhas = table.split(';');
       
       for (var i = 0; i < linhas.length; i++) {
-         
          var itens = linhas[i].split(',');
-         
          matrizItens.push(itens);
       };
    }
-
    return matrizItens;
-   
 };
 
 // puxa as informações do select
@@ -166,15 +186,20 @@ function handleConfirmClick() {
       value: 0
    }
    
-   console.log(newBuyer);
-   InsertSQL(`insert into Compradores (id, nome, telefone, cpf, email, pago, compra) values (1, ${newBuyer.name}, ${newBuyer.phone}, ${newBuyer.cpf}, ${newBuyer.email}, ${'nao-pago'}, ${value})`);
+   InsertSQL("INSERT INTO Compradores (nome, telefone, cpf, email, pago, compra) VALUES ('" + newBuyer.name.toString() + "', '" + newBuyer.phone.toString() + "', '" + newBuyer.cpf.toString() + "', '" + newBuyer.email.toString() + "', " + "'nao-pago', '" + value.toString() + "')");
    
-   console.log(getTable());
+   //console.log('table:', getTable())
+   console.log(getTable())
+   localStorage.setItem('table', newBuyer);
 }
 
 confirmBtn.addEventListener('click', () => {
    const confirmDiv = document.querySelector('.confirm')
    confirmDiv.style.display = 'none'
    handleConfirmClick()
-   window.location.href = './tickets.html'
+   const b = localStorage.getItem('table')
+   console.log(b)
+   //window.location.href = './tickets.html'
 })
+
+SelectTables()
