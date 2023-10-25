@@ -186,18 +186,18 @@ function handleConfirmClick() {
       value: 0
    }
    
-   console.log(newBuyer);
-   InsertSQL("INSERT INTO Compradores (nome, telefone, cpf, email, pago, compra) VALUES ('newBuyer.name.toString()', + 'newBuyer.phone.toString()', + 'newBuyer.cpf.toString()', + 'newBuyer.email.toString()', + 'nao-pago', + 'value.toString()')");
+   InsertSQL("INSERT INTO Compradores (nome, telefone, cpf, email, pago, compra) VALUES ('" + newBuyer.name.toString() + "', '" + newBuyer.phone.toString() + "', '" + newBuyer.cpf.toString() + "', '" + newBuyer.email.toString() + "', " + "'nao-pago', '" + value.toString() + "')");
    
-   console.log('table:', getTable())
-   //SelectTables("SELECT * FROM Compradores")
-   const a = localStorage.getItem('totalValue')
-   console.log(a)
+   //console.log('table:', getTable())
+   console.log(getTable())
+   localStorage.setItem('table', newBuyer);
 }
 
 confirmBtn.addEventListener('click', () => {
    const confirmDiv = document.querySelector('.confirm')
    confirmDiv.style.display = 'none'
    handleConfirmClick()
+   const b = localStorage.getItem('table')
+   console.log(b)
    //window.location.href = './tickets.html'
 })

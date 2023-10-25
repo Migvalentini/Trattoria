@@ -1,5 +1,5 @@
 const a = 'oi'
-localStorage.removeItem('buyer')
+localStorage.setItem('buyer', 123)
 const buyersData = [
    {
       id: 1,
