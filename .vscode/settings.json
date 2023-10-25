@@ -1,6 +1,7 @@
 {
    "cSpell.language": "en,pt,pt-BR,lorem,it-IT",
    "cSpell.words": [
+      "bytea",
       "Cetec",
       "ducchese",
       "ibirth",
@@ -11,7 +12,9 @@
       "iteacher",
       "itype",
       "Mitinho",
+      "restricao",
       "saltinboca",
-      "usuá"
+      "usuá",
+      "varchar"
    ]
 }

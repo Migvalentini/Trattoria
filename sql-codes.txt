@@ -31,3 +31,34 @@ PEGA O VALOR TOTAL A SER PAGO DA TABELA DO COMPRADOR PARA EXIBIR NA TELA:
 ATUALIZA O COMPROVANTE NA TABELA DO COMPRADOR:
 
 `UPDATE Compradores SET comprovante = ${E'\\x01A2B3C4D5E6F6'} WHERE id = 1`
+
+
+
+ADM TABLE:
+
+`SELECT * FROM Compradores;`
+`SELECT * FROM Ingressos;`
+
+
+create table if not exists Compradores (
+	id serial primary key,
+	nome varchar(50) not null,
+	telefone varchar(11) not null,
+	cpf varchar(11) not null,
+	email varchar(50) not null,
+	pago varchar(11),
+  	compra varchar(11),
+	comprovante bytea
+);
+
+create table if not exists Ingressos (
+	id serial primary key,
+	nome varchar(50) not null,
+	cpf varchar(11),
+	restricao varchar(150),
+	conhecido varchar(100),
+	id_Comprador serial not null,
+	constraint Comprador
+	foreign key (id_Comprador)
+	references Compradores(id)	
+);
