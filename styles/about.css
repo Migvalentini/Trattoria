@@ -1,56 +1,30 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200;0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;0,6..12,800;0,6..12,900;0,6..12,1000;1,6..12,200;1,6..12,300;1,6..12,400;1,6..12,500;1,6..12,600;1,6..12,700;1,6..12,800;1,6..12,900;1,6..12,1000&display=swap');
 @font-face {
    font-family: myFont;
    src: url('../fonts/Amsterdam.ttf');
 }
 
-.container {
-    width: 100vw;
-    height: 100vh;
+body{
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+.font-especial {
+    font-family: myFont;
+    font-weight: 100;
 }
 
 h1 {
     font-family: myFont;
     font-weight: 100;
     text-align: center;
-    font-size: 16px;
 }
 
 p {
     font-family: 'Nunito Sans', sans-serif;
-    text-align: center;
-    font-weight: 600;
-    font-size: 12px;
-    margin: 10px;
 }
 
-.welcome {
-    height: 200px;
-}
 
-.welcome-p {
-    width: 80%;
-    margin: 40px auto;
-}
-
-.how-started {
-    height: 300px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.participation {
-    height: 150px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 40px;
-    padding-bottom: 40px;
-}
-
-section {
-    width: 100vw;
+.making-pasta {
+    max-height: 500px;
 }
 
 .plant1 {
@@ -72,41 +46,11 @@ section {
     width: 60%;
 }
 
-.making-pasta {
-    width: 40%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 .background {
     background-color: #BF4E30;
-    height: 80%;
-    width: 90%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
-.making-pasta-img {
-    background-image: url('../images/making-pasta.jpg');
-    background-position: center center;
-    background-size: 100px;
-    background-repeat: no-repeat;
-    height: 60%;
-    width: 90%;
-}
 
-ul {
-    list-style: square;
-}
-
-li {
-    font-family: 'Nunito Sans', sans-serif;
-    font-size: 12px;
-    margin-left: 30px;
-}
 
 .view-menu-btn {
     border: none;
