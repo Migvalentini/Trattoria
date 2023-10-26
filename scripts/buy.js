@@ -24,14 +24,14 @@ async function SelectTables(command) {
    };
 
    const options = {
-      method: 'GET',
+      method: 'POST',
       headers: {
          'Content-Type': 'application/json'
       },
    body: JSON.stringify(formData)
    }
 
-   table = await fetch(apiUrl, options);
+   let table = await fetch(apiUrl, options);
    table = await table.json();
    table = table.json;
 
@@ -187,19 +187,14 @@ function handleConfirmClick() {
    }
    
    InsertSQL("INSERT INTO Compradores (nome, telefone, cpf, email, pago, compra) VALUES ('" + newBuyer.name.toString() + "', '" + newBuyer.phone.toString() + "', '" + newBuyer.cpf.toString() + "', '" + newBuyer.email.toString() + "', " + "'nao-pago', '" + value.toString() + "')");
-   
-   //console.log('table:', getTable())
    console.log(getTable())
-   localStorage.setItem('table', newBuyer);
 }
 
 confirmBtn.addEventListener('click', () => {
    const confirmDiv = document.querySelector('.confirm')
    confirmDiv.style.display = 'none'
    handleConfirmClick()
-   const b = localStorage.getItem('table')
-   console.log(b)
-   //window.location.href = './tickets.html'
+   window.location.href = './tickets.html'
 })
 
-SelectTables()
+SelectTables("SELECT * FROM Compradores")

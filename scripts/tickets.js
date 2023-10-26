@@ -34,6 +34,69 @@ const ticketsValues = [];
 const nameRegex = /^(([A-Za-zÀ-ÖØ-öø-ÿ]+[\-\']?)*([A-Za-zÀ-ÖØ-öø-ÿ]+)?\s)+([A-Za-zÀ-ÖØ-öø-ÿ]+[\-\']?)*([A-Za-zÀ-ÖØ-öø-ÿ]+)?$/i
 const cpfRegex = /([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})/
 
+async function SelectTables(command) {
+    const apiUrl = 'https://trattoria-three.vercel.app/get';
+ 
+    const formData = {
+       sql: command
+    };
+ 
+    const options = {
+       method: 'POST',
+       headers: {
+          'Content-Type': 'application/json'
+       },
+    body: JSON.stringify(formData)
+    }
+ 
+    table = await fetch(apiUrl, options);
+    table = await table.json();
+    table = table.json;
+ 
+    if (table != null) {
+       var tableString =  table.map(function(row) {
+          return row.join(',');
+    }).join(';');
+ 
+    localStorage.setItem('table', tableString);
+    }
+};
+ 
+async function InsertSQL(command) {
+    const apiUrl = 'https://trattoria-three.vercel.app/post';
+ 
+    const formData = {
+       sql: command
+    };
+ 
+    const options = {
+       method: 'POST',
+       headers: {
+          'Content-Type': 'application/json'
+       },
+    body: JSON.stringify(formData)
+    };
+ 
+    await fetch(apiUrl, options).then(data => data.json()).then(response => console.log(response.json));
+ 
+};
+ 
+function getting() {
+    var matrizItens = [];
+    var table = localStorage.getItem('table');
+    var linhas = table.split(';');
+    for (var i = 0; i < linhas.length; i++) {
+       var itens = linhas[i].split(',');
+       matrizItens.push(itens);
+    };
+    return matrizItens;
+};
+ 
+function getTable() {
+    getting();
+    return getting();
+};
+
 function showHideError(type, age = 0) {
     const errorCompleting = document.querySelector('.error-completing')
     if (type === 'hide') {
@@ -572,6 +635,9 @@ confirmSubmitBtn.addEventListener('click', () => {
     confirmSubmitTicketDiv.style.display = 'none'
     ticketsValues.forEach((ticket) => {
         console.log(ticket)
+        InsertSQL("INSERT INTO Ingressos (nome, cpf, data_nascimento, restricao, conhecido) VALUES ('" + ticket.name.toString() + "', '" + ticket.cpf.toString() + "', '" + newBuyer.cpf.toString() + "', '" + newBuyer.email.toString() + "', " + "'nao-pago', '" + value.toString() + "')")
     })
     window.location.href = './payment.html'
 })
+
+SelectTables("SELECT * FROM Compradores")
