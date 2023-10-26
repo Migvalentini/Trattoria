@@ -92,7 +92,14 @@ p {
     aspect-ratio: 16/9;
     height: auto;
  }
-.description{
+ .description1{
+    padding-top: 15px;
+    text-align: center;
+    color: white;
+    font-size: 16px;
+    
+}
+.description2{
     padding-top: 8px;
     text-align: center;
     color: white;
