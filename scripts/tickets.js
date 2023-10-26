@@ -67,7 +67,7 @@ async function SelectTables(command) {
 };
  
 async function InsertSQL(command) {
-    const apiUrl = 'https://trattoria-three.vercel.app/post';
+    const apiUrl = 'https://trattoria-three.vercel.app/insert';
  
     const formData = {
        sql: command
@@ -82,7 +82,7 @@ async function InsertSQL(command) {
     };
  
     await fetch(apiUrl, options).then(data => data.json()).then(response => console.log(response.json));
-};
+ };
  
 function getting() {
     var matrizItens = [];
@@ -559,7 +559,8 @@ payBtn.addEventListener('click', () => {
             restriction: restrictionTextarea.value,
             whoKnows: 'Ninguem',
             type: ticketType,
-            idComprador: idBuyer
+            idComprador: 46
+            // idComprador: idBuyer
         };
 
         if (dataKnowValue === 'yes-student') {

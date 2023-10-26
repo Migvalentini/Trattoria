@@ -35,7 +35,7 @@ async function SelectTables(command) {
 };
 
 async function InsertSQL(command) {
-   const apiUrl = 'https://trattoria-three.vercel.app/post';
+   const apiUrl = 'https://trattoria-three.vercel.app/insert';
 
    const formData = {
       sql: command

@@ -1,5 +1,5 @@
 async function InsertSQL(command) {
-   const apiUrl = 'https://trattoria-three.vercel.app/post';
+   const apiUrl = 'https://trattoria-three.vercel.app/insert';
 
    const formData = {
       sql: command
@@ -185,11 +185,11 @@ function handleConfirmClick() {
       payment: 'not-paid',
       value: 0
    }
-   const id = InsertSQL("INSERT INTO Compradores (nome, telefone, cpf, email, pago, compra) VALUES ('" + newBuyer.name.toString() + "', '" + newBuyer.phone.toString() + "', '" + newBuyer.cpf.toString() + "', '" + newBuyer.email.toString() + "', 'nao-pago', '" + value.toString() + "') returning id");
+   InsertSQL("INSERT INTO Compradores (nome, telefone, cpf, email, pago, compra) VALUES ('" + newBuyer.name.toString() + "', '" + newBuyer.phone.toString() + "', '" + newBuyer.cpf.toString() + "', '" + newBuyer.email.toString() + "', 'nao-pago', '" + newBuyer.value.toString() + "') returning id");
    SelectTables("SELECT * FROM Compradores")
    sessionStorage.setItem('idBuyer', newBuyer.id)
-   console.log(id)
-   localStorage.setItem('id', id)
+   //console.log(id)
+   //localStorage.setItem('id', id)
 }
 
 confirmBtn.addEventListener('click', () => {
