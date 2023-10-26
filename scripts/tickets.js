@@ -18,6 +18,7 @@ const backAndEditBtn = document.querySelector('.backAndEditBtn')
 const startBtn = document.querySelector('.startBtn')
 const infoBtn = document.querySelector('.fa-circle-info')
 const maxTicketsBtn = document.querySelector('.max-tickets-btn')
+const errorBtn = document.querySelector('.errorBtn')
 
 let totalValue = 0
 const adultPrice = 110
@@ -133,6 +134,10 @@ function confirmSubmitTicket(ticketsValues) {
         tbody.append(tr)
     })
 }
+
+errorBtn.addEventListener('click', () => {
+    showHideError('hide')
+})
 
 backAndEditBtn.addEventListener('click', () => {
     const confirmSubmitTicketDiv = document.querySelector('.confirm-submit-ticket')
