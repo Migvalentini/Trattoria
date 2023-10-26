@@ -177,7 +177,7 @@ submitBtn.addEventListener("click", function (event) {
 
 function handleConfirmClick() {
    const newBuyer = {
-      idBuyer: 0,
+      id: 0,
       name: nameInput.value,
       phone: phoneInput.value.replace(/[^0-9]/g, ''),
       cpf: cpfInput.value.replace(/[^0-9]/g, ''),
@@ -187,7 +187,7 @@ function handleConfirmClick() {
    }
    InsertSQL("INSERT INTO Compradores (nome, telefone, cpf, email, pago, compra) VALUES ('" + newBuyer.name.toString() + "', '" + newBuyer.phone.toString() + "', '" + newBuyer.cpf.toString() + "', '" + newBuyer.email.toString() + "', 'nao-pago', '" + value.toString() + "')");
    SelectTables("SELECT * FROM Compradores")
-
+   sessionStorage.setItem('idBuyer', newBuyer.id)
 }
 
 confirmBtn.addEventListener('click', () => {

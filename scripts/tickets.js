@@ -292,7 +292,7 @@ addTicketButtons.forEach((button) => {
                         <option value="Informatica - Rayana Sofia Rizzi">Rayana Sofia Rizzi</option>
                         <option value="Informatica - Vinicius Menegol Cardoso">Vinícius Menegol Cardoso</option>
                         <option value="Informatica - Yago Rech de Jesus">Yago Rech de Jesus</option>            
-                    </optgroup>
+                    </optgroup>
                 </select>
             </div>
             <div class="ticket-content ticket-teacher ticket-teacher${ticketIndex}">
@@ -561,7 +561,7 @@ payBtn.addEventListener('click', () => {
             } else {
                 studentTechName.setAttribute('id', 'success-completing')
                 ticketElement.setAttribute('id', 'success-completing')
-                ticketValues.whoKnows = `Técnico: ${studentTechName.value}`
+                ticketValues.whoKnows = `Tecnico: ${studentTechName.value}`
 
             }
         } else if (dataKnowValue === 'yes-student-n-tech') {
@@ -637,14 +637,17 @@ payBtn.addEventListener('click', () => {
 });
 
 confirmSubmitBtn.addEventListener('click', () => {
+    payBtn.style.display = 'block'
     const confirmSubmitTicketDiv = document.querySelector('.confirm-submit-ticket')
+    const totalValueText = totalValue.toString()
     confirmSubmitTicketDiv.style.display = 'none'
     ticketsValues.forEach((ticket) => {
         console.log(ticket)
         InsertSQL("INSERT INTO Ingressos (nome, cpf, restricao, conhecido, tipo, id_Comprador) VALUES ('" + ticket.name.toString() + "', '" + ticket.cpf.toString() + "', '" + ticket.restriction.toString() + "', '" + ticket.whoKnows.toString() + "', '" + ticket.type.toString() + "', " + ticket.idComprador.toString() + ")");
-        InsertSQL("UPDATE Compradores SET compra = '" + totalValue + "' WHERE id = 1");
-        //SelectTables("SELECT * FROM Compradores")
-        //console.log('Pegar Tabela:', getTable())
+        InsertSQL("UPDATE Compradores SET compra = '" + totalValueText + "' WHERE id = 1");
     })
-    //window.location.href = './payment.html'
+    window.location.href = './payment.html'
 })
+
+
+console.log(sessionStorage.getItem('idBuyer'))
