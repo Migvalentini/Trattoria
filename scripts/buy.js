@@ -70,10 +70,10 @@ const emailInput = document.getElementById("iemail");
 
 const value = 0
 
-nameInput.value = 'Miguel Valentini'
-phoneInput.value = '(54) 98765-4321'
-cpfInput.value = '999.999.999-99'
-emailInput.value = 'miguel@gmail.com'
+// nameInput.value = 'Miguel Valentini'
+// phoneInput.value = '(54) 98765-4321'
+// cpfInput.value = '999.999.999-99'
+// emailInput.value = 'miguel@gmail.com'
 
 const nameRegex = /^(([A-Za-zÀ-ÖØ-öø-ÿ]+[\-\']?)*([A-Za-zÀ-ÖØ-öø-ÿ]+)?\s)+([A-Za-zÀ-ÖØ-öø-ÿ]+[\-\']?)*([A-Za-zÀ-ÖØ-öø-ÿ]+)?$/i
 const phoneRegex = /^\(?\d{2}\)?\s\d{5}\-\d{4}$/;

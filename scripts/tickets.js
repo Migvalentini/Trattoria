@@ -1,9 +1,10 @@
-const ticketsSold = 0
+const ticketsSold = 80
+const avaibleTickets = 85 - ticketsSold
 
-const totalName = document.querySelector('.total-name')
-SelectTables("SELECT nome FROM Compradores WHERE id = 1")
-const buyerName = getTable()
-totalName.textContent = buyerName
+// const totalName = document.querySelector('.total-name')
+// SelectTables("SELECT nome FROM Compradores WHERE id = 9")
+// const buyerName = getTable()
+// totalName.textContent = buyerName
 
 const addTicketButtons = document.querySelectorAll(".addTicketBtn")
 
@@ -18,6 +19,7 @@ const backAndEditBtn = document.querySelector('.backAndEditBtn')
 const startBtn = document.querySelector('.startBtn')
 const infoBtn = document.querySelector('.fa-circle-info')
 const maxTicketsBtn = document.querySelector('.max-tickets-btn')
+const errorBtn = document.querySelector('.errorBtn')
 
 let totalValue = 0
 const adultPrice = 110
@@ -133,6 +135,10 @@ function confirmSubmitTicket(ticketsValues) {
         tbody.append(tr)
     })
 }
+
+errorBtn.addEventListener('click', () => {
+    showHideError('hide')
+})
 
 backAndEditBtn.addEventListener('click', () => {
     const confirmSubmitTicketDiv = document.querySelector('.confirm-submit-ticket')
@@ -355,12 +361,12 @@ addTicketButtons.forEach((button) => {
             });
         });
 
-        const a = document.querySelector(`.iname${ticketIndex}`)
-        a.value = 'Miguel Valentini'
-        const b = document.querySelector(`.icpf${ticketIndex}`)
-        b.value = '12345678910'
-        const c = document.querySelector(`.ibirth${ticketIndex}`)
-        c.value = '2017-03-26'
+        // const a = document.querySelector(`.iname${ticketIndex}`)
+        // a.value = 'Miguel Valentini'
+        // const b = document.querySelector(`.icpf${ticketIndex}`)
+        // b.value = '12345678910'
+        // const c = document.querySelector(`.ibirth${ticketIndex}`)
+        // c.value = '2017-03-26'
 
         ticketIndex += 1
     });
@@ -644,11 +650,9 @@ confirmSubmitBtn.addEventListener('click', () => {
     confirmSubmitTicketDiv.style.display = 'none'
     ticketsValues.forEach((ticket) => {
         console.log(ticket)
-        InsertSQL("INSERT INTO Ingressos (nome, cpf, restricao, conhecido, tipo, id_Comprador) VALUES ('" + ticket.name.toString() + "', '" + ticket.cpf.toString() + "', '" + ticket.restriction.toString() + "', '" + ticket.whoKnows.toString() + "', '" + ticket.type.toString() + "', " + ticket.idComprador.toString() + ")");
+        const retorno = InsertSQL("INSERT INTO Ingressos (nome, cpf, restricao, conhecido, tipo, id_Comprador) VALUES ('" + ticket.name.toString() + "', '" + ticket.cpf.toString() + "', '" + ticket.restriction.toString() + "', '" + ticket.whoKnows.toString() + "', '" + ticket.type.toString() + "', " + ticket.idComprador.toString() + ")");
         InsertSQL("UPDATE Compradores SET compra = '" + totalValueText + "' WHERE id = 1");
+        console.log(retorno)
     })
     window.location.href = './payment.html'
 })
-
-
-console.log(sessionStorage.getItem('idBuyer'))
