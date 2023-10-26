@@ -32,6 +32,7 @@ p {
     left: 2%;
     height: 70px;
     width: 90px;
+    padding-top: 0;
 }
 
 .plant2 {
@@ -40,6 +41,7 @@ p {
     right: 2%;
     height: 70px;
     width: 90px;
+    padding-top: 0;
 }
 
 .texts {
@@ -73,4 +75,13 @@ p {
     top: -300%;
     left: 50%;
     transform: translateX(-50%);
+    padding-top: 0;
+}
+
+.col-12{
+    padding-left: 0;
+}
+
+.line{
+    font-size: 14px;
 }
