@@ -1,9 +1,9 @@
 const ticketsSold = 0
 
-const totalName = document.querySelector('.total-name')
-SelectTables("SELECT nome FROM Compradores WHERE id = 1")
-const buyerName = getTable()
-totalName.textContent = buyerName
+// const totalName = document.querySelector('.total-name')
+// SelectTables("SELECT nome FROM Compradores WHERE id = 1")
+// const buyerName = getTable()
+// totalName.textContent = buyerName
 
 const addTicketButtons = document.querySelectorAll(".addTicketBtn")
 
