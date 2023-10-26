@@ -196,5 +196,3 @@ confirmBtn.addEventListener('click', () => {
    handleConfirmClick()
    window.location.href = './tickets.html'
 })
-
-export {newBuyer}

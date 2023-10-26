@@ -1,6 +1,3 @@
-import {newBuyer} from "./buy.js"
-const comprador = new newBuyer
-console.log(comprador)
 const ticketsSold = 0
 
 const totalName = document.querySelector('.total-name')
@@ -645,8 +642,9 @@ confirmSubmitBtn.addEventListener('click', () => {
     ticketsValues.forEach((ticket) => {
         console.log(ticket)
         InsertSQL("INSERT INTO Ingressos (nome, cpf, restricao, conhecido, tipo, id_Comprador) VALUES ('" + ticket.name.toString() + "', '" + ticket.cpf.toString() + "', '" + ticket.restriction.toString() + "', '" + ticket.whoKnows.toString() + "', '" + ticket.type.toString() + "', " + ticket.idComprador.toString() + ")");
-        InsertSQL("UPDATE Compradores SET compra = totalValue WHERE id = 1")
-        SelectTables("SELECT * FROM Compradores")
+        InsertSQL("UPDATE Compradores SET compra = '" + totalValue + "' WHERE id = 1");
+        //SelectTables("SELECT * FROM Compradores")
+        //console.log('Pegar Tabela:', getTable())
     })
     //window.location.href = './payment.html'
 })
