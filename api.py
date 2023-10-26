@@ -1,18 +1,16 @@
 import requests
 
-response = requests.get('https://trattoria-three.vercel.app/get', json={'sql':"""
-select * from Compradores;
-"""})
-response2 = requests.get('https://trattoria-three.vercel.app/get', json={'sql':"""
-select * from Ingressos;
-"""})
+# response = requests.get('https://trattoria-three.vercel.app/get', json={'sql':"""
+# select * from Compradores;
+# """})
+# response2 = requests.get('https://trattoria-three.vercel.app/get', json={'sql':"""
+# select * from Ingressos;
+# """})
+# table2 = response2.json()
+# print(table2['json'])
 
-# response = requests.post('https://trattoria-three.vercel.app/post', json={'sql':"""delete from Compradores;"""})
+response = requests.get('https://trattoria-three.vercel.app/get', json={'sql':"select * from ingressos;"})
 
 table = response.json()
-table2 = response2.json()
 
-print("Compradores:")
 print(table['json'])
-print("Ingressos:")
-print(table2['json'])

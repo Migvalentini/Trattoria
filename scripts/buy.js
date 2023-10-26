@@ -185,9 +185,11 @@ function handleConfirmClick() {
       payment: 'not-paid',
       value: 0
    }
-   InsertSQL("INSERT INTO Compradores (nome, telefone, cpf, email, pago, compra) VALUES ('" + newBuyer.name.toString() + "', '" + newBuyer.phone.toString() + "', '" + newBuyer.cpf.toString() + "', '" + newBuyer.email.toString() + "', 'nao-pago', '" + value.toString() + "')");
+   const id = InsertSQL("INSERT INTO Compradores (nome, telefone, cpf, email, pago, compra) VALUES ('" + newBuyer.name.toString() + "', '" + newBuyer.phone.toString() + "', '" + newBuyer.cpf.toString() + "', '" + newBuyer.email.toString() + "', 'nao-pago', '" + value.toString() + "') returning id");
    SelectTables("SELECT * FROM Compradores")
    sessionStorage.setItem('idBuyer', newBuyer.id)
+   console.log(id)
+   localStorage.setItem('id', id)
 }
 
 confirmBtn.addEventListener('click', () => {

@@ -6,6 +6,8 @@ const avaibleTickets = 85 - ticketsSold
 // const buyerName = getTable()
 // totalName.textContent = buyerName
 
+const idBuyer = localStorage.getItem('id')
+
 const addTicketButtons = document.querySelectorAll(".addTicketBtn")
 
 const ticketsContainer = document.querySelector(".tickets")
@@ -554,7 +556,7 @@ payBtn.addEventListener('click', () => {
             restriction: restrictionTextarea.value,
             whoKnows: 'Ninguem',
             type: ticketType,
-            idComprador: 1
+            idComprador: idBuyer
         };
 
         if (dataKnowValue === 'yes-student') {
@@ -649,10 +651,9 @@ confirmSubmitBtn.addEventListener('click', () => {
     const totalValueText = totalValue.toString()
     confirmSubmitTicketDiv.style.display = 'none'
     ticketsValues.forEach((ticket) => {
-        console.log(ticket)
-        const retorno = InsertSQL("INSERT INTO Ingressos (nome, cpf, restricao, conhecido, tipo, id_Comprador) VALUES ('" + ticket.name.toString() + "', '" + ticket.cpf.toString() + "', '" + ticket.restriction.toString() + "', '" + ticket.whoKnows.toString() + "', '" + ticket.type.toString() + "', " + ticket.idComprador.toString() + ")");
+        InsertSQL("INSERT INTO Ingressos (nome, cpf, restricao, conhecido, tipo, id_Comprador) VALUES ('" + ticket.name.toString() + "', '" + ticket.cpf.toString() + "', '" + ticket.restriction.toString() + "', '" + ticket.whoKnows.toString() + "', '" + ticket.type.toString() + "', " + ticket.idComprador.toString() + ")")
         InsertSQL("UPDATE Compradores SET compra = '" + totalValueText + "' WHERE id = 1");
-        console.log(retorno)
+        console.log(ticket.idComprador)
     })
-    window.location.href = './payment.html'
+    //window.location.href = './payment.html'
 })
