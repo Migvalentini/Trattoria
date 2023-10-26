@@ -30,8 +30,8 @@ async function SelectTables(command) {
       },
    body: JSON.stringify(formData)
    }
-
-   let table = await fetch(apiUrl, options);
+   let table
+   table = await fetch(apiUrl, options);
    table = await table.json();
    table = table.json;
 
@@ -58,7 +58,6 @@ function getting() {
    return matrizItens;
 };
 
-// puxa as informações do select
 function getTable() {
    getting();
    return getting();
@@ -178,6 +177,7 @@ submitBtn.addEventListener("click", function (event) {
 
 function handleConfirmClick() {
    const newBuyer = {
+      idBuyer: 0,
       name: nameInput.value,
       phone: phoneInput.value.replace(/[^0-9]/g, ''),
       cpf: cpfInput.value.replace(/[^0-9]/g, ''),
@@ -185,9 +185,9 @@ function handleConfirmClick() {
       payment: 'not-paid',
       value: 0
    }
-   
-   InsertSQL("INSERT INTO Compradores (nome, telefone, cpf, email, pago, compra) VALUES ('" + newBuyer.name.toString() + "', '" + newBuyer.phone.toString() + "', '" + newBuyer.cpf.toString() + "', '" + newBuyer.email.toString() + "', " + "'nao-pago', '" + value.toString() + "')");
-   console.log(getTable())
+   InsertSQL("INSERT INTO Compradores (nome, telefone, cpf, email, pago, compra) VALUES ('" + newBuyer.name.toString() + "', '" + newBuyer.phone.toString() + "', '" + newBuyer.cpf.toString() + "', '" + newBuyer.email.toString() + "', 'nao-pago', '" + value.toString() + "')");
+   SelectTables("SELECT * FROM Compradores")
+
 }
 
 confirmBtn.addEventListener('click', () => {
@@ -197,4 +197,4 @@ confirmBtn.addEventListener('click', () => {
    window.location.href = './tickets.html'
 })
 
-SelectTables("SELECT * FROM Compradores")
+export {newBuyer}

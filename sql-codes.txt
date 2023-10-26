@@ -2,8 +2,7 @@ BUY.JS
 
 INSERIR DADOS DOS COMPRADORES NA TABELA DOS COMPRADORES:
 
-`INSERT INTO Compradores (nome, telefone, cpf, email, pago, compra, comprovante) VALUES 
-   (${newBuyer.name}, ${newBuyer.phone}, ${newBuyer.cpf} ${newBuyer.email}, ${'nao-pago'}, ${value}, ${E\\x01F2E3D4C5B6A7}), 
+`INSERT INTO Compradores (nome, telefone, cpf, email, pago, compra, comprovante) VALUES  
    (${newBuyer.name}, ${newBuyer.phone}, ${newBuyer.cpf}, ${newBuyer.email}, ${'nao-pago'}, ${value}, ${E\\x01F2E3D4C5B6A7});`
 
 

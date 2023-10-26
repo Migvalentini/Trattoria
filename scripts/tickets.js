@@ -1,10 +1,12 @@
-// PUXAR O VALOR DO COMPRADOR DO BD
-
-// PUXAR O TOTAL DE NÚMERO DE INGRESSOS E TESTAR SE JÁ TEM 85 INGRESSOS COMPRADOS
+import {newBuyer} from "./buy.js"
+const comprador = newBuyer
 
 const ticketsSold = 0
 
 const totalName = document.querySelector('.total-name')
+SelectTables("SELECT nome FROM Compradores WHERE id = 1")
+const buyerName = getTable()
+totalName.textContent = buyerName
 
 const addTicketButtons = document.querySelectorAll(".addTicketBtn")
 
@@ -49,7 +51,7 @@ async function SelectTables(command) {
     body: JSON.stringify(formData)
     }
  
-    table = await fetch(apiUrl, options);
+    let table = await fetch(apiUrl, options);
     table = await table.json();
     table = table.json;
  
@@ -78,7 +80,6 @@ async function InsertSQL(command) {
     };
  
     await fetch(apiUrl, options).then(data => data.json()).then(response => console.log(response.json));
- 
 };
  
 function getting() {
@@ -138,6 +139,7 @@ function confirmSubmitTicket(ticketsValues) {
 backAndEditBtn.addEventListener('click', () => {
     const confirmSubmitTicketDiv = document.querySelector('.confirm-submit-ticket')
     confirmSubmitTicketDiv.style.display = 'none'
+    payBtn.style.display = 'block'
 })
 
 startBtn.addEventListener('click', () => {
@@ -205,17 +207,17 @@ addTicketButtons.forEach((button) => {
                         <option value="Gastronomia - Gabrielli Selistre">Gabrielli Selistre</option>
                         <option value="Gastronomia - Isabeli Slongo Padilha">Isabeli Slongo Padilha</option>
                         <option value="Gastronomia - Isadora Berton Corso">Isadora Berton Corso</option>
-                        <option value="Gastronomia - Júlia Cristina Galvăo Ribas">Júlia Cristina Galvăo Ribas</option>
+                        <option value="Gastronomia - Julia Cristina Galvăo Ribas">Júlia Cristina Galvăo Ribas</option>
                         <option value="Gastronomia - Marcella Finger Viezzer">Marcella Finger Viezzer</option>
                         <option value="Gastronomia - Maria Eduarda Gaiardo">Maria Eduarda Gaiardo</option>
                         <option value="Gastronomia - Pedro Schio Ferrigo">Pedro Schio Ferrigo</option>
                         <option value="Gastronomia - Rafael Garcia Dias">Rafael Garcia Dias</option>
                         <option value="Gastronomia - Valentina Viecelli Dornelles">Valentina Viecelli Dornelles</option>
-                        <option value="Gastronomia - Vitória Luiza Cabral de Jesus">Vitória Luiza Cabral de Jesus</option>
+                        <option value="Gastronomia - Vitoria Luiza Cabral de Jesus">Vitória Luiza Cabral de Jesus</option>
                     </optgroup>
                     <optgroup label="ADMINISTRAÇÃO">
                         <option value="ADM - Aleander Schuster de Almeida">Aleander Schuster de Almeida</option>
-                        <option value="ADM - Ana Vitória Rodrigues">Ana Vitória Rodrigues</option>
+                        <option value="ADM - Ana Vitoria Rodrigues">Ana Vitória Rodrigues</option>
                         <option value="ADM - Augusto Danieleski Tomanchievicz">Augusto Danieleski Tomanchievicz</option>
                         <option value="ADM - Bernardo Camargo Forini">Bernardo Camargo Forini</option>
                         <option value="ADM - Cinara Camargo da Silva">Cinara Camargo da Silva</option>
@@ -223,10 +225,10 @@ addTicketButtons.forEach((button) => {
                         <option value="ADM - Fernanda Marca">Fernanda Marca</option>
                         <option value="ADM - Giovanna Caldas Lopes">Giovanna Caldas Lopes</option>
                         <option value="ADM - Isadora Manini Costa">Isadora Manini Costa</option>
-                        <option value="ADM - Laís Arruda Köche">Laís Arruda Köche</option>
+                        <option value="ADM - Lais Arruda Koche">Laís Arruda Köche</option>
                         <option value="ADM - Laura Borges Cardoso">Laura Borges Cardoso</option>
-                        <option value="ADM - Letícia Machado Gil">Letícia Machado Gil</option>
-                        <option value="ADM - Luísa dos Santos da Silva">Luísa dos Santos da Silva</option>
+                        <option value="ADM - Leticia Machado Gil">Letícia Machado Gil</option>
+                        <option value="ADM - Luisa dos Santos da Silva">Luísa dos Santos da Silva</option>
                         <option value="ADM - Manuella Pessoa Cavalcante da Costa">Manuella Pessoa Cavalcante da Costa</option>
                         <option value="ADM - Maria Eduarda Dannenhauer Uhl">Maria Eduarda Dannenhauer Uhl</option>
                         <option value="ADM - Maria Eduarda de Oliveira Biasuz">Maria Eduarda de Oliveira Biasuz</option>
@@ -237,57 +239,63 @@ addTicketButtons.forEach((button) => {
                         <option value="ADM - Vicente Azevedo de Oliveira">Vicente Azevedo de Oliveira</option>
                     </optgroup>
                     <optgroup label="INFORMÁTICA">
-                        <option value="Informática - Alana Pereira Pegoraro">Alana Pereira Pegoraro</option>
-                        <option value="Informática - Ana Carolina Couto Leal">Ana Carolina Couto Leal</option>
-                        <option value="Informática - Arthur da Fonseca Macedo">Arthur da Fonseca Macedo</option>
-                        <option value="Informática - Arthur Forni">Arthur Forni</option>
-                        <option value="Informática - Augusto Branchi Graebin">Augusto Branchi Graebin</option>
-                        <option value="Informática - Augusto Henrique Cerutti">Augusto Henrique Cerutti</option>
-                        <option value="Informática - Augusto Moroni dos Santos">Augusto Moroni dos Santos</option>
-                        <option value="Informática - Bernardo Azevedo Vieira">Bernardo Azevedo Vieira</option>
-                        <option value="Informática - Bianca Elisa Rossa">Bianca Elisa Rossa</option>
-                        <option value="Informática - Camila Brollo Macêdo">Camila Brollo Macêdo</option>
-                        <option value="Informática - Cláudia Oliveira da Cruz">Cláudia Oliveira da Cruz</option>
-                        <option value="Informática - Cristian Rafael Metz">Cristian Rafael Metz</option>
-                        <option value="Informática - Daniel Damin Zamboni">Daniel Damin Zamboni</option>
-                        <option value="Informática - Diego Silveira da Silva">Diego Silveira da Silva</option>
-                        <option value="Informática - Enzo Matana da Silva">Enzo Matana da Silva</option>
-                        <option value="Informática - Gabriel Bado da Silva">Gabriel Bado da Silva</option>
-                        <option value="Informática - Gabriel Frizzo Ciervo">Gabriel Frizzo Ciervo</option>
-                        <option value="Informática - Giovana Melos Borsoi">Giovana Melos Borsoi</option>
-                        <option value="Informática - Guilherme Augusto Velho de Oliveira">Guilherme Augusto Velho de Oliveira</option>
-                        <option value="Informática - Guilherme Scomazzon Tamagno">Guilherme Scomazzon Tamagno</option>
-                        <option value="Informática - Gustavo Carneiro dos Santos">Gustavo Carneiro dos Santos</option>
-                        <option value="Informática - Henrique Brum Riva">Henrique Brum Riva</option>
-                        <option value="Informática - Janaína Giacomin">Janaína Giacomin</option>
-                        <option value="Informática - Jean Vítor Dalla Vecchia Boniatti">Jean Vítor Dalla Vecchia Boniatti</option>
-                        <option value="Informática - Jhonatan de Lima de Almeida">Jhonatan de Lima de Almeida</option>
-                        <option value="Informática - João Henrique Camara Piccin">João Henrique Camara Piccin</option>
-                        <option value="Informática - João Pedro de Castro Pereira">João Pedro de Castro Pereira</option>
-                        <option value="Informática - João Pedro de Godoi da Silva">João Pedro de Godoi da Silva</option>
-                        <option value="Informática - João Victor Silveira Ferraz">João Victor Silveira Ferraz</option>
-                        <option value="Informática - Júlia Giordano Bianchi">Júlia Giordano Bianchi</option>
-                        <option value="Informática - Júlia Salvador Righez">Júlia Salvador Righez</option>
-                        <option value="Informática - Leonardo Teles Cesar">Leonardo Teles Cesar</option>
-                        <option value="Informática - Leonora Sagas Rodrigues Viera">Leonora Sagas Rodrigues Viera</option>
-                        <option value="Informática - Luana Reginato Bassanesi">Luana Reginato Bassanesi</option>
-                        <option value="Informática - Luís Henrique Bonetto">Luís Henrique Bonetto</option>
-                        <option value="Informática - Lucca Marchett Frozza">Lucca Marchett Frozza</option>
-                        <option value="Informática - Maria Clara Sirtoli Lazaretti">Maria Clara Sirtoli Lazaretti</option>
-                        <option value="Informática - Maria Klein Pinheiro Machado">Maria Klein Pinheiro Machado</option>
-                        <option value="Informática - Matheus Cassânego">Matheus Cassânego</option>
-                        <option value="Informática - Matheus Concari Metz">Matheus Concari Metz</option>
-                        <option value="Informática - Miguel Valentini">Miguel Valentini</option>
-                        <option value="Informática - Murilo Lazzari Gasperin">Murilo Lazzari Gasperin</option>
-                        <option value="Informática - Nícolas Buzin Gomes">Nícolas Buzin Gomes</option>
-                        <option value="Informática - Nícolas Hunhoff Servelin">Nícolas Hunhoff Servelin</option>
-                        <option value="Informática - Nicolas Menon Simiano">Nicolas Menon Simiano</option>
-                        <option value="Informática - Octavio Henrique Rodrigues Alves">Octavio Henrique Rodrigues Alves</option>
-                        <option value="Informática - Pedro Henrique Negrini Perondi">Pedro Henrique Negrini Perondi</option>
-                        <option value="Informática - Rayana Sofia Rizzi">Rayana Sofia Rizzi</option>
-                        <option value="Informática - Vinícius Menegol Cardoso">Vinícius Menegol Cardoso</option>
-                        <option value="Informática - Yago Rech de Jesus">Yago Rech de Jesus</option>            
-                    </optgroup>
+                        <option value="Informatica - Alana Pereira Pegoraro">Alana Pereira Pegoraro</option>
+                        <option value="Informatica - Anna Carolina Couto Leal">Anna Carolina Couto Leal</option>
+                        <option value="Informatica - Arthur da Fonseca Macedo">Arthur da Fonseca Macedo</option>
+                        <option value="Informatica - Arthur Forni">Arthur Forni</option>
+                        <option value="Informatica - Augusto Branchi Graebin">Augusto Branchi Graebin</option>
+                        <option value="Informatica - Augusto Henrique Cerutti">Augusto Henrique Cerutti</option>
+                        <option value="Informatica - Augusto Moroni dos Santos">Augusto Moroni dos Santos</option>
+                        <option value="Informatica - Augusto Varisco Knapp">Augusto Varisco Knapp</option>
+                        <option value="Informatica - Bernardo Azevedo Vieira">Bernardo Azevedo Vieira</option>
+                        <option value="Informatica - Bianca Elisa Rossa">Bianca Elisa Rossa</option>
+                        <option value="Informatica - Camila Brollo Macedo">Camila Brollo Macêdo</option>
+                        <option value="Informatica - Claudia Oliveira da Cruz">Cláudia Oliveira da Cruz</option>
+                        <option value="Informatica - Cristian Rafael Metz">Cristian Rafael Metz</option>
+                        <option value="Informatica - Daniel Damin Zamboni">Daniel Damin Zamboni</option>
+                        <option value="Informatica - Diego Silveira da Silva">Diego Silveira da Silva</option>
+                        <option value="Informatica - Enzo Matana da Silva">Enzo Matana da Silva</option>
+                        <option value="Informatica - Gabriel Bado da Silva">Gabriel Bado da Silva</option>
+                        <option value="Informatica - Gabriel Frizzo Ciervo">Gabriel Frizzo Ciervo</option>
+                        <option value="Informatica - Giovana Melos Borsoi">Giovana Melos Borsoi</option>
+                        <option value="Informatica - Guilherme Augusto Velho de Oliveira">Guilherme Augusto Velho de Oliveira</option>
+                        <option value="Informatica - Guilherme Scomazzon Tamagno">Guilherme Scomazzon Tamagno</option>
+                        <option value="Informatica - Gustavo Carneiro dos Santos">Gustavo Carneiro dos Santos</option>
+                        <option value="Informatica - Henrique Brum Riva">Henrique Brum Riva</option>
+                        <option value="Informatica - Janaina Giacomin">Janaína Giacomin</option>
+                        <option value="Informatica - Jean Vitor Dalla Vecchia Boniatti">Jean Vítor Dalla Vecchia Boniatti</option>
+                        <option value="Informatica - Jhonatan de Lima de Almeida">Jhonatan de Lima de Almeida</option>
+                        <option value="Informatica - Joao Henrique Camara Piccin">João Henrique Camara Piccin</option>
+                        <option value="Informatica - Joao Pedro de Castro Pereira">João Pedro de Castro Pereira</option>
+                        <option value="Informatica - Joao Pedro de Godoi da Silva">João Pedro de Godoi da Silva</option>
+                        <option value="Informatica - Joao Victor Silveira Ferraz">João Victor Silveira Ferraz</option>
+                        <option value="Informatica - Johann Heckler Mota">Johann Heckler Mota</option>
+                        <option value="Informatica - Julia Giordano Bianchi">Júlia Giordano Bianchi</option>
+                        <option value="Informatica - Julia Salvador Righez">Júlia Salvador Righez</option>
+                        <option value="Informatica - Leonardo Teles Cesar">Leonardo Teles Cesar</option>
+                        <option value="Informatica - Leonora Sagas Rodrigues Viera">Leonora Sagas Rodrigues Viera</option>
+                        <option value="Informatica - Luana Reginato Bassanesi">Luana Reginato Bassanesi</option>
+                        <option value="Informatica - Luis Henrique Bonetto">Luís Henrique Bonetto</option>
+                        <option value="Informatica - Lucca Marchett Frozza">Lucca Marchett Frozza</option>
+                        <option value="Informatica - Maria Clara Sirtoli Lazaretti">Maria Clara Sirtoli Lazaretti</option>
+                        <option value="Informatica - Maria Klein Pinheiro Machado">Maria Klein Pinheiro Machado</option>
+                        <option value="Informatica - Mariana Weschenfelder Glasenapp">Mariana Weschenfelder Glasenapp</option>
+                        <option value="Informatica - Matheus Cassanego">Matheus Cassânego</option>
+                        <option value="Informatica - Matheus Concari Metz">Matheus Concari Metz</option>
+                        <option value="Informatica - Mauricio Bono Nunes">Maurício Bono Nunes</option>
+                        <option value="Informatica - Miguel Valentini">Miguel Valentini</option>
+                        <option value="Informatica - Murilo Lazzari Gasperin">Murilo Lazzari Gasperin</option>
+                        <option value="Informatica - Natalia de Azevedo">Natália de Azevedo</option>
+                        <option value="Informatica - Nicolas Buzin Gomes">Nícolas Buzin Gomes</option>
+                        <option value="Informatica - Nicolas Hunhoff Servelin">Nícolas Hunhoff Servelin</option>
+                        <option value="Informatica - Nicolas Menon Simiano">Nicolas Menon Simiano</option>
+                        <option value="Informatica - Nicolas Schein Brakemeier">Nicolas Schein Brakemeier</option>
+                        <option value="Informatica - Octavio Henrique Rodrigues Alves">Octavio Henrique Rodrigues Alves</option>
+                        <option value="Informatica - Pedro Henrique Negrini Perondi">Pedro Henrique Negrini Perondi</option>
+                        <option value="Informatica - Rayana Sofia Rizzi">Rayana Sofia Rizzi</option>
+                        <option value="Informatica - Vinicius Menegol Cardoso">Vinícius Menegol Cardoso</option>
+                        <option value="Informatica - Yago Rech de Jesus">Yago Rech de Jesus</option>            
+                    </optgroup>
                 </select>
             </div>
             <div class="ticket-content ticket-teacher ticket-teacher${ticketIndex}">
@@ -536,12 +544,13 @@ payBtn.addEventListener('click', () => {
         }
 
         const ticketValues = {
+            idTicket: 0,
             name: nameInput.value,
             cpf: cpfInput.value,
-            type: ticketType,
             restriction: restrictionTextarea.value,
-            whoKnows: 'Ninguém',
-            knowType: 'Ninguém'
+            whoKnows: 'Ninguem',
+            type: ticketType,
+            idComprador: 1
         };
 
         if (dataKnowValue === 'yes-student') {
@@ -590,7 +599,7 @@ payBtn.addEventListener('click', () => {
             ticketElement.setAttribute('id', 'unsuccess-completing')
             allTicketsValid = false
             showHideError('show')
-            ticketValues.whoKnows = 'Ninguém'
+            ticketValues.whoKnows = 'Ninguem'
         } else {
             const knowDiv = document.querySelector(`.know-div${ticketsIndexes[index]}`)
             knowDiv.setAttribute('id', 'success-completing')
@@ -635,9 +644,9 @@ confirmSubmitBtn.addEventListener('click', () => {
     confirmSubmitTicketDiv.style.display = 'none'
     ticketsValues.forEach((ticket) => {
         console.log(ticket)
-        InsertSQL("INSERT INTO Ingressos (nome, cpf, data_nascimento, restricao, conhecido) VALUES ('" + ticket.name.toString() + "', '" + ticket.cpf.toString() + "', '" + newBuyer.cpf.toString() + "', '" + newBuyer.email.toString() + "', " + "'nao-pago', '" + value.toString() + "')")
+        InsertSQL("INSERT INTO Ingressos (nome, cpf, restricao, conhecido, tipo, id_Comprador) VALUES ('" + ticket.name.toString() + "', '" + ticket.cpf.toString() + "', '" + ticket.restriction.toString() + "', '" + ticket.whoKnows.toString() + "', '" + ticket.type.toString() + "', " + ticket.idComprador.toString() + ")");
+        InsertSQL("UPDATE Compradores SET compra = totalValue WHERE id = 1")
+        SelectTables("SELECT * FROM Compradores")
     })
-    window.location.href = './payment.html'
+    //window.location.href = './payment.html'
 })
-
-SelectTables("SELECT * FROM Compradores")

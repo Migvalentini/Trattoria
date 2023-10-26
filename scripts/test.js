@@ -21,7 +21,7 @@ async function SelectTables(command) {
    body: JSON.stringify(formData)
    }
 
-   table = await fetch(apiUrl, options);
+   let table = await fetch(apiUrl, options);
    table = await table.json();
    table = table.json;
 
@@ -34,7 +34,6 @@ async function SelectTables(command) {
    }
 };
 
-// insere as informações no bd
 async function InsertSQL(command) {
    const apiUrl = 'https://trattoria-three.vercel.app/post';
 
@@ -51,7 +50,6 @@ async function InsertSQL(command) {
    };
 
    await fetch(apiUrl, options).then(data => data.json()).then(response => console.log(response.json));
-
 };
 
 function getting() {

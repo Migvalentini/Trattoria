@@ -53,6 +53,10 @@
    background-color: #6F6D3D;
 }
 
+.info p {
+   text-indent: 30px;
+}
+
 .max-tickets {
    display: none;
    background-color: red;
