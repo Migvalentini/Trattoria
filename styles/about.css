@@ -85,3 +85,10 @@ p {
 .line{
     font-size: 14px;
 }
+.imgt {
+    align-items: center;
+    max-height: 300px;
+    width: 300px;
+    aspect-ratio: 16/9;
+    height: auto;
+ }
