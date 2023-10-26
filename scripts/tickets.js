@@ -653,5 +653,5 @@ confirmSubmitBtn.addEventListener('click', () => {
         InsertSQL("UPDATE Compradores SET compra = '" + totalValueText + "' WHERE id = 1");
         console.log(retorno)
     })
-    //window.location.href = './payment.html'
+    window.location.href = './payment.html'
 })
