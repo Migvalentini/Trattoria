@@ -37,24 +37,25 @@ async function SelectTables(command) {
     const apiUrl = 'https://trattoria-three.vercel.app/get';
  
     const formData = {
-       sql: command
+        sql: command
     };
  
     const options = {
-       method: 'POST',
-       headers: {
-          'Content-Type': 'application/json'
-       },
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
     body: JSON.stringify(formData)
     }
  
     let table = await fetch(apiUrl, options);
+    console.log(table)
     table = await table.json();
     table = table.json;
  
     if (table != null) {
-       var tableString =  table.map(function(row) {
-          return row.join(',');
+        var tableString =  table.map(function(row) {
+            return row.join(',');
     }).join(';');
  
     localStorage.setItem('table', tableString);
@@ -575,7 +576,7 @@ payBtn.addEventListener('click', () => {
             } else {
                 studentNTechName.setAttribute('id', 'success-completing')
                 ticketElement.setAttribute('id', 'success-completing')
-                ticketValues.whoKnows = `Não Técnico: ${studentNTechName.value}`
+                ticketValues.whoKnows = `Nao Tecnico: ${studentNTechName.value}`
             }
         } else if (dataKnowValue === 'yes-teacher') {
             const teacherName = document.querySelector(`.iteacher-name${ticketsIndexes[index]}`)
