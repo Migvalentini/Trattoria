@@ -1,7 +1,8 @@
-const ticketsSold = 0
+const ticketsSold = 80
+const avaibleTickets = 85 - ticketsSold
 
 // const totalName = document.querySelector('.total-name')
-// SelectTables("SELECT nome FROM Compradores WHERE id = 1")
+// SelectTables("SELECT nome FROM Compradores WHERE id = 9")
 // const buyerName = getTable()
 // totalName.textContent = buyerName
 
