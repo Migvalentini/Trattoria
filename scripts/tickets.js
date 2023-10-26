@@ -1,6 +1,6 @@
 import {newBuyer} from "./buy.js"
-const comprador = newBuyer
-
+const comprador = new newBuyer
+console.log(comprador)
 const ticketsSold = 0
 
 const totalName = document.querySelector('.total-name')
