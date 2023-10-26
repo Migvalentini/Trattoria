@@ -644,11 +644,9 @@ confirmSubmitBtn.addEventListener('click', () => {
     confirmSubmitTicketDiv.style.display = 'none'
     ticketsValues.forEach((ticket) => {
         console.log(ticket)
-        InsertSQL("INSERT INTO Ingressos (nome, cpf, restricao, conhecido, tipo, id_Comprador) VALUES ('" + ticket.name.toString() + "', '" + ticket.cpf.toString() + "', '" + ticket.restriction.toString() + "', '" + ticket.whoKnows.toString() + "', '" + ticket.type.toString() + "', " + ticket.idComprador.toString() + ")");
+        const retorno = InsertSQL("INSERT INTO Ingressos (nome, cpf, restricao, conhecido, tipo, id_Comprador) VALUES ('" + ticket.name.toString() + "', '" + ticket.cpf.toString() + "', '" + ticket.restriction.toString() + "', '" + ticket.whoKnows.toString() + "', '" + ticket.type.toString() + "', " + ticket.idComprador.toString() + ")");
         InsertSQL("UPDATE Compradores SET compra = '" + totalValueText + "' WHERE id = 1");
+        console.log(retorno)
     })
-    window.location.href = './payment.html'
+    //window.location.href = './payment.html'
 })
-
-
-console.log(sessionStorage.getItem('idBuyer'))

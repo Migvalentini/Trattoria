@@ -7,7 +7,7 @@ response2 = requests.get('https://trattoria-three.vercel.app/get', json={'sql':"
 select * from Ingressos;
 """})
 
-response = requests.post('https://trattoria-three.vercel.app/post', json={'sql':"""delete from Compradores;"""})
+# response = requests.post('https://trattoria-three.vercel.app/post', json={'sql':"""delete from Compradores;"""})
 
 table = response.json()
 table2 = response2.json()
