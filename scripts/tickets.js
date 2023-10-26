@@ -360,12 +360,12 @@ addTicketButtons.forEach((button) => {
             });
         });
 
-        const a = document.querySelector(`.iname${ticketIndex}`)
-        a.value = 'Miguel Valentini'
-        const b = document.querySelector(`.icpf${ticketIndex}`)
-        b.value = '12345678910'
-        const c = document.querySelector(`.ibirth${ticketIndex}`)
-        c.value = '2017-03-26'
+        // const a = document.querySelector(`.iname${ticketIndex}`)
+        // a.value = 'Miguel Valentini'
+        // const b = document.querySelector(`.icpf${ticketIndex}`)
+        // b.value = '12345678910'
+        // const c = document.querySelector(`.ibirth${ticketIndex}`)
+        // c.value = '2017-03-26'
 
         ticketIndex += 1
     });
