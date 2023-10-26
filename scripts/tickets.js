@@ -1,5 +1,5 @@
-const ticketsSold = 80
-const avaibleTickets = 85 - ticketsSold
+const ticketsSold = 99
+const avaibleTickets = 100 - ticketsSold
 
 // const totalName = document.querySelector('.total-name')
 // SelectTables("SELECT nome FROM Compradores WHERE id = 9")
@@ -158,8 +158,11 @@ infoBtn.addEventListener('click', () => {
     infoDiv.style.display = 'block'
 })
 
-if (ticketsSold >= 85) {
+if (ticketsSold >= 100) {
     const maxTicketsDiv = document.querySelector('.max-tickets')
+    addTicketButtons.forEach((addTicket) => {
+        addTicket.style.display = 'none'
+    })
     maxTicketsDiv.style.display='block'
     maxTicketsBtn.addEventListener('click', () => {
         maxTicketsDiv.style.display = 'none'
