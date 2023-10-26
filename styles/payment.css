@@ -60,12 +60,23 @@
     left: 0; right: 0;
     margin: auto;
     width: 200px;
-    height: 100px;
+    height: 125px;
     padding: 15px;
     border: solid 1px black;
     color: white;
     border-radius: 10px;
     background: #BF4E30;
     display: none;
+    align-items: center;
+    justify-content: center;
     
+ }
+ #backtomenu{
+    border-radius: 15px;
+    border: none;
+    background-color: #6F6D3D;
+    color: white; 
+    padding: 10px 20px;
+    margin-left: 35px;
+    margin-top: 7px;
  }
