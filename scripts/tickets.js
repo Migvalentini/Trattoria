@@ -200,9 +200,15 @@ addTicketButtons.forEach((button) => {
                     <label for="iname">Nome:</label>
                     <input class="iname iname${ticketIndex}" type="text" name="iname" id="" placeholder="Nome e Sobrenome"><br>
                 </div>
+                <div id="errorname" class="errorname errorname${ticketIndex}" style="display: none;">
+                    <p>Formatação Incorreta, favor preencher o campo com nome e sobrenome!</p>
+                </div>
                 <div class="ticket-content ticket-cpf">
                     <label for="icpf">CPF:</label>
                     <input class="icpf icpf${ticketIndex}" type="number" name="icpf" id="" placeholder="XXX.XXX.XXX.XX"><br>
+                </div>
+                <div id="errorcpf" class="errorcpf errorcpf${ticketIndex}" style="display: none;">
+                    <p>Ocorreu um erro na formatação do cpf, tenha certeza que você digitou corretamente!</p>
                 </div>
                 <div class="ticket-content ticket-birth ticket-birth${ticketIndex}">
                     <label for="ibirth">Data de <br> Nascimento:</label>
@@ -369,8 +375,8 @@ addTicketButtons.forEach((button) => {
                 const ticketType = document.querySelector(`.ticket-type${ticketIndex}`);
                 const resultType = document.querySelector(`.result-type${ticketIndex}`);
                 const resultValue = document.querySelector(`.result-value${ticketIndex}`);
-                ticketType.textContent = 'Ingresso Babê';
-                resultType.textContent = 'Ingresso Babê'
+                ticketType.textContent = 'Ingresso Bebê';
+                resultType.textContent = 'Ingresso Bebê'
                 resultValue.textContent = `R$00,00`;
                 newTicket.classList.add("ticket-baby")
             }
@@ -554,7 +560,6 @@ payBtn.addEventListener('click', () => {
         const isNameValid = nameRegex.test(nameInput.value);
         const isCPFValid = ticketType === 'adult' ? cpfRegex.test(cpfInput.value) : true;
         const isBirthValid = birthInput.value !== '';
-
         restrictionTextarea.setAttribute('id', 'success-completing')
         
         if (isNameValid) {
@@ -563,6 +568,7 @@ payBtn.addEventListener('click', () => {
         } else {
             allTicketsValid = false
             nameInput.setAttribute('id', 'unsuccess-completing');
+            document.getElementById("errorname").style.display = "block";
             ticketElement.setAttribute('id', 'unsuccess-completing');
             showHideError('show')
         }
@@ -573,6 +579,7 @@ payBtn.addEventListener('click', () => {
             } else {
                 allTicketsValid = false;
                 cpfInput.setAttribute('id', 'unsuccess-completing');
+                document.getElementById("errorcpf").style.display = "block";
                 ticketElement.setAttribute('id', 'unsuccess-completing');
                 showHideError('show');
             }
