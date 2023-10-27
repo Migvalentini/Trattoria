@@ -16,7 +16,7 @@
    color: #eaaf56;
    font-size: 20px;
    cursor: pointer;
-   position: fixed;
+   position: absolute;
    left: 80px;
    top: 20px;
 }
@@ -152,35 +152,44 @@ th, td {
    background-color: #ffb4b4;
 }
 
+.availableTickets {
+   font-size: 14px;
+   padding: 3px;
+   text-align: center;
+   background-color: #eaaf56;
+}
+
 .buttons {
    margin: 5px;
    display: flex;
-   align-items: center;
    justify-content: center;
    gap: 5px;
 }
 
 .addTicketBtn {
-   width: 50%;
-   height: 70px;
+   flex: 1;
    display: flex;
    align-items: center;
-   background-color: #eaaf56;  
-   padding: 10px 20px; 
+   background-color: #eaaf56;
+   padding: 10px;
    font-size: 12px;
    border: none;
    cursor: pointer;
 }
 
+.icon-plus {
+   display: flex;
+   align-items: center;
+}
+
 .plus-icon {
-   margin-left: -5px;
-   margin-right: 10px; 
    font-size: 20px;
 }
 
 .text {
-   margin: auto;
+   flex: 1;
 }
+
 
 .addTicketBtn:hover {
    background-color: #c99c58;
@@ -221,15 +230,7 @@ th, td {
    margin: 10px 0px;
 }
 
-input.valid-input {
-   border: 2px solid green;
-}
-
-input.invalid-input {
-   border: 2px solid red;
-}
-
-label { margin-right: 5px; }
+label { margin-right: 3px; }
 
 input.iname, input.icpf, input.ibirth, input.iteacher-name, input.istudent-n-tech {
    height: 10px;
@@ -238,17 +239,17 @@ input.iname, input.icpf, input.ibirth, input.iteacher-name, input.istudent-n-tec
 }
 
 input.iname {
-   width: 120px;
-   border: 2px solid yellow; 
-} 
-
-input.icpf {
    width: 130px;
    border: 2px solid yellow; 
 } 
 
+input.icpf {
+   width: 140px;
+   border: 2px solid yellow; 
+} 
+
 input[type="date"] {
-   width: 85px;
+   width: 95px;
    border: 2px solid yellow; 
 }
 
@@ -301,7 +302,7 @@ input[type="date"] {
 
 .rest-label {
    width: 60px;
-   margin-right: 5px;
+   margin-right: 0px;
 }
 
 textarea {
@@ -309,7 +310,7 @@ textarea {
    outline: none;
    text-align: justify;
    height: 60px;
-   width: 105px;
+   width: 115px;
 }
 
 textarea::placeholder {

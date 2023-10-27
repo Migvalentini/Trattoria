@@ -20,8 +20,8 @@
             <p>Clique nos botões "Ingresso Adulto" ou "Ingresso Criança" para adicionar ingressos à sua compra. Os valores referentes a cada ingresso são exibidos em cada botão</p>
             <h3>3. Preencha os dados para cada ingresso adicionado:</h3>
             <p>Nome: Insira o nome completo do titular do ingresso no campo "Nome"</p>
-            <p>CPF: Digite o número do CPF no formato XXX.XXX.XXX-XX</p>
-            <p>Data de Nascimento: Forneça a data de nascimento da criança no formato apropriado</p>
+            <p>CPF: Digite o número do CPF no formato XXX.XXX.XXX-XX (para crianças e bebês esse campo é opcional)</p>
+            <p>Data de Nascimento: Forneça a data de nascimento da criança ou bebê no formato apropriado</p>
             <h3>4. Restrição Alimentar (opcional):</h3>
             <p>Caso o titular do ingresso tenha alguma restrição alimentar, você pode especificá-la no campo "Possui alguma restrição alimentar?"</p>
             <h3>5. Conhece Alguém no Evento:</h3>
@@ -45,8 +45,8 @@
             <table class="ticket-table">
                 <thead>
                     <tr>
-                        <th>Ingresso</th>
                         <th>Nome</th>
+                        <th>CPF</th>
                         <th>Tipo</th>
                         <th>Restrição Alimentar</th>
                         <th>Conhece Alguém</th>
@@ -73,23 +73,40 @@
                <a class="line" href="buy.html">Comprar</a>
             </nav>
         </header>
+        <p class="availableTickets">Ingressos Disponíveis para Compra: <span class="availableTicketsText"></span></p>
         <div class="buttons">
             <button class="addAdultTicketBtn addTicketBtn">
-                <span class="plus-icon">+</span>
+                <div class="icon-plus">
+                    <span class="plus-icon">+</span>
+                </div>
                 <div class="text">
                     <p>Ingresso Adulto</p>
+                    <p>(13 ou mais)</p>
                     <p>R$110,00</p>
                 </div>
             </button>
             <button class="addKidTicketBtn addTicketBtn">
-                <span class="plus-icon">+</span>
+                <div class="icon-plus">
+                    <span class="plus-icon">+</span>
+                </div>
                 <div class="text">
                     <p>Ingresso Criança</p>
                     <p>(4 a 12 anos)</p>
                     <p>R$55,00</p>
                 </div>
             </button>
+            <button class="addBabyTicketBtn addTicketBtn">
+                <div class="icon-plus">
+                    <span class="plus-icon">+</span>
+                </div>
+                <div class="text">
+                    <p>Ingresso Bebê</p>
+                    <p>(0 a 3 anos)</p>
+                    <p>R$00,00</p>
+                </div>
+            </button>
         </div>
+        
     
         <div class="tickets">
                     

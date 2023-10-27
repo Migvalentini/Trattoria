@@ -86,10 +86,20 @@
                 <img class="image" src="../images/menu-images/la-divina-commedia.png" alt="La Divina Commedia Image">
             </div>
         </div>
+        <div class="buy">
+            <button class="buyBtn">Comprar Ingressos</button>
+        </div>
 
         <footer>
             <a target="_blank" href="https://www.instagram.com/trattoria.arteitaliana/"><i class="fab fa-instagram fa-2x"></i></a>
         </footer>
     </div>
+
+    <script>
+        const buyPageBtn = document.querySelector('.buyBtn');
+        buyPageBtn.addEventListener('click', () => {
+            window.location.href = './buy.html';
+        });
+    </script>
 </body>
 </html>

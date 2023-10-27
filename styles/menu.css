@@ -78,3 +78,25 @@ h3, h4, p {
     object-fit: cover;
     border-radius: 5px;
 }
+
+.buy {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0px 60px 0px;
+}
+
+.buyBtn {
+    font-family: 'Nunito Sans', sans-serif;
+    padding: 10px;
+    outline: none;
+    background-color: #BF4E30;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.buyBtn:active {
+    background-color: #d3765d;
+}
