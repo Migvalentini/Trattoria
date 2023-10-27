@@ -5,7 +5,6 @@ function CreateTables() {
    fetch(apiUrl).then(data => data.json()).then(response => console.log(response.json));
 };
 
-//pegar as informações no bd
 async function SelectTables(command) {
    const apiUrl = 'https://trattoria-three.vercel.app/get';
 
@@ -63,7 +62,6 @@ function getting() {
    return matrizItens;
 };
 
-// puxa as informações do select
 function getTable() {
    getting();
    return getting();
