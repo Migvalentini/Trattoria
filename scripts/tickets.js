@@ -1,4 +1,4 @@
-const ticketsSold = 90
+const ticketsSold = 95
 let availableTickets = 100 - ticketsSold
 console.log(availableTickets)
 const availableTicketsText = document.querySelector('.availableTicketsText')
