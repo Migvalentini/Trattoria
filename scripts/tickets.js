@@ -1,8 +1,5 @@
-const testegit=10
 const ticketsSold = 90
-const ticketsSold = 95
 let availableTickets = 100 - ticketsSold
-console.log(availableTickets)
 const availableTicketsText = document.querySelector('.availableTicketsText')
 availableTicketsText.textContent = `${availableTickets}`
 
@@ -11,7 +8,12 @@ availableTicketsText.textContent = `${availableTickets}`
 // const buyerName = getTable()
 // totalName.textContent = buyerName
 
-const idBuyer = localStorage.getItem('id')
+// const idBuyer = localStorage.getItem('id')
+// if (idBuyer) {
+//     console.log(idBuyer)
+//     const valor = JSON.parse(idBuyer)
+//     console.log(valor)
+// } 
 
 const addTicketButtons = document.querySelectorAll(".addTicketBtn")
 
@@ -86,7 +88,7 @@ async function InsertSQL(command) {
     body: JSON.stringify(formData)
     };
  
-    await fetch(apiUrl, options).then(data => data.json()).then(response => console.log(response.json));
+    await fetch(apiUrl, options).then(data => data.json()).then(response => console.log('Insert SQL', response.json));
  };
  
 function getting() {
@@ -386,16 +388,21 @@ addTicketButtons.forEach((button) => {
     
             const a = document.querySelector(`.iname${ticketIndex}`)
             a.value = 'Miguel Valentini'
-            // const b = document.querySelector(`.icpf${ticketIndex}`)
-            // b.value = '12345678910'
-            // const c = document.querySelector(`.ibirth${ticketIndex}`)
-            // c.value = '2017-03-26'
+            const b = document.querySelector(`.icpf${ticketIndex}`)
+            b.value = '12345678910'
+            const c = document.querySelector(`.ibirth${ticketIndex}`)
+            //c.value = '2017-03-26'
     
             ticketIndex += 1
             availableTickets -= 1
             availableTicketsText.textContent = `${availableTickets}`
         } else {
-            console.log('Limite Atingido')
+            const maxTicketsDiv = document.querySelector('.max-tickets')
+
+                maxTicketsDiv.style.display='block'
+                maxTicketsBtn.addEventListener('click', () => {
+                    maxTicketsDiv.style.display = 'none'
+                })
         }
     });
 });
@@ -607,13 +614,13 @@ payBtn.addEventListener('click', () => {
         }
 
         const ticketValues = {
-            idTicket: 0,
+            idTicket: index,
             name: nameInput.value,
             cpf: cpfInput.value,
             restriction: restrictionTextarea.value,
             whoKnows: 'Ninguem',
             type: ticketType,
-            idComprador: idBuyer
+            idComprador: 56
         };
 
         if (dataKnowValue === 'yes-student') {
@@ -729,12 +736,16 @@ confirmSubmitBtn.addEventListener('click', () => {
     payBtn.style.display = 'block'
     const confirmSubmitTicketDiv = document.querySelector('.confirm-submit-ticket')
     const totalValueText = totalValue.toString()
+    console.log(totalValue, totalValueText)
     confirmSubmitTicketDiv.style.display = 'none'
     ticketsValues.forEach((ticket) => {
-        //InsertSQL("INSERT INTO Ingressos (nome, cpf, restricao, conhecido, tipo, id_Comprador) VALUES ('" + ticket.name.toString() + "', '" + ticket.cpf.toString() + "', '" + ticket.restriction.toString() + "', '" + ticket.whoKnows.toString() + "', '" + ticket.type.toString() + "', " + ticket.idComprador.toString() + ")")
+        const idTicket = InsertSQL("INSERT INTO Ingressos (nome, cpf, restricao, conhecido, tipo, id_Comprador) VALUES ('" + ticket.name.toString() + "', '" + ticket.cpf.toString() + "', '" + ticket.restriction.toString() + "', '" + ticket.whoKnows.toString() + "', '" + ticket.type.toString() + "', " + ticket.idComprador + ") returning id")
         //InsertSQL("UPDATE Compradores SET compra = '" + totalValueText + "' WHERE id = 1");
-        //console.log(ticket.idComprador)
+        idTicket.then(() => {
+            InsertSQL("UPDATE Compradores SET compra = '" + totalValueText + "' WHERE id = " + ticket.idComprador)
+        })
         console.log(ticket)
+        console.log('idticket', idTicket)
     })
     //window.location.href = './payment.html'
 })

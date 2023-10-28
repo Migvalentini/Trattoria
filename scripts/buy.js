@@ -70,10 +70,10 @@ const emailInput = document.getElementById("iemail");
 
 const value = 0
 
-// nameInput.value = 'Miguel Valentini'
-// phoneInput.value = '(54) 98765-4321'
-// cpfInput.value = '999.999.999-99'
-// emailInput.value = 'miguel@gmail.com'
+nameInput.value = 'Miguel Valentini'
+phoneInput.value = '(54) 98765-4321'
+cpfInput.value = '999.999.999-99'
+emailInput.value = 'miguel@gmail.com'
 
 const nameRegex = /^(([A-Za-zÀ-ÖØ-öø-ÿ]+[\-\']?)*([A-Za-zÀ-ÖØ-öø-ÿ]+)?\s)+([A-Za-zÀ-ÖØ-öø-ÿ]+[\-\']?)*([A-Za-zÀ-ÖØ-öø-ÿ]+)?$/i
 const phoneRegex = /^\(?\d{2}\)?\s\d{5}\-\d{4}$/;
@@ -177,7 +177,6 @@ submitBtn.addEventListener("click", function (event) {
 
 function handleConfirmClick() {
    const newBuyer = {
-      id: 0,
       name: nameInput.value,
       phone: phoneInput.value.replace(/[^0-9]/g, ''),
       cpf: cpfInput.value.replace(/[^0-9]/g, ''),
@@ -185,16 +184,19 @@ function handleConfirmClick() {
       payment: 'not-paid',
       value: 0
    }
-   InsertSQL("INSERT INTO Compradores (nome, telefone, cpf, email, pago, compra) VALUES ('" + newBuyer.name.toString() + "', '" + newBuyer.phone.toString() + "', '" + newBuyer.cpf.toString() + "', '" + newBuyer.email.toString() + "', 'nao-pago', '" + newBuyer.value.toString() + "') returning id");
-   SelectTables("SELECT * FROM Compradores")
-   sessionStorage.setItem('idBuyer', newBuyer.id)
-   //console.log(id)
-   //localStorage.setItem('id', id)
+   const id = InsertSQL("INSERT INTO Compradores (nome, telefone, cpf, email, pago, compra) VALUES ('" + newBuyer.name.toString() + "', '" + newBuyer.phone.toString() + "', '" + newBuyer.cpf.toString() + "', '" + newBuyer.email.toString() + "', 'nao-pago', '" + newBuyer.value.toString() + "') returning id");
+   id.then((valor) => {
+      localStorage.setItem('id', JSON.stringify(valor));
+   })
+   console.log(id)
+   setTimeout(() => {
+      console.log('Inserindo dados no banco')
+      window.location.href = './tickets.html'
+   }, 3000);
 }
 
 confirmBtn.addEventListener('click', () => {
    const confirmDiv = document.querySelector('.confirm')
    confirmDiv.style.display = 'none'
    handleConfirmClick()
-   window.location.href = './tickets.html'
 })
