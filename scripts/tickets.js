@@ -8,12 +8,12 @@ availableTicketsText.textContent = `${availableTickets}`
 // const buyerName = getTable()
 // totalName.textContent = buyerName
 
-// const idBuyer = localStorage.getItem('id')
-// if (idBuyer) {
-//     console.log(idBuyer)
-//     const valor = JSON.parse(idBuyer)
-//     console.log(valor)
-// } 
+const idBuyer = localStorage.getItem('id')
+if (idBuyer) {
+    console.log(idBuyer)
+    const valor = JSON.parse(idBuyer)
+    console.log(valor)
+} 
 
 const addTicketButtons = document.querySelectorAll(".addTicketBtn")
 
@@ -747,7 +747,10 @@ confirmSubmitBtn.addEventListener('click', () => {
     confirmSubmitTicketDiv.style.display = 'none'
     ticketsValues.forEach((ticket) => {
         const idTicket = InsertSQL("INSERT INTO Ingressos (nome, cpf, restricao, conhecido, tipo, id_Comprador) VALUES ('" + ticket.name.toString() + "', '" + ticket.cpf.toString() + "', '" + ticket.restriction.toString() + "', '" + ticket.whoKnows.toString() + "', '" + ticket.type.toString() + "', " + ticket.idComprador + ") returning id")
-        const insert = InsertSQL("UPDATE Compradores SET compra = '" + totalValueText + "' WHERE id = 56");
+        const updateQuery = "UPDATE Compradores SET compra = '" + totalValue + "' WHERE id = 56 RETURNING id";
+        console.log(updateQuery)
+        console.log(totalValue)
+        localStorage.setItem('totalValue', totalValue)
         idTicket.then(() => {
             InsertSQL("UPDATE Compradores SET compra = '" + totalValueText + "' WHERE id = " + ticket.idComprador)
         })

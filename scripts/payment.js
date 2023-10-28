@@ -42,6 +42,8 @@ function getTable() {
     return getting();
 };
 
+const totalValue = localStorage.getItem('totalValue')
+
 const btncopiar= document.querySelector('.copiar');
 
 btncopiar.addEventListener('click', (e) => {
@@ -49,9 +51,8 @@ btncopiar.addEventListener('click', (e) => {
     alert("Chave Pix copiada com sucesso! Por favor, acesse seu aplicativo bancário para efetuar o pagamento")
 })
 
-SelectTables("SELECT compra FROM Compradores WHERE id = 1")
-let valorzin=getTable()
-document.getElementById("precofinal").textContent = 'Valor a ser pago: R$' + valorzin;
+
+document.getElementById("precofinal").textContent = 'Valor a ser pago: R$' + totalValue;
 
 pixkey="a2e156c0-651e-453b-b5ce-c3a8178bd6e7"
 

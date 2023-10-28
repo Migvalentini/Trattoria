@@ -13,7 +13,7 @@ async function InsertSQL(command) {
    body: JSON.stringify(formData)
    };
 
-   await fetch(apiUrl, options).then(data => data.json()).then(response => console.log(response.json));
+   await fetch(apiUrl, options).then(data => data.json()).then(response => console.log('id', response.json));
 };
 
 async function SelectTables(command) {
@@ -185,13 +185,12 @@ function handleConfirmClick() {
       value: 0
    }
    const id = InsertSQL("INSERT INTO Compradores (nome, telefone, cpf, email, pago, compra) VALUES ('" + newBuyer.name.toString() + "', '" + newBuyer.phone.toString() + "', '" + newBuyer.cpf.toString() + "', '" + newBuyer.email.toString() + "', 'nao-pago', '" + newBuyer.value.toString() + "') returning id");
-   id.then((valor) => {
-      localStorage.setItem('id', JSON.stringify(valor));
-   })
-   console.log(id)
+   console.log('ID:', id[0])
+
+   localStorage.setItem('id', id);
+   
    setTimeout(() => {
-      console.log('Inserindo dados no banco')
-      window.location.href = './tickets.html'
+      //window.location.href = './tickets.html'
    }, 3000);
 }
 
