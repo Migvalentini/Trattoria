@@ -393,9 +393,9 @@ addTicketButtons.forEach((button) => {
             });
     
             const a = document.querySelector(`.iname${ticketIndex}`)
-            a.value = 'Miguel'
+            a.value = 'Miguel Silva'
             const b = document.querySelector(`.icpf${ticketIndex}`)
-            //b.value = '123456789109'
+            b.value = '12345678910'
             const c = document.querySelector(`.ibirth${ticketIndex}`)
             //c.value = '2017-03-26'
     
@@ -747,7 +747,7 @@ confirmSubmitBtn.addEventListener('click', () => {
     confirmSubmitTicketDiv.style.display = 'none'
     ticketsValues.forEach((ticket) => {
         const idTicket = InsertSQL("INSERT INTO Ingressos (nome, cpf, restricao, conhecido, tipo, id_Comprador) VALUES ('" + ticket.name.toString() + "', '" + ticket.cpf.toString() + "', '" + ticket.restriction.toString() + "', '" + ticket.whoKnows.toString() + "', '" + ticket.type.toString() + "', " + ticket.idComprador + ") returning id")
-        //InsertSQL("UPDATE Compradores SET compra = '" + totalValueText + "' WHERE id = 1");
+        const insert = InsertSQL("UPDATE Compradores SET compra = '" + totalValueText + "' WHERE id = 56");
         idTicket.then(() => {
             InsertSQL("UPDATE Compradores SET compra = '" + totalValueText + "' WHERE id = " + ticket.idComprador)
         })
