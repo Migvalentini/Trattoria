@@ -203,14 +203,14 @@ addTicketButtons.forEach((button) => {
                     <label for="iname">Nome:</label>
                     <input class="iname iname${ticketIndex}" type="text" name="iname" id="" placeholder="Nome e Sobrenome"><br>
                 </div>
-                <div id="errorname" class="errorname errorname${ticketIndex}" style="display: none;">
+                <div class="errorname errorname${ticketIndex}" style="display: none;">
                     <p>Formatação Incorreta, favor preencher o campo com nome e sobrenome!</p>
                 </div>
                 <div class="ticket-content ticket-cpf">
                     <label for="icpf">CPF:</label>
-                    <input class="icpf icpf${ticketIndex}" type="number" name="icpf" id="" placeholder="XXX.XXX.XXX.XX"><br>
+                    <input class="icpf icpf${ticketIndex}" type="text" name="icpf" id="" pattern="[0-9]*" inputmode="numeric" placeholder="XXX.XXX.XXX.XX" maxlength="11">
                 </div>
-                <div id="errorcpf" class="errorcpf errorcpf${ticketIndex}" style="display: none;">
+                <div class="errorcpf errorcpf${ticketIndex}" style="display: none;">
                     <p>Ocorreu um erro na formatação do cpf, tenha certeza que você digitou corretamente!</p>
                 </div>
                 <div class="ticket-content ticket-birth ticket-birth${ticketIndex}">
@@ -393,9 +393,9 @@ addTicketButtons.forEach((button) => {
             });
     
             const a = document.querySelector(`.iname${ticketIndex}`)
-            a.value = 'Miguel Valentini'
+            a.value = 'Miguel'
             const b = document.querySelector(`.icpf${ticketIndex}`)
-            b.value = '12345678910'
+            //b.value = '123456789109'
             const c = document.querySelector(`.ibirth${ticketIndex}`)
             //c.value = '2017-03-26'
     
@@ -576,7 +576,7 @@ payBtn.addEventListener('click', () => {
         } else {
             allTicketsValid = false
             nameInput.setAttribute('id', 'unsuccess-completing');
-            document.getElementById("errorname").style.display = "block";
+            document.querySelector(`.errorname${ticketsIndexes[index]}`).style.display = "block";
             ticketElement.setAttribute('id', 'unsuccess-completing');
             showHideError('show')
         }
@@ -587,7 +587,7 @@ payBtn.addEventListener('click', () => {
             } else {
                 allTicketsValid = false;
                 cpfInput.setAttribute('id', 'unsuccess-completing');
-                document.getElementById("errorcpf").style.display = "block";
+                document.querySelector(`.errorcpf${ticketsIndexes[index]}`).style.display = "block";
                 ticketElement.setAttribute('id', 'unsuccess-completing');
                 showHideError('show');
             }
