@@ -217,6 +217,9 @@ addTicketButtons.forEach((button) => {
                     <label for="ibirth">Data de <br> Nascimento:</label>
                     <input class="ibirth ibirth${ticketIndex}" type="date" name="ibirth" id=""><br>
                 </div>
+                <div class="errorbirth errorbirth${ticketIndex}" style="display: none;">
+                    <p>Favor Completar o campo!</p>
+                </div>
                 <div class="ticket-content restriction-div">
                     <label class="rest-label" for="irestriction">Possui alguma restrição alimentar?</label>
                     <textarea class="irestriction irestriction${ticketIndex}" name="irestriction" id="irestriction" maxlength="150" placeholder="Se sim, digite aqui..."></textarea>
@@ -570,9 +573,14 @@ payBtn.addEventListener('click', () => {
         const isBirthValid = birthInput.value !== '';
         restrictionTextarea.setAttribute('id', 'success-completing')
         
+        if (birthInput.value===null){
+            console.log('miguel viado')
+        };
+
         if (isNameValid) {
             nameInput.setAttribute('id', 'success-completing');
             ticketElement.setAttribute('id', 'success-completing');
+            document.querySelector(`.errorname${ticketsIndexes[index]}`).style.display = "none";
         } else {
             allTicketsValid = false
             nameInput.setAttribute('id', 'unsuccess-completing');
@@ -584,6 +592,7 @@ payBtn.addEventListener('click', () => {
             if (isCPFValid) {
                 cpfInput.setAttribute('id', 'success-completing');
                 ticketElement.setAttribute('id', 'success-completing');
+                document.querySelector(`.errorcpf${ticketsIndexes[index]}`).style.display = "none";
             } else {
                 allTicketsValid = false;
                 cpfInput.setAttribute('id', 'unsuccess-completing');
@@ -618,7 +627,10 @@ payBtn.addEventListener('click', () => {
             birthInput.setAttribute('id', 'unsuccess-completing');
             ticketElement.setAttribute('id', 'unsuccess-completing');
             showHideError('show')
-        }
+        } 
+        
+            
+
 
         const ticketValues = {
             idTicket: index,
