@@ -8,12 +8,12 @@ availableTicketsText.textContent = `${availableTickets}`
 // const buyerName = getTable()
 // totalName.textContent = buyerName
 
-const idBuyer = localStorage.getItem('id')
-if (idBuyer) {
-    console.log(idBuyer)
-    const valor = JSON.parse(idBuyer)
-    console.log(valor)
-} 
+// const idBuyer = localStorage.getItem('id')
+// if (idBuyer) {
+//     console.log(idBuyer)
+//     const valor = JSON.parse(idBuyer)
+//     console.log(valor)
+// } 
 
 const addTicketButtons = document.querySelectorAll(".addTicketBtn")
 
@@ -573,10 +573,6 @@ payBtn.addEventListener('click', () => {
         const isBirthValid = birthInput.value !== '';
         restrictionTextarea.setAttribute('id', 'success-completing')
         
-        if (birthInput.value===null){
-            console.log('miguel viado')
-        };
-
         if (isNameValid) {
             nameInput.setAttribute('id', 'success-completing');
             ticketElement.setAttribute('id', 'success-completing');
@@ -628,10 +624,7 @@ payBtn.addEventListener('click', () => {
             ticketElement.setAttribute('id', 'unsuccess-completing');
             showHideError('show')
         } 
-        
-            
-
-
+    
         const ticketValues = {
             idTicket: index,
             name: nameInput.value,
@@ -695,7 +688,10 @@ payBtn.addEventListener('click', () => {
             ticketElement.setAttribute('id', 'success-completing')
         }
 
-        if (ticketType === 'kid' && !(age >= minKidAge && age <= maxKidAge)) {
+        if (birthInput.value === ''){
+            document.querySelector(`.errorbirth${ticketsIndexes[index]}`).style.display = "block";
+        } else if (ticketType === 'kid' && !(age >= minKidAge && age <= maxKidAge)) {
+            document.querySelector(`.errorbirth${ticketsIndexes[index]}`).style.display = "none";
             const confirm = window.confirm(`Data inválida! A data digitada não corresponde com a data para criança. Deseja transformar esse ingresso em adulto?`)
             allTicketsValid = false;
             ticketElement.setAttribute('id', 'unsuccess-completing');
@@ -718,8 +714,10 @@ payBtn.addEventListener('click', () => {
                 resultValue.textContent = `R$${adultPrice},00`;
                 birthContent.style.display = 'none';
             }
-        }
-        if (ticketType === 'baby' && !(age >= 0 && age <= 3)) {
+        } else if (ticketType === 'kid' && (age >= minKidAge && age <= maxKidAge)) {
+            document.querySelector(`.errorbirth${ticketsIndexes[index]}`).style.display = "none";
+        } else if (ticketType === 'baby' && !(age >= 0 && age <= 3)) {
+            document.querySelector(`.errorbirth${ticketsIndexes[index]}`).style.display = "none";
             const confirm = window.confirm(`Data inválida! A data digitada não corresponde com a data para bebê. Deseja transformar esse ingresso em adulto?`)
             allTicketsValid = false;
             ticketElement.setAttribute('id', 'unsuccess-completing');
@@ -741,6 +739,8 @@ payBtn.addEventListener('click', () => {
                 resultValue.textContent = `R$${adultPrice},00`;
                 birthContent.style.display = 'none';
             }
+        } else if (ticketType === 'baby' && (age >= 0 && age <= 3)) {
+            document.querySelector(`.errorbirth${ticketsIndexes[index]}`).style.display = "none";
         }
 
         ticketsValues.push(ticketValues);

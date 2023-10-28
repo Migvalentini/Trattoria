@@ -190,7 +190,7 @@ function handleConfirmClick() {
    localStorage.setItem('id', id);
    
    setTimeout(() => {
-      //window.location.href = './tickets.html'
+      window.location.href = './tickets.html'
    }, 3000);
 }
 
