@@ -1,7 +1,6 @@
 const ticketsSold = 90
 let availableTickets = 100 - ticketsSold
-const availableTicketsText = document.querySelector('.availableTicketsText')
-availableTicketsText.textContent = `${availableTickets}`
+document.querySelector('.availableTicketsText').textContent = `${availableTickets}`
 
 // const totalName = document.querySelector('.total-name')
 // SelectTables("SELECT nome FROM Compradores WHERE id = 9")
@@ -9,19 +8,15 @@ availableTicketsText.textContent = `${availableTickets}`
 // totalName.textContent = buyerName
 
 // const idBuyer = localStorage.getItem('id')
-// if (idBuyer) {
-//     console.log(idBuyer)
-//     const valor = JSON.parse(idBuyer)
-//     console.log(valor)
-// } 
-
-const addTicketButtons = document.querySelectorAll(".addTicketBtn")
+// const id = JSON.parse(idBuyer)
+// console.log(id)
 
 const ticketsContainer = document.querySelector(".tickets")
 const ticketsContainerResult = document.querySelector(".tickets-list")
 
 const totalValueText = document.querySelector('.total-result')
 
+const addTicketButtons = document.querySelectorAll(".addTicketBtn")
 const payBtn = document.querySelector('.pay')
 const confirmSubmitBtn = document.querySelector('.confirmSubmitBtn')
 const backAndEditBtn = document.querySelector('.backAndEditBtn')
@@ -355,7 +350,7 @@ addTicketButtons.forEach((button) => {
                     <span class="result-value${ticketIndex}">R$${adultPrice},00</span>
                 </div>
             `;
-            
+
             ticketsContainer.appendChild(newTicket)
             ticketsContainerResult.appendChild(newTicketResult)
             if (button.classList.contains("addAdultTicketBtn")) {

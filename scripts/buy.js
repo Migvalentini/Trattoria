@@ -1,3 +1,6 @@
+// localStorage.removeItem('id')
+// sessionStorage.removeItem('id')
+
 async function InsertSQL(command) {
    const apiUrl = 'https://trattoria-three.vercel.app/insert';
 
@@ -13,7 +16,7 @@ async function InsertSQL(command) {
    body: JSON.stringify(formData)
    };
 
-   await fetch(apiUrl, options).then(data => data.json()).then(response => console.log('id', response.json));
+   await fetch(apiUrl, options).then(data => data.json()).then(response => console.log('Insert', response.json));
 };
 
 async function SelectTables(command) {
@@ -185,12 +188,18 @@ function handleConfirmClick() {
       value: 0
    }
    const id = InsertSQL("INSERT INTO Compradores (nome, telefone, cpf, email, pago, compra) VALUES ('" + newBuyer.name.toString() + "', '" + newBuyer.phone.toString() + "', '" + newBuyer.cpf.toString() + "', '" + newBuyer.email.toString() + "', 'nao-pago', '" + newBuyer.value.toString() + "') returning id");
-   console.log('ID:', id[0])
-
-   localStorage.setItem('id', id);
+   id.then(data => {
+      const serializedPromise = JSON.stringify(data);
+      localStorage.setItem('id', serializedPromise);
+      sessionStorage.setItem('id', serializedPromise);
+      console.log('Valor do ID:', id)
+      console.log('ID em formato JSON:', serializedPromise)
+   }).catch(error => {
+      console.log(error)
+   })
+   console.log('ID:', id)
 
    window.location.href = './tickets.html'
- 
 }
 
 confirmBtn.addEventListener('click', () => {
