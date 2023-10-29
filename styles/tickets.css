@@ -152,6 +152,13 @@ th, td {
    background-color: #ffb4b4;
 }
 
+.error {
+   display: none;
+   width: 170px;
+   background-color: rgb(255, 39, 39);
+   color: rgb(255, 199, 199);
+}
+
 .availableTickets {
    font-size: 14px;
    padding: 3px;

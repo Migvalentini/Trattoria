@@ -203,21 +203,21 @@ addTicketButtons.forEach((button) => {
                     <label for="iname">Nome:</label>
                     <input class="iname iname${ticketIndex}" type="text" name="iname" id="" placeholder="Nome e Sobrenome"><br>
                 </div>
-                <div class="errorname errorname${ticketIndex}" style="display: none;">
+                <div class="error errorname${ticketIndex}">
                     <p>Formatação Incorreta, favor preencher o campo com nome e sobrenome!</p>
                 </div>
                 <div class="ticket-content ticket-cpf">
                     <label for="icpf">CPF:</label>
                     <input class="icpf icpf${ticketIndex}" type="text" name="icpf" id="" pattern="[0-9]*" inputmode="numeric" placeholder="XXX.XXX.XXX.XX" maxlength="11">
                 </div>
-                <div class="errorcpf errorcpf${ticketIndex}" style="display: none;">
+                <div class="error errorcpf${ticketIndex}">
                     <p>Ocorreu um erro na formatação do cpf, tenha certeza que você digitou corretamente!</p>
                 </div>
                 <div class="ticket-content ticket-birth ticket-birth${ticketIndex}">
                     <label for="ibirth">Data de <br> Nascimento:</label>
                     <input class="ibirth ibirth${ticketIndex}" type="date" name="ibirth" id=""><br>
                 </div>
-                <div class="errorbirth errorbirth${ticketIndex}" style="display: none;">
+                <div class="error errorbirth${ticketIndex}">
                     <p>Favor Completar o campo!</p>
                 </div>
                 <div class="ticket-content restriction-div">
@@ -375,6 +375,8 @@ addTicketButtons.forEach((button) => {
                 resultType.textContent = 'Ingresso Criança'
                 resultValue.textContent = `R$${kidPrice},00`;
                 newTicket.classList.add("ticket-kid")
+                const c = document.querySelector(`.ibirth${ticketIndex}`)
+                c.value = '2017-03-26'
             }
             if (button.classList.contains("addBabyTicketBtn")) {
                 newTicket.classList.add("ticket-baby")
@@ -385,6 +387,8 @@ addTicketButtons.forEach((button) => {
                 resultType.textContent = 'Ingresso Bebê'
                 resultValue.textContent = `R$00,00`;
                 newTicket.classList.add("ticket-baby")
+                const c = document.querySelector(`.ibirth${ticketIndex}`)
+                c.value = '2023-03-26'
             }
     
             const knowButtons = newTicket.querySelectorAll('.know-btn');
@@ -398,9 +402,7 @@ addTicketButtons.forEach((button) => {
             const a = document.querySelector(`.iname${ticketIndex}`)
             a.value = 'Miguel Silva'
             const b = document.querySelector(`.icpf${ticketIndex}`)
-            b.value = '12345678910'
-            const c = document.querySelector(`.ibirth${ticketIndex}`)
-            //c.value = '2017-03-26'
+            b.value = '12345678900'
     
             ticketIndex += 1
             availableTickets -= 1
@@ -569,7 +571,7 @@ payBtn.addEventListener('click', () => {
         let age = 'Não preenchido' 
 
         const isNameValid = nameRegex.test(nameInput.value);
-        const isCPFValid = ticketType === 'adult' ? cpfRegex.test(cpfInput.value) : true;
+        const isCPFValid = cpfRegex.test(cpfInput.value)
         const isBirthValid = birthInput.value !== '';
         restrictionTextarea.setAttribute('id', 'success-completing')
         
@@ -585,6 +587,7 @@ payBtn.addEventListener('click', () => {
             showHideError('show')
         }
         if (ticketType === 'adult') {
+            document.querySelector(`.errorbirth${ticketsIndexes[index]}`).style.display = "none"
             if (isCPFValid) {
                 cpfInput.setAttribute('id', 'success-completing');
                 ticketElement.setAttribute('id', 'success-completing');
@@ -597,9 +600,16 @@ payBtn.addEventListener('click', () => {
                 showHideError('show');
             }
         }
+
         if (isCPFValid) {
             cpfInput.setAttribute('id', 'success-completing');
             ticketElement.setAttribute('id', 'success-completing');
+            document.querySelector(`.errorcpf${ticketsIndexes[index]}`).style.display = "none";
+        } else {
+            allTicketsValid = false;
+            cpfInput.setAttribute('id', 'unsuccess-completing');
+            ticketElement.setAttribute('id', 'unsuccess-completing');
+            document.querySelector(`.errorcpf${ticketsIndexes[index]}`).style.display = "block";
         }
         if (isBirthValid && ticketType === 'kid') {
             birthInput.setAttribute('id', 'success-completing');
@@ -688,7 +698,7 @@ payBtn.addEventListener('click', () => {
             ticketElement.setAttribute('id', 'success-completing')
         }
 
-        if (birthInput.value === ''){
+        if (birthInput.value === '' && ticketType !== 'adult'){
             document.querySelector(`.errorbirth${ticketsIndexes[index]}`).style.display = "block";
         } else if (ticketType === 'kid' && !(age >= minKidAge && age <= maxKidAge)) {
             document.querySelector(`.errorbirth${ticketsIndexes[index]}`).style.display = "none";
