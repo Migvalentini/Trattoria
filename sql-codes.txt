@@ -1,4 +1,4 @@
-BUY.JS
+BUY.JS:
 
 INSERIR DADOS DOS COMPRADORES NA TABELA DOS COMPRADORES:
 
@@ -6,8 +6,7 @@ INSERIR DADOS DOS COMPRADORES NA TABELA DOS COMPRADORES:
    (${newBuyer.name}, ${newBuyer.phone}, ${newBuyer.cpf}, ${newBuyer.email}, ${'nao-pago'}, ${value}, ${E\\x01F2E3D4C5B6A7});`
 
 
-
-TICKETS.JS
+TICKETS.JS:
 
 OBTER O NOME DO COMPRADOR DA TABELA DO COMPRADOR PARA EXIBIR NA TELA:
 "SELECT nome FROM Compradores WHERE ID = id"
@@ -21,22 +20,10 @@ ATUALIZA O VALOR A SER PAGO NA TABELA DO COMPRADOR:
 "UPDATE Compradores SET compra = ${totalValue} WHERE id = 1;"
 
 
-
-PAYMENT.JS
+PAYMENT.JS:
 
 PEGA O VALOR TOTAL A SER PAGO DA TABELA DO COMPRADOR PARA EXIBIR NA TELA:
 `SELECT compra FROM Compradores WHERE id = 1`
-
-ATUALIZA O COMPROVANTE NA TABELA DO COMPRADOR:
-
-`UPDATE Compradores SET comprovante = ${E'\\x01A2B3C4D5E6F6'} WHERE id = 1`
-
-
-
-ADM TABLE:
-
-`SELECT * FROM Compradores;`
-`SELECT * FROM Ingressos;`
 
 
 create table if not exists Compradores (

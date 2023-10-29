@@ -1,15 +1,97 @@
-const ticketsSold = 90
+async function SelectTables(command) {
+    const apiUrl = 'https://trattoria-three.vercel.app/get';
+ 
+    const formData = {
+        sql: command
+    };
+ 
+    const options = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    body: JSON.stringify(formData)
+    }
+ 
+    let table = await fetch(apiUrl, options);
+    table = await table.json();
+    table = table.json;
+ 
+    if (table != null) {
+        var tableString =  table.map(function(row) {
+            return row.join(',');
+    }).join(';');
+ 
+    localStorage.setItem('table', tableString);
+    }
+};
+ 
+async function InsertSQLTicket(command) {
+    const apiUrl = 'https://trattoria-three.vercel.app/insert';
+ 
+    const formData = {
+       sql: command
+    };
+ 
+    const options = {
+       method: 'POST',
+       headers: {
+          'Content-Type': 'application/json'
+       },
+    body: JSON.stringify(formData)
+    };
+ 
+    await fetch(apiUrl, options).then(response => response.json()).then(data => console.log(data))
+};
+
+async function UpdateSQL(command) {
+    const apiUrl = 'https://trattoria-three.vercel.app/post';
+ 
+    const formData = {
+       sql: command
+    };
+ 
+    const options = {
+       method: 'POST',
+       headers: {
+          'Content-Type': 'application/json'
+       },
+    body: JSON.stringify(formData)
+    };
+ 
+    await fetch(apiUrl, options).then(response => response.json()).then(data => console.log(data))
+};
+
+function getting() {
+    var matrizItens = [];
+    var table = localStorage.getItem('table');
+    var linhas = table.split(';');
+    for (var i = 0; i < linhas.length; i++) {
+       var itens = linhas[i].split(',');
+       matrizItens.push(itens);
+    };
+    return matrizItens;
+};
+ 
+function getTable() {
+    getting();
+    return getting();
+};
+
+const idBuyer = Number(localStorage.getItem('id'))
+console.log(idBuyer)
+
+// SelectTables("SELECT COUNT(*) FROM Ingressos")
+// const ticketsSold = getTable()
+const ticketsSold = 10
 let availableTickets = 100 - ticketsSold
-document.querySelector('.availableTicketsText').textContent = `${availableTickets}`
+const availableTicketsText = document.querySelector('.availableTicketsText')
+availableTicketsText.textContent = `${availableTickets}`
 
 // const totalName = document.querySelector('.total-name')
-// SelectTables("SELECT nome FROM Compradores WHERE id = 9")
+// SelectTables("SELECT nome FROM Compradores WHERE id = " + idBuyer + ";")
 // const buyerName = getTable()
 // totalName.textContent = buyerName
-
-// const idBuyer = localStorage.getItem('id')
-// const id = JSON.parse(idBuyer)
-// console.log(id)
 
 const ticketsContainer = document.querySelector(".tickets")
 const ticketsContainerResult = document.querySelector(".tickets-list")
@@ -39,68 +121,6 @@ const ticketsValues = [];
 const nameRegex = /^(([A-Za-zÀ-ÖØ-öø-ÿ]+[\-\']?)*([A-Za-zÀ-ÖØ-öø-ÿ]+)?\s)+([A-Za-zÀ-ÖØ-öø-ÿ]+[\-\']?)*([A-Za-zÀ-ÖØ-öø-ÿ]+)?$/i
 const cpfRegex = /^[0-9]{11}$/;
 
-
-async function SelectTables(command) {
-    const apiUrl = 'https://trattoria-three.vercel.app/get';
- 
-    const formData = {
-        sql: command
-    };
- 
-    const options = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-    body: JSON.stringify(formData)
-    }
- 
-    let table = await fetch(apiUrl, options);
-    table = await table.json();
-    table = table.json;
- 
-    if (table != null) {
-        var tableString =  table.map(function(row) {
-            return row.join(',');
-    }).join(';');
- 
-    localStorage.setItem('table', tableString);
-    }
-};
- 
-async function InsertSQL(command) {
-    const apiUrl = 'https://trattoria-three.vercel.app/insert';
- 
-    const formData = {
-       sql: command
-    };
- 
-    const options = {
-       method: 'POST',
-       headers: {
-          'Content-Type': 'application/json'
-       },
-    body: JSON.stringify(formData)
-    };
- 
-    await fetch(apiUrl, options).then(data => data.json()).then(response => console.log('Insert SQL', response.json));
- };
- 
-function getting() {
-    var matrizItens = [];
-    var table = localStorage.getItem('table');
-    var linhas = table.split(';');
-    for (var i = 0; i < linhas.length; i++) {
-       var itens = linhas[i].split(',');
-       matrizItens.push(itens);
-    };
-    return matrizItens;
-};
- 
-function getTable() {
-    getting();
-    return getting();
-};
 
 function showHideError(type, age = 0) {
     const errorCompleting = document.querySelector('.error-completing')
@@ -637,7 +657,7 @@ payBtn.addEventListener('click', () => {
             restriction: restrictionTextarea.value,
             whoKnows: 'Ninguem',
             type: ticketType,
-            idComprador: 56
+            idComprador: idBuyer
         };
 
         if (dataKnowValue === 'yes-student') {
@@ -760,19 +780,11 @@ confirmSubmitBtn.addEventListener('click', () => {
     payBtn.style.display = 'block'
     const confirmSubmitTicketDiv = document.querySelector('.confirm-submit-ticket')
     const totalValueText = totalValue.toString()
-    console.log(totalValue, totalValueText)
     confirmSubmitTicketDiv.style.display = 'none'
     ticketsValues.forEach((ticket) => {
-        const idTicket = InsertSQL("INSERT INTO Ingressos (nome, cpf, restricao, conhecido, tipo, id_Comprador) VALUES ('" + ticket.name.toString() + "', '" + ticket.cpf.toString() + "', '" + ticket.restriction.toString() + "', '" + ticket.whoKnows.toString() + "', '" + ticket.type.toString() + "', " + ticket.idComprador + ") returning id")
-        const updateQuery = "UPDATE Compradores SET compra = '" + totalValue + "' WHERE id = 56 RETURNING id";
-        console.log(updateQuery)
-        console.log(totalValue)
-        localStorage.setItem('totalValue', totalValue)
-        idTicket.then(() => {
-            InsertSQL("UPDATE Compradores SET compra = '" + totalValueText + "' WHERE id = " + ticket.idComprador)
-        })
-        console.log(ticket)
-        console.log('idticket', idTicket)
+        InsertSQLTicket("INSERT INTO Ingressos (nome, cpf, restricao, conhecido, tipo, id_Comprador) VALUES ('" + ticket.name.toString() + "', '" + ticket.cpf.toString() + "', '" + ticket.restriction.toString() + "', '" + ticket.whoKnows.toString() + "', '" + ticket.type.toString() + "', '" + ticket.idComprador + "') returning id")
+        //UpdateSQL("update Compradores set compra = '" + totalValueText + "' where id = " + ticket.idComprador + ";")
     })
+    localStorage.setItem('value', totalValue)
     //window.location.href = './payment.html'
 })

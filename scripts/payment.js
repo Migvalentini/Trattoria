@@ -42,7 +42,7 @@ function getTable() {
     return getting();
 };
 
-const totalValue = localStorage.getItem('totalValue')
+const totalValue = localStorage.getItem('value')
 
 const btncopiar= document.querySelector('.copiar');
 
@@ -50,7 +50,6 @@ btncopiar.addEventListener('click', (e) => {
     navigator.clipboard.writeText(pixkey);
     alert("Chave Pix copiada com sucesso! Por favor, acesse seu aplicativo bancário para efetuar o pagamento")
 })
-
 
 document.getElementById("precofinal").textContent = 'Valor a ser pago: R$' + totalValue;
 
