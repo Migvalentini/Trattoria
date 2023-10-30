@@ -81,17 +81,15 @@ function getTable() {
 const idBuyer = Number(localStorage.getItem('id'))
 console.log(idBuyer)
 
-// SelectTables("SELECT COUNT(*) FROM Ingressos")
-// const ticketsSold = getTable()
-const ticketsSold = 10
+SelectTables("SELECT COUNT(*) FROM Ingressos")
+const ticketsSold = getTable()
 let availableTickets = 100 - ticketsSold
 const availableTicketsText = document.querySelector('.availableTicketsText')
 availableTicketsText.textContent = `${availableTickets}`
 
-// const totalName = document.querySelector('.total-name')
-// SelectTables("SELECT nome FROM Compradores WHERE id = " + idBuyer + ";")
-// const buyerName = getTable()
-// totalName.textContent = buyerName
+const totalName = document.querySelector('.total-name')
+const buyerName = localStorage.getItem('buyerName')
+totalName.textContent = buyerName
 
 const ticketsContainer = document.querySelector(".tickets")
 const ticketsContainerResult = document.querySelector(".tickets-list")
@@ -783,8 +781,9 @@ confirmSubmitBtn.addEventListener('click', () => {
     confirmSubmitTicketDiv.style.display = 'none'
     ticketsValues.forEach((ticket) => {
         InsertSQLTicket("INSERT INTO Ingressos (nome, cpf, restricao, conhecido, tipo, id_Comprador) VALUES ('" + ticket.name.toString() + "', '" + ticket.cpf.toString() + "', '" + ticket.restriction.toString() + "', '" + ticket.whoKnows.toString() + "', '" + ticket.type.toString() + "', '" + ticket.idComprador + "') returning id")
-        //UpdateSQL("update Compradores set compra = '" + totalValueText + "' where id = " + ticket.idComprador + ";")
+        UpdateSQL("update Compradores set compra = '" + totalValueText + "' where id = " + ticket.idComprador + ";")
     })
     localStorage.setItem('value', totalValue)
+    sessionStorage.setItem('teste', 'teste')
     //window.location.href = './payment.html'
 })

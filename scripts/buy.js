@@ -183,7 +183,7 @@ function handleConfirmClick() {
       value: 0
    }
    InsertSQLBuy("INSERT INTO Compradores (nome, telefone, cpf, email, pago, compra) VALUES ('" + newBuyer.name.toString() + "', '" + newBuyer.phone.toString() + "', '" + newBuyer.cpf.toString() + "', '" + newBuyer.email.toString() + "', 'nao-pago', '" + newBuyer.value.toString() + "') returning id;");
-   console.log(localStorage.getItem('id'))
+   localStorage.setItem('buyerName', newBuyer.name)
 
    window.location.href = './tickets.html'
 }
@@ -193,5 +193,3 @@ confirmBtn.addEventListener('click', () => {
    confirmDiv.style.display = 'none'
    handleConfirmClick()
 })
-
-console.log(localStorage.getItem('id'))
