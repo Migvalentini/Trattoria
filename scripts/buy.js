@@ -187,7 +187,7 @@ function handleConfirmClick() {
 
    setTimeout(() => {
       window.location.href = './tickets.html'
-   }, 2000);
+   }, 1000);
 }
 
 confirmBtn.addEventListener('click', () => {

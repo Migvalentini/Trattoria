@@ -613,16 +613,11 @@ payBtn.addEventListener('click', () => {
                 showHideError('show');
             }
         }
-
-        if (isCPFValid) {
+        if (ticketType === 'kid' || ticketType === 'baby') {
+            console.log('é criança/bebe')
             cpfInput.setAttribute('id', 'success-completing');
             ticketElement.setAttribute('id', 'success-completing');
             document.querySelector(`.errorcpf${ticketsIndexes[index]}`).style.display = "none";
-        } else {
-            allTicketsValid = false;
-            cpfInput.setAttribute('id', 'unsuccess-completing');
-            ticketElement.setAttribute('id', 'unsuccess-completing');
-            document.querySelector(`.errorcpf${ticketsIndexes[index]}`).style.display = "block";
         }
         if (isBirthValid && ticketType === 'kid') {
             birthInput.setAttribute('id', 'success-completing');
