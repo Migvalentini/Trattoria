@@ -784,7 +784,7 @@ confirmSubmitBtn.addEventListener('click', () => {
         UpdateSQL("update Compradores set compra = '" + totalValueText + "' where id = " + ticket.idComprador + ";")
     })
     setTimeout(() => {
-        //window.location.href = './payment.html'
+        window.location.href = './payment.html'
      }, 1000);
     localStorage.setItem('value', totalValue)
     sessionStorage.setItem('teste', 'teste')
