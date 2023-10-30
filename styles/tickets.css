@@ -424,3 +424,7 @@ textarea::placeholder {
 .result-texts {
    margin: 10px 0px;
 }
+
+a, button {
+   outline: none;
+ } 
