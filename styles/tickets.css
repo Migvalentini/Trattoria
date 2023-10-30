@@ -58,6 +58,10 @@
    text-indent: 30px;
 }
 
+.startBtn {
+   color: black;
+}
+
 .max-tickets {
    display: none;
    background-color: red;
@@ -182,6 +186,7 @@ th, td {
    font-size: 12px;
    border: none;
    cursor: pointer;
+   color: black;
 }
 
 .icon-plus {
@@ -295,6 +300,7 @@ input[type="date"] {
    outline: none;
    border: none;
    border-radius: 5px;
+   color: black;
 }
 
 .rest-know {
@@ -305,6 +311,10 @@ input[type="date"] {
    flex-direction: column;
    gap: 10px;
    margin: 0px 5px 10px 0px;
+}
+
+.know-btn {
+   color: black;
 }
 
 .rest-label {
