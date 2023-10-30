@@ -68,10 +68,10 @@ const phoneInput = document.getElementById("iphone");
 const cpfInput = document.getElementById("icpf");
 const emailInput = document.getElementById("iemail");
 
-nameInput.value = 'Miguel Valentini'
-phoneInput.value = '(54) 98765-4321'
-cpfInput.value = '999.999.999-99'
-emailInput.value = 'miguel@gmail.com'
+// nameInput.value = 'Miguel Valentini'
+// phoneInput.value = '(54) 98765-4321'
+// cpfInput.value = '999.999.999-99'
+// emailInput.value = 'miguel@gmail.com'
 
 const nameRegex = /^(([A-Za-zÀ-ÖØ-öø-ÿ]+[\-\']?)*([A-Za-zÀ-ÖØ-öø-ÿ]+)?\s)+([A-Za-zÀ-ÖØ-öø-ÿ]+[\-\']?)*([A-Za-zÀ-ÖØ-öø-ÿ]+)?$/i
 const phoneRegex = /^\(?\d{2}\)?\s\d{5}\-\d{4}$/;
@@ -185,7 +185,9 @@ function handleConfirmClick() {
    InsertSQLBuy("INSERT INTO Compradores (nome, telefone, cpf, email, pago, compra) VALUES ('" + newBuyer.name.toString() + "', '" + newBuyer.phone.toString() + "', '" + newBuyer.cpf.toString() + "', '" + newBuyer.email.toString() + "', 'nao-pago', '" + newBuyer.value.toString() + "') returning id;");
    localStorage.setItem('buyerName', newBuyer.name)
 
-   window.location.href = './tickets.html'
+   setTimeout(() => {
+      window.location.href = './tickets.html'
+   }, 2000);
 }
 
 confirmBtn.addEventListener('click', () => {

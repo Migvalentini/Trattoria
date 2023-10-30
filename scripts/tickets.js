@@ -388,8 +388,8 @@ addTicketButtons.forEach((button) => {
                 resultType.textContent = 'Ingresso Criança'
                 resultValue.textContent = `R$${kidPrice},00`;
                 newTicket.classList.add("ticket-kid")
-                const c = document.querySelector(`.ibirth${ticketIndex}`)
-                c.value = '2017-03-26'
+                // const c = document.querySelector(`.ibirth${ticketIndex}`)
+                // c.value = '2017-03-26'
             }
             if (button.classList.contains("addBabyTicketBtn")) {
                 newTicket.classList.add("ticket-baby")
@@ -400,8 +400,8 @@ addTicketButtons.forEach((button) => {
                 resultType.textContent = 'Ingresso Bebê'
                 resultValue.textContent = `R$00,00`;
                 newTicket.classList.add("ticket-baby")
-                const c = document.querySelector(`.ibirth${ticketIndex}`)
-                c.value = '2023-03-26'
+                // const c = document.querySelector(`.ibirth${ticketIndex}`)
+                // c.value = '2023-03-26'
             }
     
             const knowButtons = newTicket.querySelectorAll('.know-btn');
@@ -412,10 +412,10 @@ addTicketButtons.forEach((button) => {
                 });
             });
     
-            const a = document.querySelector(`.iname${ticketIndex}`)
-            a.value = 'Miguel Silva'
-            const b = document.querySelector(`.icpf${ticketIndex}`)
-            b.value = '12345678900'
+            // const a = document.querySelector(`.iname${ticketIndex}`)
+            // a.value = 'Miguel Silva'
+            // const b = document.querySelector(`.icpf${ticketIndex}`)
+            // b.value = '12345678900'
     
             ticketIndex += 1
             availableTickets -= 1
@@ -783,7 +783,9 @@ confirmSubmitBtn.addEventListener('click', () => {
         InsertSQLTicket("INSERT INTO Ingressos (nome, cpf, restricao, conhecido, tipo, id_Comprador) VALUES ('" + ticket.name.toString() + "', '" + ticket.cpf.toString() + "', '" + ticket.restriction.toString() + "', '" + ticket.whoKnows.toString() + "', '" + ticket.type.toString() + "', '" + ticket.idComprador + "') returning id")
         UpdateSQL("update Compradores set compra = '" + totalValueText + "' where id = " + ticket.idComprador + ";")
     })
+    setTimeout(() => {
+        //window.location.href = './payment.html'
+     }, 1000);
     localStorage.setItem('value', totalValue)
     sessionStorage.setItem('teste', 'teste')
-    //window.location.href = './payment.html'
 })
