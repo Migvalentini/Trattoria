@@ -1,5 +1,7 @@
 Arrumar responsividade para desktop
 Conferir a contagem de ingressos na tela dos ingressos
 arrumar as fotos do cardapio
+
+
 arrumar chave pix
 Adicionar o pedido de comprar no máximo 4 ingressos

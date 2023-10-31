@@ -80,10 +80,13 @@ function getTable() {
 
 const idBuyer = Number(localStorage.getItem('id'))
 console.log(idBuyer)
-
-SelectTables("SELECT COUNT(*) FROM Ingressos")
-const ticketsSold = getTable()
+let ticketsSold = 0
+setTimeout(() => {
+    SelectTables("SELECT COUNT(*) FROM Ingressos")
+    ticketsSold = getTable()
+ }, 1000);
 let availableTickets = 100 - ticketsSold
+console.log(ticketsSold, availableTickets)
 const availableTicketsText = document.querySelector('.availableTicketsText')
 availableTicketsText.textContent = `${availableTickets}`
 
