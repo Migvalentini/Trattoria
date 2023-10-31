@@ -35,6 +35,7 @@
    height: 100px;
    width: 100vw;
    background-image: url('../images/background-buy-page-img.jpeg');
+   background-size: cover;
 }
 
 .inputs {
@@ -127,4 +128,23 @@ button {
 
 .backAndEditBtn {
    color: black;
+}
+
+@media (min-width: 768px) {
+   label {
+      font-size: 20px;
+   }
+
+   input {
+      height: 50px;
+      font-size: 20px;
+   }
+
+   input::placeholder {
+      font-size: 20px;
+   }
+
+   .confirmImg, .fa-chevron-left {
+      height: 80px;
+   }
 }

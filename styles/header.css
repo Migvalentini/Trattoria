@@ -6,6 +6,7 @@
 }
 
 header {
+    position: relative;
     width: 100vw;
     height: 60px;
     background-color: #BF4E30;
@@ -35,4 +36,19 @@ header a {
 
 .line {
     border-left: 1px solid white;
+}
+
+@media (min-width: 600px) {
+    header {
+        height: 100px;
+    }
+
+    header img {
+        height: 100px;
+        width: 100px;
+    }
+
+    .a, a.line {
+        font-size: 20px;
+    }
 }

@@ -4,6 +4,10 @@
     src: url('..//fonts/Amsterdam.ttf');
 }
 
+.container {
+    max-width: 90vw;
+}
+
 h1 {
     font-family: myFont;
     margin-left: 15px;
@@ -99,4 +103,50 @@ h3, h4, p {
 
 .buyBtn:active {
     background-color: #d3765d;
+}
+
+@media (min-width: 600px) {
+    .images {
+        height: 400px;
+    }
+
+    h2 {
+        font-size: 30px;
+    }
+
+    h4 {
+        font-size: 25px;
+    }
+
+    h3 {
+        font-size: 30px;
+    }
+
+    p {
+        font-size: 30px;
+    }
+
+    .plant {
+        top: 105px;
+    }
+
+    header {
+        height: 100px;
+        font-size: 20px;
+    }
+
+    header img {
+        height: 100px;
+        width: 100px;
+    }
+
+    .black-line {
+        width: 1000px;
+    }
+}
+
+@media (min-width: 1300px) {
+    .images {
+        height: 700px;
+    }
 }
