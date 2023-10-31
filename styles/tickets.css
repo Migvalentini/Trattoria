@@ -439,13 +439,6 @@ a, button {
    outline: none;
 }
 
-@media (min-width: 768px) {
-   i {
-      display: none;
-   }
-}
-
-
 #refertickets{
    font-size: 14px;
    padding: 3px;
@@ -453,3 +446,12 @@ a, button {
    background-color: #eaaf56;
    margin-bottom: 5px;
 } 
+
+@media (min-width: 600px) {
+   .fa-circle-info {
+      left: 120px;
+      margin-left: 0px;
+      padding-left: 0px;
+      top: 40px;
+   }
+}
