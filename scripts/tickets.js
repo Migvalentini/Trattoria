@@ -1,9 +1,8 @@
 let ticketsSold = 0
-document.addEventListener("DOMContentLoaded", function () {
-    SelectTables("SELECT COUNT(*) FROM Ingressos")
-    ticketsSold = getTable()
-    console.log('Vendidos', ticketsSold)
-});
+SelectTables("SELECT COUNT(*) FROM Ingressos")
+ticketsSold = getTable()
+ticketsSold = ticketsSold[0][0]
+console.log('Vendidos', ticketsSold)
 
 let availableTickets = 100 - ticketsSold
 console.log(availableTickets)
