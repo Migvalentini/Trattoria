@@ -1,4 +1,15 @@
-window.location.href = '#'
+let ticketsSold = 0
+document.addEventListener("DOMContentLoaded", function () {
+    SelectTables("SELECT COUNT(*) FROM Ingressos")
+    ticketsSold = getTable()
+    console.log('Vendidos', ticketsSold)
+});
+
+let availableTickets = 100 - ticketsSold
+console.log(availableTickets)
+const availableTicketsText = document.querySelector('.availableTicketsText')
+availableTicketsText.textContent = `${availableTickets}`
+console.log('vendidos', ticketsSold, 'disponivel', availableTickets)
 
 async function SelectTables(command) {
     const apiUrl = 'https://trattoria-three.vercel.app/get';
@@ -81,15 +92,6 @@ function getTable() {
 };
 
 const idBuyer = Number(localStorage.getItem('id'))
-console.log(idBuyer)
-
-SelectTables("SELECT COUNT(*) FROM Ingressos")
-const ticketsSold = getTable()
-
-let availableTickets = 100 - ticketsSold
-console.log(ticketsSold, availableTickets)
-const availableTicketsText = document.querySelector('.availableTicketsText')
-availableTicketsText.textContent = `${availableTickets}`
 
 const totalName = document.querySelector('.total-name')
 const buyerName = localStorage.getItem('buyerName')
@@ -122,7 +124,6 @@ const ticketsValues = [];
 
 const nameRegex = /^(([A-Za-zÀ-ÖØ-öø-ÿ]+[\-\']?)*([A-Za-zÀ-ÖØ-öø-ÿ]+)?\s)+([A-Za-zÀ-ÖØ-öø-ÿ]+[\-\']?)*([A-Za-zÀ-ÖØ-öø-ÿ]+)?$/i
 const cpfRegex = /^[0-9]{11}$/;
-
 
 function showHideError(type, age = 0) {
     const errorCompleting = document.querySelector('.error-completing')
@@ -194,7 +195,7 @@ if (ticketsSold >= 100) {
         payBtn.remove()
     })
 }
-
+for (let index = 0; index < 98; index++) {
 addTicketButtons.forEach((button) => {
     button.addEventListener("click", () => {
         if (availableTickets > 0) {
@@ -433,7 +434,8 @@ addTicketButtons.forEach((button) => {
                 })
         }
     });
-});
+})
+}
 
 // EXIBIR E ESCONDER DIVS DE 'QUEM VC CONHECE'
 ticketsContainer.addEventListener("click", (event) => {
