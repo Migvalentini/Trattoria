@@ -1,8 +1,13 @@
 let ticketsSold = 0
-SelectTables("SELECT COUNT(*) FROM Ingressos")
-ticketsSold = getTable()
-ticketsSold = ticketsSold[0][0]
-console.log('Vendidos', ticketsSold)
+setTimeout(aguardar(), 1000);
+
+function aguardar() {
+    SelectTables("SELECT COUNT(*) FROM Ingressos")
+    ticketsSold = getTable()
+    ticketsSold = ticketsSold[0][0]
+    console.log('Vendidos', ticketsSold)
+    return ticketsSold
+}
 
 let availableTickets = 100 - ticketsSold
 console.log(availableTickets)
