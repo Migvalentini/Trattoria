@@ -194,7 +194,7 @@ if (ticketsSold >= 100) {
         payBtn.remove()
     })
 }
-for (let index = 0; index < 98; index++) {
+
 addTicketButtons.forEach((button) => {
     button.addEventListener("click", () => {
         if (availableTickets > 0) {
@@ -434,7 +434,7 @@ addTicketButtons.forEach((button) => {
         }
     });
 })
-}
+
 
 // EXIBIR E ESCONDER DIVS DE 'QUEM VC CONHECE'
 ticketsContainer.addEventListener("click", (event) => {
