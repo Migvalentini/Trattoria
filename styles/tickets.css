@@ -438,3 +438,11 @@ textarea::placeholder {
 a, button {
    outline: none;
  } 
+
+#refertickets{
+   font-size: 14px;
+   padding: 3px;
+   text-align: center;
+   background-color: #eaaf56;
+   margin-bottom: 5px;
+} 
