@@ -1,3 +1,5 @@
+window.location.href = '#'
+
 async function SelectTables(command) {
     const apiUrl = 'https://trattoria-three.vercel.app/get';
  
