@@ -80,11 +80,10 @@ function getTable() {
 
 const idBuyer = Number(localStorage.getItem('id'))
 console.log(idBuyer)
-let ticketsSold = 0
-setTimeout(() => {
-    SelectTables("SELECT COUNT(*) FROM Ingressos")
-    ticketsSold = getTable()
- }, 1000);
+
+SelectTables("SELECT COUNT(*) FROM Ingressos")
+const ticketsSold = getTable()
+
 let availableTickets = 100 - ticketsSold
 console.log(ticketsSold, availableTickets)
 const availableTicketsText = document.querySelector('.availableTicketsText')
@@ -415,10 +414,10 @@ addTicketButtons.forEach((button) => {
                 });
             });
     
-            // const a = document.querySelector(`.iname${ticketIndex}`)
-            // a.value = 'Miguel Silva'
-            // const b = document.querySelector(`.icpf${ticketIndex}`)
-            // b.value = '12345678900'
+            const a = document.querySelector(`.iname${ticketIndex}`)
+            a.value = 'Miguel Silva'
+            const b = document.querySelector(`.icpf${ticketIndex}`)
+            b.value = '12345678900'
     
             ticketIndex += 1
             availableTickets -= 1
