@@ -53,7 +53,7 @@ btncopiar.addEventListener('click', (e) => {
 
 document.getElementById("precofinal").textContent = 'Valor a ser pago: R$' + totalValue;
 
-pixkey="a2e156c0-651e-453b-b5ce-c3a8178bd6e7"
+pixkey="00020126470014br.gov.bcb.pix0125laisarrudakoche@gmail.com5204000053039865802BR5917LAIS ARRUDA KOCHE6009Sao Paulo62070503***6304765C"
 
 function abrir(){
     document.getElementById('popup').style.display='block';
