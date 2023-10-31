@@ -436,6 +436,7 @@ textarea::placeholder {
 }
 
 a, button {
+   outline: none;
 }
 
 @media (min-width: 768px) {
@@ -443,8 +444,7 @@ a, button {
       display: none;
    }
 }
-   outline: none;
- } 
+
 
 #refertickets{
    font-size: 14px;
