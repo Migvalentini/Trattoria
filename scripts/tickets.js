@@ -7,15 +7,14 @@ function updateTicketsText() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    setTimeout(() => {
-        SelectTables("SELECT COUNT(*) FROM Ingressos")
-        ticketsSold = getTable()[0][0]
+    SelectTables("SELECT COUNT(*) FROM Ingressos")
+    ticketsSold = getTable()[0][0]
     
-        availableTickets = 100 - ticketsSold
-        console.log(ticketsSold, availableTickets)
-        updateTicketsText(`${availableTickets}`)
+    availableTickets = 100 - ticketsSold
+    console.log(ticketsSold, availableTickets)
+    updateTicketsText(`${availableTickets}`)
     
-        if (ticketsSold >= 100) {
+    if (ticketsSold >= 100) {
             const maxTicketsDiv = document.querySelector('.max-tickets')
             addTicketButtons.forEach((addTicket) => {
                 addTicket.style.display = 'none'
@@ -28,7 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const infoDiv = document.querySelector('.info')
             infoDiv.style.display = 'none'
         }
-    }, 1000);
 })
 
 async function SelectTables(command) {
@@ -849,4 +847,7 @@ confirmSubmitBtn.addEventListener('click', () => {
      }, 1000);
     localStorage.setItem('value', totalValue)
     sessionStorage.setItem('teste', 'teste')
+    SelectTables("SELECT COUNT(*) FROM Ingressos")
+    ticketsSold = getTable()[0][0]
+    availableTickets = 100 - ticketsSold
 })
