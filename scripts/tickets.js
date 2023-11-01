@@ -127,6 +127,7 @@ totalName.textContent = buyerName
 
 const ticketsContainer = document.querySelector(".tickets")
 const ticketsContainerResult = document.querySelector(".tickets-list")
+const maxTicketsStudentDiv = document.querySelector('.max-tickets-student')
 
 const totalValueText = document.querySelector('.total-result')
 
@@ -137,6 +138,7 @@ const backAndEditBtn = document.querySelector('.backAndEditBtn')
 const startBtn = document.querySelector('.startBtn')
 const infoBtn = document.querySelector('.fa-circle-info')
 const maxTicketsBtn = document.querySelector('.max-tickets-btn')
+const maxTicketsStudentsBtn = document.querySelector('.max-tickets-student-btn')
 const errorBtn = document.querySelector('.errorBtn')
 
 let totalValue = 0
@@ -213,10 +215,14 @@ infoBtn.addEventListener('click', () => {
     infoDiv.style.display = 'block'
 })
 
+maxTicketsStudentsBtn.addEventListener('click', () => {
+    maxTicketsStudentDiv.style.display = 'none'
+    ticketsSoldByStudent = {}
+})
+
 addTicketButtons.forEach((button) => {
     button.addEventListener("click", () => {
         if (availableTickets > 0) {
-
             payBtn.style.display = 'block'
             const newTicket = document.createElement("div")
             newTicket.classList.add("ticket")
@@ -444,7 +450,6 @@ addTicketButtons.forEach((button) => {
             updateTicketsText(`${availableTickets}`)
         } else {
             const maxTicketsDiv = document.querySelector('.max-tickets')
-
                 maxTicketsDiv.style.display='block'
                 maxTicketsBtn.addEventListener('click', () => {
                     maxTicketsDiv.style.display = 'none'
@@ -578,7 +583,7 @@ ticketsContainer.addEventListener("click", (event) => {
 
             const ticketResults = ticketsContainerResult.querySelectorAll(".result-preview");
 
-            ticketResults.forEach((ticketResult, index) => {
+            ticketResults.forEach((ticketResult) => {
                 let currentIndex = parseInt(ticketResult.getAttribute("data-index"));
 
                 if (currentIndex > ticketIndexToDelete) {
@@ -685,42 +690,35 @@ payBtn.addEventListener('click', () => {
             const studentType = studentName.startsWith('Gastronomia') ? 'Gastronomia' :
             studentName.startsWith('ADM') ? 'ADM' :'Informatica'
             if (studentType === 'Gastronomia') {
-                console.log('lista:', ticketsSoldByStudent)
                 if (!(studentName in ticketsSoldByStudent)) {
                     ticketsSoldByStudent[studentName] = 1;
                 } else {
                     ticketsSoldByStudent[studentName] += 1
                     if (ticketsSoldByStudent[studentName] > limitTickets['Gastronomia']) {
-                        console.log('limite atingido por aluno')
                         allTicketsValid = false
+                        maxTicketsStudentDiv.style.display = 'block'
                     }
                 }
-                console.log(ticketsSoldByStudent[studentName])
-                console.log(ticketsSoldByStudent)
             } else if (studentType === 'ADM') {
-                console.log('lista:', ticketsSoldByStudent)
                 if (!(studentName in ticketsSoldByStudent)) {
                     ticketsSoldByStudent[studentName] = 1;
                 } else {
                     ticketsSoldByStudent[studentName] += 1
                     if (ticketsSoldByStudent[studentName] > limitTickets['Administração']) {
-                        console.log('limite atingido por aluno')
                         allTicketsValid = false
+                        maxTicketsStudentDiv.style.display = 'block'
                     }
                 }
             } else if (studentType === 'Informatica') {
-                console.log('lista:', ticketsSoldByStudent)
                 if (!(studentName in ticketsSoldByStudent)) {
                     ticketsSoldByStudent[studentName] = 1;
                 } else {
                     ticketsSoldByStudent[studentName] += 1
                     if (ticketsSoldByStudent[studentName] > limitTickets['Informática']) {
-                        console.log('limite atingido por aluno')
                         allTicketsValid = false
+                        maxTicketsStudentDiv.style.display = 'block'
                     }
                 }
-                console.log(ticketsSoldByStudent[studentName])
-                console.log(ticketsSoldByStudent)
             } 
             
             const studentTechName = document.querySelector(`.list-students${ticketsIndexes[index]}`)

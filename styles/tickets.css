@@ -84,6 +84,26 @@
    padding: 1px 15px;
 }
 
+.max-tickets-student {
+   display: none;
+   background-color: red;
+   color: rgb(255, 222, 222);
+   width: 90vw;
+   padding: 10px;
+   border-radius: 10px;
+   text-align: center;
+   position: fixed;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   z-index: 100;
+}
+
+.max-tickets-student button {
+   padding: 3px 10px;
+   font-size: 14px;
+}
+
 .confirm-submit-ticket {
    display: none;
    flex-direction: column;
