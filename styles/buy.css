@@ -45,6 +45,7 @@
    flex-direction: column;
    text-align: center;
    margin-top: 10px;
+   margin-bottom: 100px;
 }
 
 label {
@@ -176,9 +177,5 @@ button {
    
    p {
       font-size: 15px;
-   }
-
-   .inputs {
-      margin-bottom: 100px;
    }
 }

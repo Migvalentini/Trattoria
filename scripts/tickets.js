@@ -5,25 +5,30 @@ function updateTicketsText() {
     const availableTicketsText = document.querySelector('.availableTicketsText')
     availableTicketsText.textContent = `${availableTickets}`
 }
+
 document.addEventListener('DOMContentLoaded', () => {
-    SelectTables("SELECT COUNT(*) FROM Ingressos")
-    ticketsSold = getTable()[0][0]
-
-    availableTickets = 100 - ticketsSold
-    console.log(ticketsSold, availableTickets)
-    updateTicketsText(`${availableTickets}`)
-
-    if (ticketsSold >= 100) {
-        const maxTicketsDiv = document.querySelector('.max-tickets')
-        addTicketButtons.forEach((addTicket) => {
-            addTicket.style.display = 'none'
-        })
-        maxTicketsDiv.style.display='block'
-        maxTicketsBtn.addEventListener('click', () => {
-            maxTicketsDiv.style.display = 'none'
-            payBtn.remove()
-        })
-    }
+    setTimeout(() => {
+        SelectTables("SELECT COUNT(*) FROM Ingressos")
+        ticketsSold = getTable()[0][0]
+    
+        availableTickets = 100 - ticketsSold
+        console.log(ticketsSold, availableTickets)
+        updateTicketsText(`${availableTickets}`)
+    
+        if (ticketsSold >= 100) {
+            const maxTicketsDiv = document.querySelector('.max-tickets')
+            addTicketButtons.forEach((addTicket) => {
+                addTicket.style.display = 'none'
+            })
+            maxTicketsDiv.style.display='block'
+            maxTicketsBtn.addEventListener('click', () => {
+                maxTicketsDiv.style.display = 'none'
+                payBtn.remove()
+            })
+            const infoDiv = document.querySelector('.info')
+            infoDiv.style.display = 'none'
+        }
+    }, 1000);
 })
 
 async function SelectTables(command) {
@@ -107,7 +112,6 @@ function getTable() {
 };
 
 const idBuyer = Number(localStorage.getItem('id'))
-console.log(idBuyer)
 
 const totalName = document.querySelector('.total-name')
 const buyerName = localStorage.getItem('buyerName')

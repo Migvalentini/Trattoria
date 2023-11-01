@@ -5,13 +5,20 @@
     text-align: center;
 }
 
-#qr{
+.instructions {
+    font-size: 16px;
+    background-color: #eaaf56;
+    margin: 0px 5px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+#qr {
     width: 300px;
     margin-left: 10px;
 }
 
 #precofinal{
-
     display: flex;
     align-items: center;
     justify-content: center;
@@ -36,6 +43,7 @@
 #pixkey{
     display: none;
 }
+
 #observacaop{
     width: 250px;
     text-align: center;
@@ -55,8 +63,7 @@
     font-size: 14px;
 }
 
-
- .popup{
+.popup{
     position: fixed;
     top: 0;bottom: 0;
     left: 0; right: 0;
@@ -71,19 +78,19 @@
     display: none;
     align-items: center;
     justify-content: center;
-    
- }
- #backtomenu{
+}
+
+#backtomenu{
     border-radius: 15px;
     border: none;
     background-color: #6F6D3D;
     color: white; 
     padding: 10px 20px;
     margin-top: 7px;
- }
+}
 
 #chavepix{
     text-align: center;
-    font-size: 7px;
+    font-size: 8px;
     
 }
