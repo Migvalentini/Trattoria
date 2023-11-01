@@ -440,10 +440,10 @@ addTicketButtons.forEach((button) => {
                 });
             });
     
-            const a = document.querySelector(`.iname${ticketIndex}`)
-            a.value = 'Miguel Silva'
-            const b = document.querySelector(`.icpf${ticketIndex}`)
-            b.value = '12345678900'
+            // const a = document.querySelector(`.iname${ticketIndex}`)
+            // a.value = 'Miguel Silva'
+            // const b = document.querySelector(`.icpf${ticketIndex}`)
+            // b.value = '12345678900'
     
             ticketIndex += 1
             availableTickets -= 1

@@ -1,4 +1,3 @@
-Limitar x ingressos por aluno
 Revisar a contagem de ingressos
 Retirar barra de rolagem
 Limpar banco de dados
