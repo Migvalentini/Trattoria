@@ -1,19 +1,30 @@
-let ticketsSold = 0
-setTimeout(aguardar(), 1000);
+let ticketsSold
+let availableTickets
 
-function aguardar() {
-    SelectTables("SELECT COUNT(*) FROM Ingressos")
-    ticketsSold = getTable()
-    ticketsSold = ticketsSold[0][0]
-    console.log('Vendidos', ticketsSold)
-    return ticketsSold
+function updateTicketsText() {
+    const availableTicketsText = document.querySelector('.availableTicketsText')
+    availableTicketsText.textContent = `${availableTickets}`
 }
+document.addEventListener('DOMContentLoaded', () => {
+    SelectTables("SELECT COUNT(*) FROM Ingressos")
+    ticketsSold = getTable()[0][0]
 
-let availableTickets = 100 - ticketsSold
-console.log(availableTickets)
-const availableTicketsText = document.querySelector('.availableTicketsText')
-availableTicketsText.textContent = `${availableTickets}`
-console.log('vendidos', ticketsSold, 'disponivel', availableTickets)
+    availableTickets = 100 - ticketsSold
+    console.log(ticketsSold, availableTickets)
+    updateTicketsText(`${availableTickets}`)
+
+    if (ticketsSold >= 100) {
+        const maxTicketsDiv = document.querySelector('.max-tickets')
+        addTicketButtons.forEach((addTicket) => {
+            addTicket.style.display = 'none'
+        })
+        maxTicketsDiv.style.display='block'
+        maxTicketsBtn.addEventListener('click', () => {
+            maxTicketsDiv.style.display = 'none'
+            payBtn.remove()
+        })
+    }
+})
 
 async function SelectTables(command) {
     const apiUrl = 'https://trattoria-three.vercel.app/get';
@@ -96,6 +107,7 @@ function getTable() {
 };
 
 const idBuyer = Number(localStorage.getItem('id'))
+console.log(idBuyer)
 
 const totalName = document.querySelector('.total-name')
 const buyerName = localStorage.getItem('buyerName')
@@ -188,18 +200,6 @@ infoBtn.addEventListener('click', () => {
     infoDiv.style.display = 'block'
 })
 
-if (ticketsSold >= 100) {
-    const maxTicketsDiv = document.querySelector('.max-tickets')
-    addTicketButtons.forEach((addTicket) => {
-        addTicket.style.display = 'none'
-    })
-    maxTicketsDiv.style.display='block'
-    maxTicketsBtn.addEventListener('click', () => {
-        maxTicketsDiv.style.display = 'none'
-        payBtn.remove()
-    })
-}
-
 addTicketButtons.forEach((button) => {
     button.addEventListener("click", () => {
         if (availableTickets > 0) {
@@ -230,7 +230,7 @@ addTicketButtons.forEach((button) => {
                 </div>
                 <div class="ticket-content ticket-cpf">
                     <label for="icpf">CPF:</label>
-                    <input class="icpf icpf${ticketIndex}" type="text" name="icpf" id="" pattern="[0-9]*" inputmode="numeric" placeholder="XXX.XXX.XXX.XX" maxlength="11">
+                    <input class="icpf icpf${ticketIndex}" type="text" name="icpf" id="" pattern="[0-9]*" inputmode="numeric" placeholder="XXXXXXXXXXX" maxlength="11">
                 </div>
                 <div class="error errorcpf${ticketIndex}">
                     <p>Ocorreu um erro na formatação do cpf, tenha certeza que você digitou corretamente!</p>
@@ -428,7 +428,7 @@ addTicketButtons.forEach((button) => {
     
             ticketIndex += 1
             availableTickets -= 1
-            availableTicketsText.textContent = `${availableTickets}`
+            updateTicketsText(`${availableTickets}`)
         } else {
             const maxTicketsDiv = document.querySelector('.max-tickets')
 
@@ -524,7 +524,7 @@ ticketsContainer.addEventListener("click", (event) => {
         const button = event.target;
         const ticket = button.closest(".ticket");
         availableTickets += 1
-        availableTicketsText.textContent = `${availableTickets}`
+        updateTicketsText()
 
         if (ticket) {
             let ticketType = ''

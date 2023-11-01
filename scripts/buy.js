@@ -16,53 +16,6 @@ async function InsertSQLBuy(command) {
    await fetch(apiUrl, options).then(data => data.json()).then(response => localStorage.setItem('id', response.json));
 };
 
-async function SelectTables(command) {
-   const apiUrl = 'https://trattoria-three.vercel.app/get';
-
-   const formData = {
-      sql: command
-   };
-
-   const options = {
-      method: 'POST',
-      headers: {
-         'Content-Type': 'application/json'
-      },
-   body: JSON.stringify(formData)
-   }
-   let table
-   table = await fetch(apiUrl, options);
-   table = await table.json();
-   table = table.json;
-
-   if (table != null) {
-      var tableString =  table.map(function(row) {
-         return row.join(',');
-   }).join(';');
-
-   localStorage.setItem('table', tableString);
-   }
-};
-
-function getting() {
-   var matrizItens = [];
-   var table = localStorage.getItem('table');
-   if (table != null) {
-      var linhas = table.split(';');
-      
-      for (var i = 0; i < linhas.length; i++) {
-         var itens = linhas[i].split(',');
-         matrizItens.push(itens);
-      };
-   }
-   return matrizItens;
-};
-
-function getTable() {
-   getting();
-   return getting();
-};
-
 const nameInput = document.getElementById("iname");
 const phoneInput = document.getElementById("iphone");
 const cpfInput = document.getElementById("icpf");
@@ -119,45 +72,45 @@ backAndEditBtn.addEventListener('click', () => {
 function validarFormulario() {
    if (nameRegex.test(nameInput.value)) {
       nameInput.id = 'success-completing';
-      errorName.style.opacity = 0;
+      errorName.style.display = 'none';
    }
    
    if (phoneRegex.test(phoneInput.value)) {
       phoneInput.id = 'success-completing';
-      errorPhone.style.opacity = 0;
+      errorPhone.style.display = 'none';
    }
    
    if (cpfRegex.test(cpfInput.value)) {
       cpfInput.id = 'success-completing';
-      errorCpf.style.opacity = 0;
+      errorCpf.style.display = 'none';
    }
    
    if (emailRegex.test(emailInput.value)) {
       emailInput.id = 'success-completing';
-      errorEmail.style.opacity = 0;
+      errorEmail.style.display = 'none';
    }
    
    if (!nameRegex.test(nameInput.value)) {
       nameInput.id = 'unsuccess-completing';
-      errorName.style.opacity = 1;
+      errorName.style.display = 'block';
       return false;
    }
    
    if (!phoneRegex.test(phoneInput.value)) {
       phoneInput.id = 'unsuccess-completing';
-      errorPhone.style.opacity = 1;
+      errorName.style.display = 'block';
       return false;
    }
    
    if (!cpfRegex.test(cpfInput.value)) {
       cpfInput.id = 'unsuccess-completing';
-      errorCpf.style.opacity = 1;
+      errorName.style.display = 'block';
       return false;
    }
    
    if (!emailRegex.test(emailInput.value)) {
       emailInput.id = 'unsuccess-completing';
-      errorEmail.style.opacity = 1;
+      errorName.style.display = 'block';
       return false;
    }
    return true;
@@ -174,6 +127,10 @@ submitBtn.addEventListener("click", function (event) {
 });
 
 function handleConfirmClick() {
+   localStorage.removeItem('buyerName')
+   localStorage.removeItem('id')
+   localStorage.removeItem('value')
+
    const newBuyer = {
       name: nameInput.value,
       phone: phoneInput.value.replace(/[^0-9]/g, ''),

@@ -20,22 +20,36 @@
             <button class="backAndEditBtn">Voltar e Editar</button>
         </div>
         <div class="background"></div>
+        <h3><strong>Siga as instruções de preenchimento abaixo:</strong></h3>
+        <h5>Obs: A inserção dos dados nessa tela não garante automaticamente que um ingresso vai ser inserido com essas informações. Logo, caso o comprador deseja comparecer no evento, deverá completar suas informações novamente na tela a seguir</h5>
         <div class="inputs">
+            <h4>Nome:</h4>
+            <p>Digite seu nome e sobrenome completos no campo de texto</p>
+            <p>Por exemplo: "João da Silva"</p>
             <div class="input-div">
                 <label for="iname">Nome: </label>
                 <input type="text" name="iname" id="iname" required placeholder="Nome e sobrenome">
             </div>
             <div class="error error-name">Por favor, preencha corretamente o campo acima</div>
+            <h4>Telefone:</h4>
+            <p>Digite seu número de telefone, incluindo o DDD e no formato "(XX) XXXXX-XXXX"</p>
+            <p>Por exemplo: "(54) 98765-4321"</p>
             <div class="input-div">
                 <label for="iphone">Telefone: </label>
                 <input type="tel" name="iphone" id="iphone" required placeholder="(XX) XXXXX-XXXX">
             </div>
             <div class="error error-phone">Por favor, preencha corretamente o campo acima</div>
+            <h4>CPF:</h4>
+            <p>Digite seu número de CPF no formato "XXX.XXX.XXX-XX"</p>
+            <p>Por exemplo: "123.456.789-09"</p>
             <div class="input-div">
                 <label for="icpf">CPF: </label>
                 <input type="text" name="icpf" id="icpf" required placeholder="XXX.XXX.XXX.XX">
             </div>
             <div class="error error-cpf">Por favor, preencha corretamente o campo acima</div>
+            <h4>Email:</h4>
+            <p>Digite seu endereço de email completo no campo de texto</p>
+            <p>Por exemplo: "usuario@email.com"</p>
             <div class="input-div input-email">
                 <label for="iemail">Email: </label>
                 <input type="email" name="iemail" id="iemail" required placeholder="usuário@email.com">

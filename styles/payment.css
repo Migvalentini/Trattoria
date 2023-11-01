@@ -3,13 +3,13 @@
 * {
     font-family: 'Nunito Sans', sans-serif;
     text-align: center;
- }
+}
 
 #qr{
     width: 300px;
     margin-left: 10px;
-    
 }
+
 #precofinal{
 
     display: flex;
@@ -23,7 +23,6 @@
     padding: 10px 20px;
     background-color: #BF4E30;
     color: white;
-
 }
 
 #Submitbtn {

@@ -1,1 +1,2 @@
-Conferir a contagem de ingressos na tela dos ingressos
+Retirar as barras de rolagem
+Adicionar instruções na tela de pagamento
