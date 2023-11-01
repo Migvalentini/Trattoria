@@ -111,6 +111,14 @@ function getTable() {
     return getting();
 };
 
+let ticketsSoldByStudent = {};
+
+let limitTickets = {
+    "Gastronomia": 2,
+    "Informática": 4,
+    "Administração": 3
+};
+
 const idBuyer = Number(localStorage.getItem('id'))
 
 const totalName = document.querySelector('.total-name')
@@ -192,6 +200,7 @@ backAndEditBtn.addEventListener('click', () => {
     const confirmSubmitTicketDiv = document.querySelector('.confirm-submit-ticket')
     confirmSubmitTicketDiv.style.display = 'none'
     payBtn.style.display = 'block'
+    ticketsSoldByStudent = {}
 })
 
 startBtn.addEventListener('click', () => {
@@ -425,10 +434,10 @@ addTicketButtons.forEach((button) => {
                 });
             });
     
-            // const a = document.querySelector(`.iname${ticketIndex}`)
-            // a.value = 'Miguel Silva'
-            // const b = document.querySelector(`.icpf${ticketIndex}`)
-            // b.value = '12345678900'
+            const a = document.querySelector(`.iname${ticketIndex}`)
+            a.value = 'Miguel Silva'
+            const b = document.querySelector(`.icpf${ticketIndex}`)
+            b.value = '12345678900'
     
             ticketIndex += 1
             availableTickets -= 1
@@ -529,10 +538,14 @@ ticketsContainer.addEventListener("click", (event) => {
         const ticket = button.closest(".ticket");
         availableTickets += 1
         updateTicketsText()
+        const countAllTickets = document.querySelectorAll('.ticket').length - 1
 
         if (ticket) {
+            ticketsSoldByStudent = {}
+            if (countAllTickets === 0) {
+                payBtn.style.display = 'none'
+            }
             let ticketType = ''
-            //const ticketType = ticket.classList.contains("ticket-adult") ? "adult" : "kid";
             if (ticket.classList.contains("ticket-adult")) {
                 ticketType = "adult"
             } else if (ticket.classList.contains("ticket-kid")) {
@@ -628,7 +641,6 @@ payBtn.addEventListener('click', () => {
             }
         }
         if (ticketType === 'kid' || ticketType === 'baby') {
-            console.log('é criança/bebe')
             cpfInput.setAttribute('id', 'success-completing');
             ticketElement.setAttribute('id', 'success-completing');
             document.querySelector(`.errorcpf${ticketsIndexes[index]}`).style.display = "none";
@@ -668,6 +680,49 @@ payBtn.addEventListener('click', () => {
         };
 
         if (dataKnowValue === 'yes-student') {
+            const studentSelect = document.querySelector(`.list-students${ticketsIndexes[index]}`);
+            const studentName = studentSelect.value;
+            const studentType = studentName.startsWith('Gastronomia') ? 'Gastronomia' :
+            studentName.startsWith('ADM') ? 'ADM' :'Informatica'
+            if (studentType === 'Gastronomia') {
+                console.log('lista:', ticketsSoldByStudent)
+                if (!(studentName in ticketsSoldByStudent)) {
+                    ticketsSoldByStudent[studentName] = 1;
+                } else {
+                    ticketsSoldByStudent[studentName] += 1
+                    if (ticketsSoldByStudent[studentName] > limitTickets['Gastronomia']) {
+                        console.log('limite atingido por aluno')
+                        allTicketsValid = false
+                    }
+                }
+                console.log(ticketsSoldByStudent[studentName])
+                console.log(ticketsSoldByStudent)
+            } else if (studentType === 'ADM') {
+                console.log('lista:', ticketsSoldByStudent)
+                if (!(studentName in ticketsSoldByStudent)) {
+                    ticketsSoldByStudent[studentName] = 1;
+                } else {
+                    ticketsSoldByStudent[studentName] += 1
+                    if (ticketsSoldByStudent[studentName] > limitTickets['Administração']) {
+                        console.log('limite atingido por aluno')
+                        allTicketsValid = false
+                    }
+                }
+            } else if (studentType === 'Informatica') {
+                console.log('lista:', ticketsSoldByStudent)
+                if (!(studentName in ticketsSoldByStudent)) {
+                    ticketsSoldByStudent[studentName] = 1;
+                } else {
+                    ticketsSoldByStudent[studentName] += 1
+                    if (ticketsSoldByStudent[studentName] > limitTickets['Informática']) {
+                        console.log('limite atingido por aluno')
+                        allTicketsValid = false
+                    }
+                }
+                console.log(ticketsSoldByStudent[studentName])
+                console.log(ticketsSoldByStudent)
+            } 
+            
             const studentTechName = document.querySelector(`.list-students${ticketsIndexes[index]}`)
             const isStudentTechNameValid = studentTechName.value !== ''
             if (!isStudentTechNameValid) {
@@ -679,7 +734,6 @@ payBtn.addEventListener('click', () => {
                 studentTechName.setAttribute('id', 'success-completing')
                 ticketElement.setAttribute('id', 'success-completing')
                 ticketValues.whoKnows = `Tecnico: ${studentTechName.value}`
-
             }
         } else if (dataKnowValue === 'yes-student-n-tech') {
             const studentNTechName = document.querySelector(`.istudent-n-tech${ticketsIndexes[index]}`)

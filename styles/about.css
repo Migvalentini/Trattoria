@@ -52,8 +52,6 @@ p {
     background-color: #BF4E30;
 }
 
-
-
 .view-menu-btn {
     border: none;
     padding: 0px 20px;
@@ -109,4 +107,32 @@ p {
 .box1{
     background-color: #BF4E30;
     border-radius: 15px;
+}
+
+.buy {
+    margin-bottom: 120px;
+}
+
+.copyright {
+    font-size: 14px;
+    text-align: center;
+    height: 10px;
+}
+
+.copyright2 {
+    margin-top: 5px;
+}
+
+.copyright a {
+    color: black;
+}
+
+.i {
+    margin-top: 45px;
+}
+
+@media (min-width: 1024px) {
+    .insta {
+        margin-left: 78px;
+    }
 }
