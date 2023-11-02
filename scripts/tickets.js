@@ -107,7 +107,7 @@ function getTable() {
 let ticketsSoldByStudent = {};
 
 let limitTickets = {
-    "Gastronomia": 2,
+    "Gastronomia": 5,
     "Informática": 4,
     "Administração": 3
 };
