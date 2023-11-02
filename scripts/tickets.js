@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ticketsSold = getTable()[0][0]
     
     availableTickets = 100 - ticketsSold
-    console.log(ticketsSold, availableTickets)
+    console.log('Comprados:', ticketsSold)
     updateTicketsText(`${availableTickets}`)
     
     if (ticketsSold >= 100) {
@@ -31,11 +31,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function SelectTables(command) {
     const apiUrl = 'https://trattoria-three.vercel.app/get';
- 
     const formData = {
         sql: command
     };
- 
     const options = {
         method: 'POST',
         headers: {
@@ -43,16 +41,13 @@ async function SelectTables(command) {
         },
     body: JSON.stringify(formData)
     }
- 
     let table = await fetch(apiUrl, options);
     table = await table.json();
     table = table.json;
- 
     if (table != null) {
         var tableString =  table.map(function(row) {
             return row.join(',');
     }).join(';');
- 
     localStorage.setItem('table', tableString);
     }
 };
@@ -438,10 +433,10 @@ addTicketButtons.forEach((button) => {
                 });
             });
     
-            // const a = document.querySelector(`.iname${ticketIndex}`)
-            // a.value = 'Miguel Silva'
-            // const b = document.querySelector(`.icpf${ticketIndex}`)
-            // b.value = '12345678900'
+            const a = document.querySelector(`.iname${ticketIndex}`)
+            a.value = 'Miguel Silva'
+            const b = document.querySelector(`.icpf${ticketIndex}`)
+            b.value = '12345678900'
     
             ticketIndex += 1
             availableTickets -= 1
@@ -683,41 +678,43 @@ payBtn.addEventListener('click', () => {
         };
 
         if (dataKnowValue === 'yes-student') {
-            const studentSelect = document.querySelector(`.list-students${ticketsIndexes[index]}`);
-            const studentName = studentSelect.value;
-            const studentType = studentName.startsWith('Gastronomia') ? 'Gastronomia' :
-            studentName.startsWith('ADM') ? 'ADM' :'Informatica'
-            if (studentType === 'Gastronomia') {
-                if (!(studentName in ticketsSoldByStudent)) {
-                    ticketsSoldByStudent[studentName] = 1;
-                } else {
-                    ticketsSoldByStudent[studentName] += 1
-                    if (ticketsSoldByStudent[studentName] > limitTickets['Gastronomia']) {
-                        allTicketsValid = false
-                        maxTicketsStudentDiv.style.display = 'block'
+            if (ticketType === 'adult' || ticketType === 'kid') {
+                const studentSelect = document.querySelector(`.list-students${ticketsIndexes[index]}`);
+                const studentName = studentSelect.value;
+                const studentType = studentName.startsWith('Gastronomia') ? 'Gastronomia' :
+                studentName.startsWith('ADM') ? 'ADM' :'Informatica'
+                if (studentType === 'Gastronomia') {
+                    if (!(studentName in ticketsSoldByStudent)) {
+                        ticketsSoldByStudent[studentName] = 1;
+                    } else {
+                        ticketsSoldByStudent[studentName] += 1
+                        if (ticketsSoldByStudent[studentName] > limitTickets['Gastronomia']) {
+                            allTicketsValid = false
+                            maxTicketsStudentDiv.style.display = 'block'
+                        }
                     }
-                }
-            } else if (studentType === 'ADM') {
-                if (!(studentName in ticketsSoldByStudent)) {
-                    ticketsSoldByStudent[studentName] = 1;
-                } else {
-                    ticketsSoldByStudent[studentName] += 1
-                    if (ticketsSoldByStudent[studentName] > limitTickets['Administração']) {
-                        allTicketsValid = false
-                        maxTicketsStudentDiv.style.display = 'block'
+                } else if (studentType === 'ADM') {
+                    if (!(studentName in ticketsSoldByStudent)) {
+                        ticketsSoldByStudent[studentName] = 1;
+                    } else {
+                        ticketsSoldByStudent[studentName] += 1
+                        if (ticketsSoldByStudent[studentName] > limitTickets['Administração']) {
+                            allTicketsValid = false
+                            maxTicketsStudentDiv.style.display = 'block'
+                        }
                     }
-                }
-            } else if (studentType === 'Informatica') {
-                if (!(studentName in ticketsSoldByStudent)) {
-                    ticketsSoldByStudent[studentName] = 1;
-                } else {
-                    ticketsSoldByStudent[studentName] += 1
-                    if (ticketsSoldByStudent[studentName] > limitTickets['Informática']) {
-                        allTicketsValid = false
-                        maxTicketsStudentDiv.style.display = 'block'
+                } else if (studentType === 'Informatica') {
+                    if (!(studentName in ticketsSoldByStudent)) {
+                        ticketsSoldByStudent[studentName] = 1;
+                    } else {
+                        ticketsSoldByStudent[studentName] += 1
+                        if (ticketsSoldByStudent[studentName] > limitTickets['Informática']) {
+                            allTicketsValid = false
+                            maxTicketsStudentDiv.style.display = 'block'
+                        }
                     }
-                }
-            } 
+                } 
+            }
             
             const studentTechName = document.querySelector(`.list-students${ticketsIndexes[index]}`)
             const isStudentTechNameValid = studentTechName.value !== ''
@@ -850,4 +847,6 @@ confirmSubmitBtn.addEventListener('click', () => {
     SelectTables("SELECT COUNT(*) FROM Ingressos")
     ticketsSold = getTable()[0][0]
     availableTickets = 100 - ticketsSold
+    localStorage.removeItem('table')
+    localStorage.setItem('table')
 })

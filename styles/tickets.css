@@ -10,6 +10,7 @@
 
 .container {
    max-width: 100vw;
+   overflow-x: hidden;
 }
 
 .fa-circle-info {
@@ -36,6 +37,7 @@
    overflow: scroll;
    text-align: justify;
    transform: translate(-50%, -50%);
+   overflow-x: hidden;
 }
 
 .info h3 {
@@ -407,7 +409,8 @@ textarea::placeholder {
 .tickets-list {
    width: 70%;
    max-height: 200px;
-   overflow: scroll;
+   overflow-y: scroll;
+   overflow-x: hidden
 }
 
 .total-name {

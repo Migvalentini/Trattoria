@@ -16,6 +16,52 @@ async function InsertSQLBuy(command) {
    await fetch(apiUrl, options).then(data => data.json()).then(response => localStorage.setItem('id', response.json));
 };
 
+async function SelectTables(command) {
+   const apiUrl = 'https://trattoria-three.vercel.app/get';
+   const formData = {
+       sql: command
+   };
+   const options = {
+       method: 'POST',
+       headers: {
+           'Content-Type': 'application/json'
+       },
+   body: JSON.stringify(formData)
+   }
+   let table = await fetch(apiUrl, options);
+   table = await table.json();
+   table = table.json;
+   if (table != null) {
+       var tableString =  table.map(function(row) {
+           return row.join(',');
+   }).join(';');
+   localStorage.setItem('table', tableString);
+   }
+};
+
+function getting() {
+   var matrizItens = [];
+   var table = localStorage.getItem('table');
+   var linhas = table.split(';');
+   for (var i = 0; i < linhas.length; i++) {
+      var itens = linhas[i].split(',');
+      matrizItens.push(itens);
+   };
+   return matrizItens;
+};
+
+function getTable() {
+   getting();
+   return getting();
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+   console.log(12)
+   SelectTables("SELECT COUNT(*) FROM Ingressos")
+   const ticketsSold = getTable()[0][0]
+   console.log(ticketsSold)
+})
+
 const nameInput = document.getElementById("iname");
 const phoneInput = document.getElementById("iphone");
 const cpfInput = document.getElementById("icpf");
