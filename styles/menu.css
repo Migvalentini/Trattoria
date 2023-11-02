@@ -4,8 +4,12 @@
     src: url('..//fonts/Amsterdam.ttf');
 }
 
+body {
+    width: 100vw;
+}
+
 .container {
-    max-width: 90vw;
+    width: 90vw;
 }
 
 h1 {
