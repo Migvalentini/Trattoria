@@ -33,7 +33,7 @@
 
 .background {
    height: 100px;
-   width: 100vw;
+   width: 100%;
    background-image: url('../images/background-buy-page-img.jpeg');
    background-size: cover;
 }
