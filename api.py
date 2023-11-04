@@ -1,14 +1,14 @@
 import requests
 
-#response = requests.post('https://trattoria-three.vercel.app/post', json={'sql':"delete from Compradores where id = 29;"})
+#response = requests.post('https://trattoria-three.vercel.app/post', json={'sql':"delete from Compradores where id = 0;"})
 #print(response.json()['json'])
 
-#compradores = requests.get('https://trattoria-three.vercel.app/get', json={'sql':"""select * from Compradores;"""}).json()['json']
+compradores = requests.get('https://trattoria-three.vercel.app/get', json={'sql':"""select * from Compradores;"""}).json()['json']
 #totalCompradores = requests.get('https://trattoria-three.vercel.app/get', json={'sql':"""select count (*) from Compradores;"""}).json()['json'][0][0]
-#ingressos = requests.get('https://trattoria-three.vercel.app/get', json={'sql':"""select * from Ingressos;"""}).json()['json']
+ingressos = requests.get('https://trattoria-three.vercel.app/get', json={'sql':"""select * from Ingressos;"""}).json()['json']
 totalIngressos = requests.get('https://trattoria-three.vercel.app/get', json={'sql':"""select count (*) from Ingressos;"""}).json()['json'][0][0]
-#print('COMPRADORES\n', compradores, '\n')
-#print('INGRESSOS\n', ingressos, '\n')
+print('COMPRADORES\n', compradores, '\n')
+print('INGRESSOS\n', ingressos, '\n')
 print(totalIngressos)
 # somaTotal = 0
 # somaPaga = 0
@@ -18,6 +18,12 @@ print(totalIngressos)
 #       somaPaga += int(c[6])
 # print(somaTotal)
 
+#list = [1, 5, 36, 37, 7, 3, 24, 32, 11, 16, 17, 23, 28, 33, 30, 46]
+
+# for c in compradores:
+#    if c[6] == '0':
+#       print(c)
+# print('\n')
 # for i in ingressos:
-#    if i[3] != '' and i[3] != 'não' and i[3] != 'Não':
+#    if i[6] == 48:
 #       print(i)
