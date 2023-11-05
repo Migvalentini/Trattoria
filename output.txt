@@ -36,6 +36,7 @@
 63 Renato Ribas  54996425646 37670077034 juju161317@gmail.com nao-pago 110
 64 Adriano Ferrigo 54996432226 70000581020 ferrigoadriano@gmail.com nao-pago 0
 65 Adriano Ferrigo 54996432226 70000581020 ferrigoadriano@gmail.com nao-pago 0
+66 Ana Paula Einsfeld 54992012265 02731233001 anapeinsfeld@gmail.com nao-pago 0
 1 Marilene Grisa Gaiardo  53432649053 alho Tecnico: Gastronomia - Maria Eduarda Gaiardo adult 2
 2 Evandro Gaiardo  61066770000 queijo Tecnico: Gastronomia - Maria Eduarda Gaiardo adult 2
 4 Janete Bortolotto 44820984004  Tecnico: Gastronomia - Bruna Bortolatto adult 6
@@ -86,7 +87,6 @@
 80 Ketlen Corso 03605563023  Tecnico: Gastronomia - Isadora Berton Corso adult 44
 81 Jhonatan Rodrigues 04958025065  Tecnico: Gastronomia - Gabrielli Selistre adult 45
 84 Fábio Antônio Pizzoli 61822574072  Tecnico: Gastronomia - Fernando Fagherazzi Pizzoli adult 47
-86 Caio Brandalise  03481334052  Tecnico: Gastronomia - Julia Cristina Galvăo Ribas adult 49
 87 Maria de Fátima F Pizzoli 44573804072  Tecnico: Gastronomia - Fernando Fagherazzi Pizzoli adult 50
 88 Heloisa Gregoletto Duso 61799688020 Celíaca  Tecnico: ADM - Paola Gregoletto Duso adult 51
 90 Pietro Gregoletto Duso  04432038063  Tecnico: ADM - Paola Gregoletto Duso adult 51
@@ -94,11 +94,12 @@
 91 Bruna Chiaradia  00616772050  Professor: Bruna Chiaradia adult 52
 92 Vinícius longo Rodrigues  02763550088  Tecnico: ADM - Ana Vitoria Rodrigues adult 53
 93 Ana Lucia Longo  42117976034  Tecnico: ADM - Ana Vitoria Rodrigues adult 53
-94 Rejane Ribas 37673211068  Tecnico: Gastronomia - Julia Cristina Galvăo Ribas adult 54
 98 Cláudio Forini 64105342053  Tecnico: ADM - Bernardo Camargo Forini adult 58
 99 Adriana Camargo Forini  91140005049  Tecnico: ADM - Bernardo Camargo Forini adult 58
-100 Maria das Graças Galvão  46260714904  Tecnico: Gastronomia - Julia Cristina Galvăo Ribas adult 59
-102 Mônica Ribas 83504249900  Tecnico: Gastronomia - Julia Cristina Galvăo Ribas adult 61
 103 Maria Elisa Basso Dal Bó 02647205043  Tecnico: Gastronomia - Isadora Berton Corso adult 62
 104 Ortencila Basso Dal Bó 62439260010  Tecnico: Gastronomia - Isadora Berton Corso adult 62
-105 Renato Ribas  37670077034  Tecnico: Gastronomia - Julia Cristina Galvăo Ribas adult 63
+86 Caio Brandalise  03481334052  Tecnico: Gastronomia - Julia Cristina Galvão Ribas adult 49
+94 Rejane Ribas 37673211068  Tecnico: Gastronomia - Julia Cristina Galvão Ribas adult 54
+100 Maria das Graças Galvão  46260714904  Tecnico: Gastronomia - Julia Cristina Galvão Ribas adult 59
+102 Mônica Ribas 83504249900  Tecnico: Gastronomia - Julia Cristina Galvão Ribas adult 61
+105 Renato Ribas  37670077034  Tecnico: Gastronomia - Julia Cristina Galvão Ribas adult 63
