@@ -8,12 +8,18 @@ compradores = requests.get('https://trattoria-three.vercel.app/get', json={'sql'
 ingressos = requests.get('https://trattoria-three.vercel.app/get', json={'sql':"""select * from Ingressos;"""}).json()['json']
 totalIngressos = requests.get('https://trattoria-three.vercel.app/get', json={'sql':"""select count (*) from Ingressos;"""}).json()['json'][0][0]
 print('COMPRADORES\n', compradores, '\n')
-
+total = 0
 with open('output.txt', 'w', encoding='utf-8') as arquivo:
-    for linha in ingressos:
-        linha_unicode = [str(elemento) for elemento in linha]
-        arquivo.write(' '.join(linha_unicode) + '\n')
-
+   print('COMPRADORES:\n')
+   for linha in compradores:
+      linha_unicode = [str(elemento) for elemento in linha]
+      arquivo.write(' '.join(linha_unicode) + '\n')
+   print('INGRESSOS:\n')
+   for linha in ingressos:
+      linha_unicode = [str(elemento) for elemento in linha]
+      arquivo.write(' '.join(linha_unicode) + '\n')
+      total += 1
+print(total)
 #print('INGRESSOS\n', ingressos, '\n')
 print(totalIngressos)
 # somaTotal = 0
