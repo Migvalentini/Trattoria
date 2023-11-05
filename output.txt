@@ -1,0 +1,66 @@
+1 Marilene Grisa Gaiardo  53432649053 alho Tecnico: Gastronomia - Maria Eduarda Gaiardo adult 2
+2 Evandro Gaiardo  61066770000 queijo Tecnico: Gastronomia - Maria Eduarda Gaiardo adult 2
+4 Janete Bortolotto 44820984004  Tecnico: Gastronomia - Bruna Bortolatto adult 6
+5 Gabriel Bortolatto 03567004026 Intolerância a lactose Tecnico: Gastronomia - Bruna Bortolatto adult 6
+6 Neila Bortolatto 65165381072  Tecnico: Gastronomia - Bruna Bortolatto adult 6
+7 Sergio Bortolatto 41493850091  Tecnico: Gastronomia - Bruna Bortolatto adult 6
+8 Fernando Bortolotto 27706834034  Tecnico: Gastronomia - Bruna Bortolatto adult 6
+15 EDERSON DE ALMEIDA PEDRO 00473991047 não Professor: Ederson Almeida Pedro adult 8
+16 Laís koche Diretora 02046886046  Professor: Ana Cristina Possap Cesa adult 10
+17 Laís koche Diretora 02046886046  Professor: Ana  Cristina Possap Cesa adult 10
+18 Laís koche Diretora 02046886046  Professor: Ana Cristina Possap Cesa adult 10
+19 Laís koche Diretora 02046886046  Professor: Ana Cristina Possap Cesa adult 10
+20 Laís koche Diretora 02046886046  Professor: Ana Cristina Possap Cesa adult 10
+21 Ricardo Pieruccini Massairo 02644386047  Tecnico: Gastronomia - Ana Paula Einsfeld adult 9
+23 Jadir Einsfeld 62259903053  Tecnico: Gastronomia - Ana Paula Einsfeld adult 9
+22 Marines Helena Einsfeld 90508645034  Tecnico: Gastronomia - Ana Paula Einsfeld adult 9
+24 Murilo Henrique Einsfeld 04598720018  Tecnico: Gastronomia - Ana Paula Einsfeld kid 9
+14 Ana Carla Palavro 83530525049 Intolerância a glúten. Técnico: Informatica - Prof Ederson Almeida adult 8
+25 Marlei Bossle 55142184068 Não . Tecnico: Gastronomia - Maria Eduarda Gaiardo adult 12
+26 Samuel viecelli 83993509072  Tecnico: Gastronomia - Valentina Viecelli Dornelles adult 13
+27 Max dornelles 51206133091  Tecnico: Gastronomia - Valentina Viecelli Dornelles adult 13
+28 Irone covolan  21541434072  Tecnico: Gastronomia - Valentina Viecelli Dornelles adult 13
+29 Rafaela viecelli 60994177050  Tecnico: Gastronomia - Valentina Viecelli Dornelles adult 13
+30 Eliseu Pereira da Silva  49040197091  Tecnico: ADM - Sarah Luiza Azevedo da Silva adult 14
+31 Maria Eduarda Marques  04122923000  Tecnico: ADM - Sarah Luiza Azevedo da Silva adult 14
+32 Roseli Elsa de Azevedo da Silva  64200906015  Tecnico: ADM - Sarah Luiza Azevedo da Silva adult 14
+38 fatima slongo 40247988049  Tecnico: Gastronomia - Isabeli Slongo Padilha adult 20
+39 rian de souza 04005735045  Tecnico: Gastronomia - Isabeli Slongo Padilha adult 20
+40 melissa padilha 05687095004  Tecnico: Gastronomia - Isabeli Slongo Padilha adult 20
+41 monica slongo 96214260068  Tecnico: Gastronomia - Isabeli Slongo Padilha adult 20
+42 William Paganella 01557603006 Não  Tecnico: Gastronomia - Vitoria Luiza Cabral de Jesus adult 21
+43 Melissa Fonseca  01563605007 Não  Tecnico: Gastronomia - Vitoria Luiza Cabral de Jesus adult 21
+44 Ana Luiza Tadiotto  05818968073  Tecnico: Gastronomia - Vitoria Luiza Cabral de Jesus adult 22
+45 Irajá Fonseca  00328582050  Tecnico: Gastronomia - Vitoria Luiza Cabral de Jesus adult 22
+48 Rosangela Cabral de Jesus  92146988053  Tecnico: Gastronomia - Vitoria Luiza Cabral de Jesus adult 25
+49 Sidnei Antônio e Silva de Jesus  68030894015  Tecnico: Gastronomia - Vitoria Luiza Cabral de Jesus adult 25
+50 Gabriel Daros da Silva 05454044016  Tecnico: Gastronomia - Vitoria Luiza Cabral de Jesus adult 26
+51 Maristela Daros 49040278091  Tecnico: Gastronomia - Vitoria Luiza Cabral de Jesus adult 26
+52 Kellen Corso  00687814073  Tecnico: Gastronomia - Isadora Berton Corso adult 27
+66 Everton Padilha 81517831091  Tecnico: Gastronomia - Isabeli Slongo Padilha adult 31
+67 Grasiele de Mello 00708581013  Tecnico: Gastronomia - Isabeli Slongo Padilha adult 31
+68 Pedro de Mello 00708581013  Tecnico: Gastronomia - Isabeli Slongo Padilha kid 31
+71 Jairo José Stachowski 01537398008  Tecnico: Gastronomia - Isadora Berton Corso adult 35
+73 Pércio Rodrigues 91844274004 Não  Tecnico: Gastronomia - Gabrielli Selistre adult 38
+77 EVANDRO CORSO 70452750059  Tecnico: Gastronomia - Isadora Berton Corso adult 42
+78 MARELAINE F BERTON CORSO 91919193049  Tecnico: Gastronomia - Isadora Berton Corso adult 42
+79 Maria Clair dos Santos  81458460053 Não  Tecnico: Gastronomia - Gabrielli Selistre adult 43
+80 Ketlen Corso 03605563023  Tecnico: Gastronomia - Isadora Berton Corso adult 44
+81 Jhonatan Rodrigues 04958025065  Tecnico: Gastronomia - Gabrielli Selistre adult 45
+84 Fábio Antônio Pizzoli 61822574072  Tecnico: Gastronomia - Fernando Fagherazzi Pizzoli adult 47
+86 Caio Brandalise  03481334052  Tecnico: Gastronomia - Julia Cristina Galvăo Ribas adult 49
+87 Maria de Fátima F Pizzoli 44573804072  Tecnico: Gastronomia - Fernando Fagherazzi Pizzoli adult 50
+88 Heloisa Gregoletto Duso 61799688020 Celíaca  Tecnico: ADM - Paola Gregoletto Duso adult 51
+90 Pietro Gregoletto Duso  04432038063  Tecnico: ADM - Paola Gregoletto Duso adult 51
+89 Ricardo Alexandre Duso  49495089034  Tecnico: ADM - Paola Gregoletto Duso adult 51
+91 Bruna Chiaradia  00616772050  Professor: Bruna Chiaradia adult 52
+92 Vinícius longo Rodrigues  02763550088  Tecnico: ADM - Ana Vitoria Rodrigues adult 53
+93 Ana Lucia Longo  42117976034  Tecnico: ADM - Ana Vitoria Rodrigues adult 53
+94 Rejane Ribas 37673211068  Tecnico: Gastronomia - Julia Cristina Galvăo Ribas adult 54
+98 Cláudio Forini 64105342053  Tecnico: ADM - Bernardo Camargo Forini adult 58
+99 Adriana Camargo Forini  91140005049  Tecnico: ADM - Bernardo Camargo Forini adult 58
+100 Maria das Graças Galvão  46260714904  Tecnico: Gastronomia - Julia Cristina Galvăo Ribas adult 59
+102 Mônica Ribas 83504249900  Tecnico: Gastronomia - Julia Cristina Galvăo Ribas adult 61
+103 Maria Elisa Basso Dal Bó 02647205043  Tecnico: Gastronomia - Isadora Berton Corso adult 62
+104 Ortencila Basso Dal Bó 62439260010  Tecnico: Gastronomia - Isadora Berton Corso adult 62
+105 Renato Ribas  37670077034  Tecnico: Gastronomia - Julia Cristina Galvăo Ribas adult 63
