@@ -103,6 +103,7 @@ h3, h4, p {
     border: none;
     border-radius: 5px;
     font-size: 14px;
+    cursor: pointer;
 }
 
 .buyBtn:active {
@@ -147,10 +148,18 @@ h3, h4, p {
     .black-line {
         width: 1000px;
     }
+
+    .buyBtn {
+        font-size: 20px;
+    }
 }
 
 @media (min-width: 1300px) {
     .images {
         height: 700px;
+    }
+
+    .buyBtn {
+        font-size: 30px;
     }
 }

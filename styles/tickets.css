@@ -58,6 +58,7 @@ body {
    border-radius: 15px;
    background-color: #6F6D3D;
    font-size: 20px;
+   cursor: pointer;
 }
 
 .info p {
@@ -327,6 +328,7 @@ input[type="date"] {
    border: none;
    border-radius: 5px;
    color: black;
+   cursor: pointer;
 }
 
 .rest-know {
@@ -341,6 +343,7 @@ input[type="date"] {
 
 .know-btn {
    color: black;
+   cursor: pointer;
 }
 
 .rest-label {

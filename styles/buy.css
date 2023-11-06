@@ -113,6 +113,7 @@ input::placeholder {
 
 .fa-chevron-left {
    color: #BF4C33;
+   cursor: pointer;
 }
 
 .buttons {
@@ -135,6 +136,7 @@ button {
 
 .confirmImg {
    margin: 20px;
+   cursor: pointer;
 }
 
 .confirmBtn {

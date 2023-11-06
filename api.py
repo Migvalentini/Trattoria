@@ -11,15 +11,23 @@ print('COMPRADORES\n', compradores, '\n')
 print('INGRESSOS\n', ingressos, '\n')
 print('TOTAL INGRESSOS: ', totalIngressos)
 
-with open('output.txt', 'w', encoding='utf-8') as arquivo:
-   print('COMPRADORES:\n')
-   for linha in compradores:
-      linha_unicode = [str(elemento) for elemento in linha]
-      arquivo.write(' '.join(linha_unicode) + '\n')
-   print('INGRESSOS:\n')
-   for linha in ingressos:
-      linha_unicode = [str(elemento) for elemento in linha]
-      arquivo.write(' '.join(linha_unicode) + '\n')
+# COMPRADORES
+# 0 - id
+# 1 - Nome
+# 2 - Telefone
+# 3 - CPF
+# 4 - Email
+# 5 - Pago/Não Pago
+# 6 - Total
+
+# INGRESSOS
+# 0 - id
+# 1 - Nome
+# 2 - Telefone
+# 3 - Restrição
+# 4 - Conhecido
+# 5 - Tipo
+# 6 - Id Comprador
 
 # somaTotal = 0
 # somaPaga = 0
@@ -30,9 +38,9 @@ with open('output.txt', 'w', encoding='utf-8') as arquivo:
 # print(somaTotal)
 
 # for c in compradores:
-#    if c[0] == '60':
+#    if c[6] == '0':
 #       print(c)
 # print('\n')
 # for i in ingressos:
-#    if i[6] == 60:
+#    if i[3] != '':
 #       print(i)
