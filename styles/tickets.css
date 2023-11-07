@@ -27,7 +27,7 @@ body {
 }
 
 .info {
-   /* display: none; */
+   display: none; 
    width: 90%;
    max-height: 90%;
    padding: 10px;
