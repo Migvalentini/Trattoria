@@ -7,9 +7,10 @@ function updateTicketsText() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    SelectTables("SELECT COUNT(*) FROM Ingressos")
-    ticketsSold = getTable()[0][0]
-    
+    // SelectTables("SELECT COUNT(*) FROM Ingressos")
+    // ticketsSold = getTable()[0][0]
+    ticketsSold = 100
+    localStorage.removeItem('buyerName')
     availableTickets = 100 - ticketsSold
     console.log('Comprados:', ticketsSold)
     updateTicketsText(`${availableTickets}`)
@@ -116,7 +117,7 @@ const idBuyer = Number(localStorage.getItem('id'))
 
 const totalName = document.querySelector('.total-name')
 const buyerName = localStorage.getItem('buyerName')
-totalName.textContent = buyerName
+//totalName.textContent = buyerName
 
 const ticketsContainer = document.querySelector(".tickets")
 const ticketsContainerResult = document.querySelector(".tickets-list")
