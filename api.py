@@ -1,6 +1,6 @@
 import requests
 
-#response = requests.post('https://trattoria-three.vercel.app/post', json={'sql':"delete from Compradores where id = 87;"})
+#response = requests.post('https://trattoria-three.vercel.app/post', json={'sql':"delete from Compradores where id = 70;"})
 #print(response.json()['json'])
 
 compradores = requests.get('https://trattoria-three.vercel.app/get', json={'sql':"""select * from Compradores;"""}).json()['json']
@@ -34,22 +34,13 @@ print('TOTAL INGRESSOS: ', totalIngressos)
 # somaPaga = 0
 # for c in compradores:
 #    somaTotal += int(c[6])
-#    if c[6] == 'pago':
+#    if c[5] == 'pago':
 #       somaPaga += int(c[6])
-# print(somaTotal)
+# print('Soma Paga:', somaPaga)
+# print('Soma Total:', somaTotal)
 
-# for c in compradores:
-#     if c[6] == '0':
-#         print(c)
-# print('\n')
-# for i in ingressos:
-#     print(i)
-
-def get_id(item):
-    return item[0]
-
-compradores_ordem = sorted(compradores, key=get_id)
-ingressos_ordem = sorted(ingressos, key=get_id)
+compradores_ordem = sorted(compradores, key=lambda x: x[0])
+ingressos_ordem = sorted(compradores, key=lambda x: x[0])
 
 print('COMPRADORES:')
 for info in compradores_ordem:
