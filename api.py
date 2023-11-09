@@ -3,7 +3,7 @@ import requests
 #response = requests.post('https://trattoria-three.vercel.app/post', json={'sql':"delete from Compradores where id = 70;"})
 #print(response.json()['json'])
 
-comp = [
+compradores = [
     [2, 'Marilene Grisa Gaiardo ', '54991422200', '53432649053', 'maricomercial@outlook.com', 'pago', '220'],
     [6, 'Neila Bortolatto', '54999340027', '65165481072', 'neilabortolatto@hotmail.com', 'pago', '550'],
     [8, 'EDERSON DE ALMEIDA PEDRO', '54984051539', '00473991047', 'eapedro@ucsbr', 'pago', '220'],
@@ -50,7 +50,7 @@ comp = [
     [88, 'Mauricio Machado Marca', '54999998367', '01495354903', 'mmarca@trt4.jus.br', 'pago', '220'],
 ]
 
-ing = [
+ingressos = [
     [1, 'Marilene Grisa Gaiardo ', '53432649053', 'alho', 'Tecnico: Gastronomia - Maria Eduarda Gaiardo', 'adult', 2],
     [2, 'Evandro Gaiardo ', '61066770000', 'queijo', 'Tecnico: Gastronomia - Maria Eduarda Gaiardo', 'adult', 2],
     [4, 'Janete Bortolotto', '44820984004', '', 'Tecnico: Gastronomia - Bruna Bortolatto', 'adult', 6],
@@ -145,10 +145,11 @@ ing = [
     [145, 'Mauricio Machado Marca', '01495454903', '', 'Tecnico: ADM - Fernanda Marca', 'adult', 88],
     [146, 'Maria Vitoria Marca', '02173305093', '', 'Tecnico: ADM - Fernanda Marca', 'adult', 88],
 ]
-for c in comp:
+print('COMPRADORES:')
+for c in compradores:
     print(c)
-print('\n')
-for i in ing:
+print('\nINGRESSOS:')
+for i in ingressos:
     print(i)
 
 # compradores = requests.get('https://trattoria-three.vercel.app/get', json={'sql':"""select * from Compradores;"""}).json()['json']
