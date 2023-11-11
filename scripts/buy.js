@@ -15,6 +15,7 @@ async function InsertSQLBuy(command) {
 
    await fetch(apiUrl, options).then(data => data.json()).then(response => localStorage.setItem('id', response.json));
 };
+const maxTicketLimitReached = false
 
 const nameInput = document.getElementById("iname");
 const phoneInput = document.getElementById("iphone");
@@ -38,6 +39,11 @@ const errorEmail = document.querySelector('.error-email');
 
 const confirmBtn = document.querySelector('.confirmBtn')
 const backAndEditBtn = document.querySelector('.backAndEditBtn')
+
+if (maxTicketLimitReached) {
+   document.querySelector('.max-tickets').style.display = 'block'
+   document.querySelector('.buttons').style.display = 'flex'
+}
 
 phoneInput.addEventListener('input', function () {
    const unformattedValue = this.value.replace(/[^\d]/g, '');
@@ -133,7 +139,7 @@ confirmBtn.addEventListener('click', () => {
       payment: 'not-paid',
       value: 0
    }
-   InsertSQLBuy("INSERT INTO Compradores (nome, telefone, cpf, email, pago, compra) VALUES ('" + newBuyer.name.toString() + "', '" + newBuyer.phone.toString() + "', '" + newBuyer.cpf.toString() + "', '" + newBuyer.email.toString() + "', 'nao-pago', '" + newBuyer.value.toString() + "') returning id;");
+   //InsertSQLBuy("INSERT INTO Compradores (nome, telefone, cpf, email, pago, compra) VALUES ('" + newBuyer.name.toString() + "', '" + newBuyer.phone.toString() + "', '" + newBuyer.cpf.toString() + "', '" + newBuyer.email.toString() + "', 'nao-pago', '" + newBuyer.value.toString() + "') returning id;");
    localStorage.setItem('buyerName', newBuyer.name)
 
    setTimeout(() => {

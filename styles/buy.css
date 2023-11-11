@@ -11,7 +11,7 @@
 }
 
 .max-tickets {
-   display: block;
+   display: none;
    background-color: red;
    color: rgb(255, 222, 222);
    width: 90vw;
@@ -141,7 +141,7 @@ input::placeholder {
 }
 
 .buttons {
-   display: none;
+   display: flex;
    justify-content: space-between;
    align-items: center;
    position: fixed;

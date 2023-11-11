@@ -1,40 +1,31 @@
 let ticketsSold
 let availableTickets
 
-function updateTicketsText() {
-    const availableTicketsText = document.querySelector('.availableTicketsText')
-    availableTicketsText.textContent = `${availableTickets}`
-}
-
 document.addEventListener('DOMContentLoaded', () => {
-    // SelectTables("SELECT COUNT(*) FROM Ingressos")
-    // ticketsSold = getTable()[0][0]
-    ticketsSold = 100
+    SelectTables("SELECT COUNT(*) FROM Ingressos")
+    ticketsSold = localStorage.getItem('table')
+    //ticketsSold = 100
     localStorage.removeItem('buyerName')
     availableTickets = 100 - ticketsSold
-    console.log('Comprados:', ticketsSold)
     updateTicketsText(`${availableTickets}`)
     
     if (ticketsSold >= 100) {
-            const maxTicketsDiv = document.querySelector('.max-tickets')
-            addTicketButtons.forEach((addTicket) => {
-                addTicket.style.display = 'none'
-            })
-            maxTicketsDiv.style.display='block'
-            maxTicketsBtn.addEventListener('click', () => {
-                maxTicketsDiv.style.display = 'none'
-                payBtn.remove()
-            })
-            const infoDiv = document.querySelector('.info')
-            infoDiv.style.display = 'none'
-        }
+        const maxTicketsDiv = document.querySelector('.max-tickets')
+        addTicketButtons.forEach((addTicket) => {
+            addTicket.style.display = 'none'
+        })
+        maxTicketsDiv.style.display = 'block'
+        maxTicketsBtn.style.display = 'none'
+        const infoDiv = document.querySelector('.info')
+        infoDiv.style.display = 'none'
+    }
 })
 
 async function SelectTables(command) {
-    const apiUrl = 'https://trattoria-three.vercel.app/get';
+    const apiUrl = 'https://trattoria-three.vercel.app/get'
     const formData = {
         sql: command
-    };
+    }
     const options = {
         method: 'POST',
         headers: {
@@ -42,23 +33,23 @@ async function SelectTables(command) {
         },
     body: JSON.stringify(formData)
     }
-    let table = await fetch(apiUrl, options);
-    table = await table.json();
-    table = table.json;
+    let table = await fetch(apiUrl, options)
+    table = await table.json()
+    table = table.json
     if (table != null) {
         var tableString =  table.map(function(row) {
-            return row.join(',');
-    }).join(';');
-    localStorage.setItem('table', tableString);
+            return row.join(',')
+    }).join('')
+    localStorage.setItem('table', tableString)
     }
-};
+}
  
 async function InsertSQLTicket(command) {
-    const apiUrl = 'https://trattoria-three.vercel.app/insert';
+    const apiUrl = 'https://trattoria-three.vercel.app/insert'
  
     const formData = {
        sql: command
-    };
+    }
  
     const options = {
        method: 'POST',
@@ -66,17 +57,17 @@ async function InsertSQLTicket(command) {
           'Content-Type': 'application/json'
        },
     body: JSON.stringify(formData)
-    };
+    }
  
     await fetch(apiUrl, options).then(response => response.json()).then(data => console.log(data))
-};
+}
 
 async function UpdateSQL(command) {
-    const apiUrl = 'https://trattoria-three.vercel.app/post';
+    const apiUrl = 'https://trattoria-three.vercel.app/post'
  
     const formData = {
        sql: command
-    };
+    }
  
     const options = {
        method: 'POST',
@@ -84,40 +75,40 @@ async function UpdateSQL(command) {
           'Content-Type': 'application/json'
        },
     body: JSON.stringify(formData)
-    };
+    }
  
     await fetch(apiUrl, options).then(response => response.json()).then(data => console.log(data))
-};
+}
 
 function getting() {
-    var matrizItens = [];
-    var table = localStorage.getItem('table');
-    var linhas = table.split(';');
+    var matrizItens = []
+    var table = localStorage.getItem('table')
+    var linhas = table.split('')
     for (var i = 0; i < linhas.length; i++) {
-       var itens = linhas[i].split(',');
-       matrizItens.push(itens);
-    };
-    return matrizItens;
-};
+       var itens = linhas[i].split(',')
+       matrizItens.push(itens)
+    }
+    return matrizItens
+}
  
 function getTable() {
-    getting();
-    return getting();
-};
+    getting()
+    return getting()
+}
 
-let ticketsSoldByStudent = {};
+let ticketsSoldByStudent = {}
 
 let limitTickets = {
     "Gastronomia": 5,
     "Informática": 4,
     "Administração": 3
-};
+}
 
 const idBuyer = Number(localStorage.getItem('id'))
 
 const totalName = document.querySelector('.total-name')
 const buyerName = localStorage.getItem('buyerName')
-//totalName.textContent = buyerName
+totalName.textContent = buyerName
 
 const ticketsContainer = document.querySelector(".tickets")
 const ticketsContainerResult = document.querySelector(".tickets-list")
@@ -144,10 +135,15 @@ let ticketIndex = 0
 
 let ticketsIndexes = []
 
-const ticketsValues = [];
+const ticketsValues = []
 
 const nameRegex = /^(([A-Za-zÀ-ÖØ-öø-ÿ]+[\-\']?)*([A-Za-zÀ-ÖØ-öø-ÿ]+)?\s)+([A-Za-zÀ-ÖØ-öø-ÿ]+[\-\']?)*([A-Za-zÀ-ÖØ-öø-ÿ]+)?$/i
-const cpfRegex = /^[0-9]{11}$/;
+const cpfRegex = /^[0-9]{11}$/
+
+function updateTicketsText() {
+    const availableTicketsText = document.querySelector('.availableTicketsText')
+    availableTicketsText.textContent = `${availableTickets}`
+}
 
 function showHideError(type, age = 0) {
     const errorCompleting = document.querySelector('.error-completing')
@@ -176,7 +172,7 @@ function confirmSubmitTicket(ticketsValues) {
         tdCpf.style.fontSize = '11px'
         tdCpf.textContent = ticket.cpf
         const tdType = document.createElement('td')
-        tdType.textContent = ticket.type === 'adult' ? 'Adulto' : ticket.type === 'kid' ? 'Criança' : 'Bebê';
+        tdType.textContent = ticket.type === 'adult' ? 'Adulto' : ticket.type === 'kid' ? 'Criança' : 'Bebê'
         const tdRestriction = document.createElement('td')
         tdRestriction.classList.add('td-restriction')
         tdRestriction.textContent = ticket.restriction
@@ -381,7 +377,7 @@ addTicketButtons.forEach((button) => {
                         <button class="know-btn know-btn${ticketIndex} no-btn${ticketIndex}" data-value="no">Não</button>
                 </div>
             </div>
-            `;
+            `
             newTicketResult.innerHTML = `
                 <div class="result-texts">
                     <span class="result-type${ticketIndex}">Ingresso Adulto:</span><br>
@@ -389,12 +385,12 @@ addTicketButtons.forEach((button) => {
                 <div>
                     <span class="result-value${ticketIndex}">R$${adultPrice},00</span>
                 </div>
-            `;
+            `
 
             ticketsContainer.appendChild(newTicket)
             ticketsContainerResult.appendChild(newTicketResult)
             if (button.classList.contains("addAdultTicketBtn")) {
-                const birthContent = newTicket.querySelector(`.ticket-birth${ticketIndex}`);
+                const birthContent = newTicket.querySelector(`.ticket-birth${ticketIndex}`)
                 birthContent.style.display = 'none'
                 totalValue += adultPrice
                 totalValueText.innerHTML = `R$${totalValue}`
@@ -403,41 +399,32 @@ addTicketButtons.forEach((button) => {
             if (button.classList.contains("addKidTicketBtn")) {
                 totalValue += kidPrice
                 totalValueText.innerHTML = `R$${totalValue}`
-                const ticketType = document.querySelector(`.ticket-type${ticketIndex}`);
-                const resultType = document.querySelector(`.result-type${ticketIndex}`);
-                const resultValue = document.querySelector(`.result-value${ticketIndex}`);
-                ticketType.textContent = 'Ingresso Criança';
+                const ticketType = document.querySelector(`.ticket-type${ticketIndex}`)
+                const resultType = document.querySelector(`.result-type${ticketIndex}`)
+                const resultValue = document.querySelector(`.result-value${ticketIndex}`)
+                ticketType.textContent = 'Ingresso Criança'
                 resultType.textContent = 'Ingresso Criança'
-                resultValue.textContent = `R$${kidPrice},00`;
+                resultValue.textContent = `R$${kidPrice},00`
                 newTicket.classList.add("ticket-kid")
-                // const c = document.querySelector(`.ibirth${ticketIndex}`)
-                // c.value = '2017-03-26'
             }
             if (button.classList.contains("addBabyTicketBtn")) {
                 newTicket.classList.add("ticket-baby")
-                const ticketType = document.querySelector(`.ticket-type${ticketIndex}`);
-                const resultType = document.querySelector(`.result-type${ticketIndex}`);
-                const resultValue = document.querySelector(`.result-value${ticketIndex}`);
-                ticketType.textContent = 'Ingresso Bebê';
+                const ticketType = document.querySelector(`.ticket-type${ticketIndex}`)
+                const resultType = document.querySelector(`.result-type${ticketIndex}`)
+                const resultValue = document.querySelector(`.result-value${ticketIndex}`)
+                ticketType.textContent = 'Ingresso Bebê'
                 resultType.textContent = 'Ingresso Bebê'
-                resultValue.textContent = `R$00,00`;
+                resultValue.textContent = `R$00,00`
                 newTicket.classList.add("ticket-baby")
-                // const c = document.querySelector(`.ibirth${ticketIndex}`)
-                // c.value = '2023-03-26'
             }
     
-            const knowButtons = newTicket.querySelectorAll('.know-btn');
+            const knowButtons = newTicket.querySelectorAll('.know-btn')
             knowButtons.forEach(knowButton => {
                 knowButton.addEventListener('click', () => {
-                    const dataKnowValue = knowButton.getAttribute('data-value');
-                    newTicket.setAttribute('data-know', dataKnowValue);
-                });
-            });
-    
-            // const a = document.querySelector(`.iname${ticketIndex}`)
-            // a.value = 'Miguel Silva'
-            // const b = document.querySelector(`.icpf${ticketIndex}`)
-            // b.value = '12345678900'
+                    const dataKnowValue = knowButton.getAttribute('data-value')
+                    newTicket.setAttribute('data-know', dataKnowValue)
+                })
+            })
     
             ticketIndex += 1
             availableTickets -= 1
@@ -449,92 +436,89 @@ addTicketButtons.forEach((button) => {
                     maxTicketsDiv.style.display = 'none'
                 })
         }
-    });
+    })
 })
 
-
-// EXIBIR E ESCONDER DIVS DE 'QUEM VC CONHECE'
 ticketsContainer.addEventListener("click", (event) => {
     if (event.target.classList.contains("know-btn")) {
-        const target = event.target;
-        const ticketIndex = target.classList[1].split("know-btn")[1];
-        const typeValue = target.getAttribute("data-value");
-        const studentsDiv = document.querySelector(`.ticket-students${ticketIndex}`);
-        const studentsNTechDiv = document.querySelector(`.ticket-student-n-tech${ticketIndex}`);
-        const teacherDiv = document.querySelector(`.ticket-teacher${ticketIndex}`);
-        const selectAlunos = document.querySelector(`.list-students${ticketIndex}`);
-        const activeColor = "#c08e43";
-        const inactiveColor = "#eaaf56";
+        const target = event.target
+        const ticketIndex = target.classList[1].split("know-btn")[1]
+        const typeValue = target.getAttribute("data-value")
+        const studentsDiv = document.querySelector(`.ticket-students${ticketIndex}`)
+        const studentsNTechDiv = document.querySelector(`.ticket-student-n-tech${ticketIndex}`)
+        const teacherDiv = document.querySelector(`.ticket-teacher${ticketIndex}`)
+        const selectAlunos = document.querySelector(`.list-students${ticketIndex}`)
+        const activeColor = "#c08e43"
+        const inactiveColor = "#eaaf56"
         
-        const allButtons = document.querySelectorAll(`.know-btn${ticketIndex}`);
+        const allButtons = document.querySelectorAll(`.know-btn${ticketIndex}`)
         allButtons.forEach((button) => {
-            button.classList.remove("active");
-            button.style.backgroundColor = inactiveColor;
-        });
-        target.classList.add("active");
+            button.classList.remove("active")
+            button.style.backgroundColor = inactiveColor
+        })
+        target.classList.add("active")
 
-        target.style.backgroundColor = activeColor;
+        target.style.backgroundColor = activeColor
         if (typeValue === "yes-student") {
             if (studentsDiv) {
-                studentsDiv.style.display = "block";
+                studentsDiv.style.display = "block"
             }
             if (studentsNTechDiv) {
-                studentsNTechDiv.style.display = "none";
+                studentsNTechDiv.style.display = "none"
             }
             if (teacherDiv) {
-                teacherDiv.style.display = "none";
+                teacherDiv.style.display = "none"
             }
             if (selectAlunos) {
-                selectAlunos.required = true;
+                selectAlunos.required = true
             }
         } else if (typeValue === "yes-student-n-tech") {
             if (studentsDiv) {
-                studentsDiv.style.display = "none";
+                studentsDiv.style.display = "none"
             }
             if (studentsNTechDiv) {
-                studentsNTechDiv.style.display = "block";
+                studentsNTechDiv.style.display = "block"
             }
             if (teacherDiv) {
-                teacherDiv.style.display = "none";
+                teacherDiv.style.display = "none"
             }
             if (selectAlunos) {
-                selectAlunos.required = true;
+                selectAlunos.required = true
             }
         } else if (typeValue === "yes-teacher") {
             if (studentsDiv) {
-                studentsDiv.style.display = "none";
+                studentsDiv.style.display = "none"
             }
             if (studentsNTechDiv) {
-                studentsNTechDiv.style.display = "none";
+                studentsNTechDiv.style.display = "none"
             }
             if (teacherDiv) {
-                teacherDiv.style.display = "block";
+                teacherDiv.style.display = "block"
             }
             if (selectAlunos) {
-                selectAlunos.required = false;
+                selectAlunos.required = false
             }
         } else if (typeValue === "no") {
             if (studentsDiv) {
-                studentsDiv.style.display = "none";
+                studentsDiv.style.display = "none"
             }
             if (studentsNTechDiv) {
-                studentsNTechDiv.style.display = "none";
+                studentsNTechDiv.style.display = "none"
             }
             if (teacherDiv) {
-                teacherDiv.style.display = "none";
+                teacherDiv.style.display = "none"
             }
             if (selectAlunos) {
-                selectAlunos.required = false;
+                selectAlunos.required = false
             }
         }
     }
-});
+})
 
-// EXCLUIR INGRESSOS
 ticketsContainer.addEventListener("click", (event) => {
     if (event.target.classList.contains("delete-btn")) {
-        const button = event.target;
-        const ticket = button.closest(".ticket");
+        const button = event.target
+        const ticket = button.closest(".ticket")
         availableTickets += 1
         updateTicketsText()
         const countAllTickets = document.querySelectorAll('.ticket').length - 1
@@ -552,119 +536,119 @@ ticketsContainer.addEventListener("click", (event) => {
             } else if (ticket.classList.contains("ticket-baby")) {
                 ticketType = "baby"
             }
-            const ticketIndexToDelete = parseInt(ticket.getAttribute("data-index"));
+            const ticketIndexToDelete = parseInt(ticket.getAttribute("data-index"))
 
-            const indexToRemove = ticketsIndexes.indexOf(ticketIndexToDelete);
+            const indexToRemove = ticketsIndexes.indexOf(ticketIndexToDelete)
 
             if (indexToRemove !== -1) {
-                ticketsIndexes.splice(indexToRemove, 1); // Remover o índice da lista
+                ticketsIndexes.splice(indexToRemove, 1)
             }
 
             if (ticketType === "adult") {
-                totalValue -= adultPrice;
+                totalValue -= adultPrice
             } else if (ticketType === "kid") {
-                totalValue -= kidPrice;
+                totalValue -= kidPrice
             }
 
-            totalValueText.innerHTML = `R$${totalValue}`;
+            totalValueText.innerHTML = `R$${totalValue}`
 
-            const ticketResult = ticketsContainerResult.querySelector(`.result-preview${ticketIndexToDelete}`);
+            const ticketResult = ticketsContainerResult.querySelector(`.result-preview${ticketIndexToDelete}`)
             if (ticketResult) {
-                ticketResult.remove();
+                ticketResult.remove()
             }
 
-            ticket.remove();
+            ticket.remove()
 
-            const ticketResults = ticketsContainerResult.querySelectorAll(".result-preview");
+            const ticketResults = ticketsContainerResult.querySelectorAll(".result-preview")
 
             ticketResults.forEach((ticketResult) => {
-                let currentIndex = parseInt(ticketResult.getAttribute("data-index"));
+                let currentIndex = parseInt(ticketResult.getAttribute("data-index"))
 
                 if (currentIndex > ticketIndexToDelete) {
-                    currentIndex -= 1;
-                    ticketResult.setAttribute("data-index", currentIndex);
+                    currentIndex -= 1
+                    ticketResult.setAttribute("data-index", currentIndex)
                 }
-            });
+            })
         }
     }
-});
+})
 
 payBtn.addEventListener('click', () => {
-    const ticketElements = document.querySelectorAll('.ticket');
+    const ticketElements = document.querySelectorAll('.ticket')
 
     ticketsValues.length = 0
 
-    let allTicketsValid = true;
+    let allTicketsValid = true
 
     ticketElements.forEach((ticketElement, index) => {
-        const nameInput = document.querySelector(`.iname${ticketsIndexes[index]}`);
-        const cpfInput = document.querySelector(`.icpf${ticketsIndexes[index]}`);
-        const birthInput = document.querySelector(`.ibirth${ticketsIndexes[index]}`);
-        const restrictionTextarea = document.querySelector(`.irestriction${ticketsIndexes[index]}`);
-        const dataKnowValue = ticketElement.getAttribute('data-know');
+        const nameInput = document.querySelector(`.iname${ticketsIndexes[index]}`)
+        const cpfInput = document.querySelector(`.icpf${ticketsIndexes[index]}`)
+        const birthInput = document.querySelector(`.ibirth${ticketsIndexes[index]}`)
+        const restrictionTextarea = document.querySelector(`.irestriction${ticketsIndexes[index]}`)
+        const dataKnowValue = ticketElement.getAttribute('data-know')
         let ticketType = 
             ticketElement.classList.contains("ticket-adult") ? "adult" :
             ticketElement.classList.contains("ticket-kid") ? "kid" :
-            ticketElement.classList.contains("ticket-baby") ? "baby" : '';
+            ticketElement.classList.contains("ticket-baby") ? "baby" : ''
         
         let age = 'Não preenchido' 
 
-        const isNameValid = nameRegex.test(nameInput.value);
+        const isNameValid = nameRegex.test(nameInput.value)
         const isCPFValid = cpfRegex.test(cpfInput.value)
-        const isBirthValid = birthInput.value !== '';
+        const isBirthValid = birthInput.value !== ''
         restrictionTextarea.setAttribute('id', 'success-completing')
         
         if (isNameValid) {
-            nameInput.setAttribute('id', 'success-completing');
-            ticketElement.setAttribute('id', 'success-completing');
-            document.querySelector(`.errorname${ticketsIndexes[index]}`).style.display = "none";
+            nameInput.setAttribute('id', 'success-completing')
+            ticketElement.setAttribute('id', 'success-completing')
+            document.querySelector(`.errorname${ticketsIndexes[index]}`).style.display = "none"
         } else {
             allTicketsValid = false
-            nameInput.setAttribute('id', 'unsuccess-completing');
-            document.querySelector(`.errorname${ticketsIndexes[index]}`).style.display = "block";
-            ticketElement.setAttribute('id', 'unsuccess-completing');
+            nameInput.setAttribute('id', 'unsuccess-completing')
+            document.querySelector(`.errorname${ticketsIndexes[index]}`).style.display = "block"
+            ticketElement.setAttribute('id', 'unsuccess-completing')
             showHideError('show')
         }
         if (ticketType === 'adult') {
             document.querySelector(`.errorbirth${ticketsIndexes[index]}`).style.display = "none"
             if (isCPFValid) {
-                cpfInput.setAttribute('id', 'success-completing');
-                ticketElement.setAttribute('id', 'success-completing');
-                document.querySelector(`.errorcpf${ticketsIndexes[index]}`).style.display = "none";
+                cpfInput.setAttribute('id', 'success-completing')
+                ticketElement.setAttribute('id', 'success-completing')
+                document.querySelector(`.errorcpf${ticketsIndexes[index]}`).style.display = "none"
             } else {
-                allTicketsValid = false;
-                cpfInput.setAttribute('id', 'unsuccess-completing');
-                document.querySelector(`.errorcpf${ticketsIndexes[index]}`).style.display = "block";
-                ticketElement.setAttribute('id', 'unsuccess-completing');
-                showHideError('show');
+                allTicketsValid = false
+                cpfInput.setAttribute('id', 'unsuccess-completing')
+                document.querySelector(`.errorcpf${ticketsIndexes[index]}`).style.display = "block"
+                ticketElement.setAttribute('id', 'unsuccess-completing')
+                showHideError('show')
             }
         }
         if (ticketType === 'kid' || ticketType === 'baby') {
-            cpfInput.setAttribute('id', 'success-completing');
-            ticketElement.setAttribute('id', 'success-completing');
-            document.querySelector(`.errorcpf${ticketsIndexes[index]}`).style.display = "none";
+            cpfInput.setAttribute('id', 'success-completing')
+            ticketElement.setAttribute('id', 'success-completing')
+            document.querySelector(`.errorcpf${ticketsIndexes[index]}`).style.display = "none"
         }
         if (isBirthValid && ticketType === 'kid') {
-            birthInput.setAttribute('id', 'success-completing');
-            ticketElement.setAttribute('id', 'success-completing');
-            const birthDate = new Date(birthInput.value);
-            const today = new Date();
-            age = today.getFullYear() - birthDate.getFullYear();
+            birthInput.setAttribute('id', 'success-completing')
+            ticketElement.setAttribute('id', 'success-completing')
+            const birthDate = new Date(birthInput.value)
+            const today = new Date()
+            age = today.getFullYear() - birthDate.getFullYear()
         } else if (!isBirthValid && ticketType === 'kid') {
             allTicketsValid = false
-            birthInput.setAttribute('id', 'unsuccess-completing');
-            ticketElement.setAttribute('id', 'unsuccess-completing');
+            birthInput.setAttribute('id', 'unsuccess-completing')
+            ticketElement.setAttribute('id', 'unsuccess-completing')
             showHideError('show')
         } else if (isBirthValid && ticketType === 'baby') {
-            birthInput.setAttribute('id', 'success-completing');
-            ticketElement.setAttribute('id', 'success-completing');
-            const birthDate = new Date(birthInput.value);
-            const today = new Date();
-            age = today.getFullYear() - birthDate.getFullYear();
+            birthInput.setAttribute('id', 'success-completing')
+            ticketElement.setAttribute('id', 'success-completing')
+            const birthDate = new Date(birthInput.value)
+            const today = new Date()
+            age = today.getFullYear() - birthDate.getFullYear()
         } else if (!isBirthValid && ticketType === 'baby') {
             allTicketsValid = false
-            birthInput.setAttribute('id', 'unsuccess-completing');
-            ticketElement.setAttribute('id', 'unsuccess-completing');
+            birthInput.setAttribute('id', 'unsuccess-completing')
+            ticketElement.setAttribute('id', 'unsuccess-completing')
             showHideError('show')
         } 
     
@@ -676,17 +660,17 @@ payBtn.addEventListener('click', () => {
             whoKnows: 'Ninguem',
             type: ticketType,
             idComprador: idBuyer
-        };
+        }
 
         if (dataKnowValue === 'yes-student') {
             if (ticketType === 'adult' || ticketType === 'kid') {
-                const studentSelect = document.querySelector(`.list-students${ticketsIndexes[index]}`);
-                const studentName = studentSelect.value;
+                const studentSelect = document.querySelector(`.list-students${ticketsIndexes[index]}`)
+                const studentName = studentSelect.value
                 const studentType = studentName.startsWith('Gastronomia') ? 'Gastronomia' :
                 studentName.startsWith('ADM') ? 'ADM' :'Informatica'
                 if (studentType === 'Gastronomia') {
                     if (!(studentName in ticketsSoldByStudent)) {
-                        ticketsSoldByStudent[studentName] = 1;
+                        ticketsSoldByStudent[studentName] = 1
                     } else {
                         ticketsSoldByStudent[studentName] += 1
                         if (ticketsSoldByStudent[studentName] > limitTickets['Gastronomia']) {
@@ -696,7 +680,7 @@ payBtn.addEventListener('click', () => {
                     }
                 } else if (studentType === 'ADM') {
                     if (!(studentName in ticketsSoldByStudent)) {
-                        ticketsSoldByStudent[studentName] = 1;
+                        ticketsSoldByStudent[studentName] = 1
                     } else {
                         ticketsSoldByStudent[studentName] += 1
                         if (ticketsSoldByStudent[studentName] > limitTickets['Administração']) {
@@ -706,7 +690,7 @@ payBtn.addEventListener('click', () => {
                     }
                 } else if (studentType === 'Informatica') {
                     if (!(studentName in ticketsSoldByStudent)) {
-                        ticketsSoldByStudent[studentName] = 1;
+                        ticketsSoldByStudent[studentName] = 1
                     } else {
                         ticketsSoldByStudent[studentName] += 1
                         if (ticketsSoldByStudent[studentName] > limitTickets['Informática']) {
@@ -720,7 +704,7 @@ payBtn.addEventListener('click', () => {
             const studentTechName = document.querySelector(`.list-students${ticketsIndexes[index]}`)
             const isStudentTechNameValid = studentTechName.value !== ''
             if (!isStudentTechNameValid) {
-                allTicketsValid = false;
+                allTicketsValid = false
                 studentTechName.setAttribute('id', 'unsuccess-completing')
                 ticketElement.setAttribute('id', 'unsuccess-completing')
                 showHideError('show')
@@ -733,7 +717,7 @@ payBtn.addEventListener('click', () => {
             const studentNTechName = document.querySelector(`.istudent-n-tech${ticketsIndexes[index]}`)
             const isStudentNTechNameValid = nameRegex.test(studentNTechName.value)
             if (!isStudentNTechNameValid) {
-                allTicketsValid = false;
+                allTicketsValid = false
                 studentNTechName.setAttribute('id', 'unsuccess-completing')
                 ticketElement.setAttribute('id', 'unsuccess-completing')
                 showHideError('show')
@@ -746,7 +730,7 @@ payBtn.addEventListener('click', () => {
             const teacherName = document.querySelector(`.iteacher-name${ticketsIndexes[index]}`)
             const isTeacherNameValid = nameRegex.test(teacherName.value)
             if (!isTeacherNameValid) {
-                allTicketsValid = false;
+                allTicketsValid = false
                 teacherName.setAttribute('id', 'unsuccess-completing')
                 ticketElement.setAttribute('id', 'unsuccess-completing')
                 showHideError('show')
@@ -769,67 +753,67 @@ payBtn.addEventListener('click', () => {
         }
 
         if (birthInput.value === '' && ticketType !== 'adult'){
-            document.querySelector(`.errorbirth${ticketsIndexes[index]}`).style.display = "block";
+            document.querySelector(`.errorbirth${ticketsIndexes[index]}`).style.display = "block"
         } else if (ticketType === 'kid' && !(age >= minKidAge && age <= maxKidAge)) {
-            document.querySelector(`.errorbirth${ticketsIndexes[index]}`).style.display = "none";
+            document.querySelector(`.errorbirth${ticketsIndexes[index]}`).style.display = "none"
             const confirm = window.confirm(`Data inválida! A data digitada não corresponde com a data para criança. Deseja transformar esse ingresso em adulto?`)
-            allTicketsValid = false;
-            ticketElement.setAttribute('id', 'unsuccess-completing');
-            birthInput.setAttribute('id', 'unsuccess-completing');
+            allTicketsValid = false
+            ticketElement.setAttribute('id', 'unsuccess-completing')
+            birthInput.setAttribute('id', 'unsuccess-completing')
             
             if (confirm) {
                 ticketElement.classList.remove('ticket-kid')
                 ticketElement.classList.add('ticket-adult')
-                totalValue -= kidPrice;
-                totalValue += adultPrice;
-                totalValueText.innerHTML = `R$${totalValue}`;
+                totalValue -= kidPrice
+                totalValue += adultPrice
+                totalValueText.innerHTML = `R$${totalValue}`
     
-                const ticketType = document.querySelector(`.ticket-type${ticketsIndexes[index]}`);
-                const resultType = document.querySelector(`.result-type${ticketsIndexes[index]}`);
-                const resultValue = document.querySelector(`.result-value${ticketsIndexes[index]}`);
-                const birthContent = document.querySelector(`.ticket-birth${ticketsIndexes[index]}`);
+                const ticketType = document.querySelector(`.ticket-type${ticketsIndexes[index]}`)
+                const resultType = document.querySelector(`.result-type${ticketsIndexes[index]}`)
+                const resultValue = document.querySelector(`.result-value${ticketsIndexes[index]}`)
+                const birthContent = document.querySelector(`.ticket-birth${ticketsIndexes[index]}`)
 
-                ticketType.textContent = 'Ingresso Adulto';
-                resultType.textContent = 'Ingresso Adulto';
-                resultValue.textContent = `R$${adultPrice},00`;
-                birthContent.style.display = 'none';
+                ticketType.textContent = 'Ingresso Adulto'
+                resultType.textContent = 'Ingresso Adulto'
+                resultValue.textContent = `R$${adultPrice},00`
+                birthContent.style.display = 'none'
             }
         } else if (ticketType === 'kid' && (age >= minKidAge && age <= maxKidAge)) {
-            document.querySelector(`.errorbirth${ticketsIndexes[index]}`).style.display = "none";
+            document.querySelector(`.errorbirth${ticketsIndexes[index]}`).style.display = "none"
         } else if (ticketType === 'baby' && !(age >= 0 && age <= 3)) {
-            document.querySelector(`.errorbirth${ticketsIndexes[index]}`).style.display = "none";
+            document.querySelector(`.errorbirth${ticketsIndexes[index]}`).style.display = "none"
             const confirm = window.confirm(`Data inválida! A data digitada não corresponde com a data para bebê. Deseja transformar esse ingresso em adulto?`)
-            allTicketsValid = false;
-            ticketElement.setAttribute('id', 'unsuccess-completing');
-            birthInput.setAttribute('id', 'unsuccess-completing');
+            allTicketsValid = false
+            ticketElement.setAttribute('id', 'unsuccess-completing')
+            birthInput.setAttribute('id', 'unsuccess-completing')
             
             if (confirm) {
                 ticketElement.classList.remove('ticket-baby')
                 ticketElement.classList.add('ticket-adult')
-                totalValue += adultPrice;
-                totalValueText.innerHTML = `R$${totalValue}`;
+                totalValue += adultPrice
+                totalValueText.innerHTML = `R$${totalValue}`
     
-                const ticketType = document.querySelector(`.ticket-type${ticketsIndexes[index]}`);
-                const resultType = document.querySelector(`.result-type${ticketsIndexes[index]}`);
-                const resultValue = document.querySelector(`.result-value${ticketsIndexes[index]}`);
-                const birthContent = document.querySelector(`.ticket-birth${ticketsIndexes[index]}`);
+                const ticketType = document.querySelector(`.ticket-type${ticketsIndexes[index]}`)
+                const resultType = document.querySelector(`.result-type${ticketsIndexes[index]}`)
+                const resultValue = document.querySelector(`.result-value${ticketsIndexes[index]}`)
+                const birthContent = document.querySelector(`.ticket-birth${ticketsIndexes[index]}`)
 
-                ticketType.textContent = 'Ingresso Adulto';
-                resultType.textContent = 'Ingresso Adulto';
-                resultValue.textContent = `R$${adultPrice},00`;
-                birthContent.style.display = 'none';
+                ticketType.textContent = 'Ingresso Adulto'
+                resultType.textContent = 'Ingresso Adulto'
+                resultValue.textContent = `R$${adultPrice},00`
+                birthContent.style.display = 'none'
             }
         } else if (ticketType === 'baby' && (age >= 0 && age <= 3)) {
-            document.querySelector(`.errorbirth${ticketsIndexes[index]}`).style.display = "none";
+            document.querySelector(`.errorbirth${ticketsIndexes[index]}`).style.display = "none"
         }
 
-        ticketsValues.push(ticketValues);
-    });
+        ticketsValues.push(ticketValues)
+    })
 
     if (allTicketsValid) {
         confirmSubmitTicket(ticketsValues)
     }
-});
+})
 
 confirmSubmitBtn.addEventListener('click', () => {
     payBtn.style.display = 'block'
@@ -838,11 +822,11 @@ confirmSubmitBtn.addEventListener('click', () => {
     confirmSubmitTicketDiv.style.display = 'none'
     ticketsValues.forEach((ticket) => {
         InsertSQLTicket("INSERT INTO Ingressos (nome, cpf, restricao, conhecido, tipo, id_Comprador) VALUES ('" + ticket.name.toString() + "', '" + ticket.cpf.toString() + "', '" + ticket.restriction.toString() + "', '" + ticket.whoKnows.toString() + "', '" + ticket.type.toString() + "', '" + ticket.idComprador + "') returning id")
-        UpdateSQL("update Compradores set compra = '" + totalValueText + "' where id = " + ticket.idComprador + ";")
+        UpdateSQL("update Compradores set compra = '" + totalValueText + "' where id = " + ticket.idComprador + "")
     })
     setTimeout(() => {
         window.location.href = './payment.html'
-     }, 1000);
+     }, 1000)
     localStorage.setItem('value', totalValue)
     sessionStorage.setItem('teste', 'teste')
     SelectTables("SELECT COUNT(*) FROM Ingressos")
