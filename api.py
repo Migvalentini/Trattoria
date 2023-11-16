@@ -1,5 +1,7 @@
 import requests
 
+# OS DADOS DO BANCO DE DADOS FORAM DELETADOS PARA PRESERVAÇÃO DA POLÍTICA DE LGPD 
+
 #response = requests.post('https://trattoria-three.vercel.app/post', json={'sql':"delete from Compradores where id = 70;"})
 #print(response.json()['json'])
 
