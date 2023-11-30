@@ -139,7 +139,7 @@ confirmBtn.addEventListener('click', () => {
       payment: 'not-paid',
       value: 0
    }
-   //InsertSQLBuy("INSERT INTO Compradores (nome, telefone, cpf, email, pago, compra) VALUES ('" + newBuyer.name.toString() + "', '" + newBuyer.phone.toString() + "', '" + newBuyer.cpf.toString() + "', '" + newBuyer.email.toString() + "', 'nao-pago', '" + newBuyer.value.toString() + "') returning id;");
+   InsertSQLBuy("INSERT INTO Compradores (nome, telefone, cpf, email, pago, compra) VALUES ('" + newBuyer.name.toString() + "', '" + newBuyer.phone.toString() + "', '" + newBuyer.cpf.toString() + "', '" + newBuyer.email.toString() + "', 'nao-pago', '" + newBuyer.value.toString() + "') returning id;");
    localStorage.setItem('buyerName', newBuyer.name)
 
    setTimeout(() => {

@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     SelectTables("SELECT COUNT(*) FROM Ingressos")
     ticketsSold = localStorage.getItem('table')
     //ticketsSold = 100
-    localStorage.removeItem('buyerName')
+    //localStorage.removeItem('buyerName')
     availableTickets = 100 - ticketsSold
     updateTicketsText(`${availableTickets}`)
     
@@ -832,6 +832,6 @@ confirmSubmitBtn.addEventListener('click', () => {
     SelectTables("SELECT COUNT(*) FROM Ingressos")
     ticketsSold = getTable()[0][0]
     availableTickets = 100 - ticketsSold
-    localStorage.removeItem('table')
+    //localStorage.removeItem('table')
     localStorage.setItem('table')
 })
